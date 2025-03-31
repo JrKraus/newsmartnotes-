@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using termprojectJksmartnote.Data;
+using termprojectJksmartnote.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

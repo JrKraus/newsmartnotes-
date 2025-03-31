@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace termprojectJksmartnote.Data
+namespace termprojectJksmartnote.Services
 {
     public class ApplicationDbContext : IdentityDbContext
     {
