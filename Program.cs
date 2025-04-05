@@ -12,7 +12,25 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => {
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+// Allow postman to send requests
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+       builder =>
+       {
+           builder.WithOrigins("https://web.postman.com")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+       });
+});
+
 builder.Services.AddControllersWithViews();
+//builder.Services.AddScoped<INoteRepository, NoteRepository>();
 
 var app = builder.Build();
 
@@ -32,6 +50,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();
