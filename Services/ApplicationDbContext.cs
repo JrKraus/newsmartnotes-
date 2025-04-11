@@ -4,7 +4,7 @@ using termprojectJksmartnote.Models.Entities;
 
 namespace termprojectJksmartnote.Services
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -47,6 +47,7 @@ namespace termprojectJksmartnote.Services
                 .WithMany(t => t.NoteTags)
                 .HasForeignKey(nt => nt.TagId)
                 .OnDelete(DeleteBehavior.Cascade);
+                
         }
     }
 

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models.Entities;
 using termprojectJksmartnote.Services;
+using Microsoft.AspNetCore.Identity;
+using termprojectJksmartnote.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +17,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<User>(options => {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireNonAlphanumeric = false;
-}).AddEntityFrameworkStores<ApplicationDbContext>();
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 6;
+})
+.AddEntityFrameworkStores<ApplicationDbContext>();
 
 // CORS Configuration
 builder.Services.AddCors(options => {
