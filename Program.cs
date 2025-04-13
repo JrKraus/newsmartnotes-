@@ -3,19 +3,29 @@ using termprojectJksmartnote.Models.Entities;
 using termprojectJksmartnote.Services;
 using Microsoft.AspNetCore.Identity;
 using termprojectJksmartnote.Data;
+using NuGet.Protocol.Plugins;
+using System.Text.Json.Serialization;
 
 
 var builder = WebApplication.CreateBuilder(args);
+// Default providers added automatically
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+builder.Logging.AddEventSourceLogger();
+// On Windows:
+
 
 // Database Configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Identity Configuration
 builder.Services.AddDefaultIdentity<User>(options => {
-    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedAccount = true;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireDigit = true;
     options.Password.RequiredLength = 6;
@@ -30,6 +40,19 @@ builder.Services.AddCors(options => {
                .AllowAnyMethod();
     });
 });
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler =
+            ReferenceHandler.IgnoreCycles;
+    });
+//builder.Services.ConfigureApplicationCookie(options =>
+//{
+//    options.LoginPath = "/Identity/Account/Login";
+//    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+//    options.LogoutPath = "/Identity/Account/Logout";
+//    options.ExpireTimeSpan = TimeSpan.FromDays(14); // Cookie expiration
+//});
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<INoteRepository, NoteRepository>();
@@ -51,8 +74,16 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseCors();
+app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Add this before your route mapping
+//app.MapGet("/", context => {
+//    context.Response.Redirect("/Identity/Account/Login");
+//    return Task.CompletedTask;
+//});
+
 
 app.MapControllerRoute(
     name: "default",

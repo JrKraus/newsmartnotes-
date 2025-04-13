@@ -47,7 +47,18 @@ namespace termprojectJksmartnote.Services
                 .WithMany(t => t.NoteTags)
                 .HasForeignKey(nt => nt.TagId)
                 .OnDelete(DeleteBehavior.Cascade);
-                
+            
+            modelBuilder.Entity<Notebook>()
+                .HasOne(n => n.User)
+                .WithMany(u => u.Notebooks)
+                .HasForeignKey(n => n.UserId);
+
+            modelBuilder.Entity<Note>()
+                .HasOne(n => n.Notebook)
+                .WithMany(nb => nb.Notes)
+                .HasForeignKey(n => n.NotebookId);
+
+
         }
     }
 
