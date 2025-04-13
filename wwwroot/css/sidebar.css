@@ -1,0 +1,141 @@
+﻿.sidebar-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notebooks-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.notebook-item {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.notebook-header {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+    .notebook-header:hover {
+        background-color: #e9ecef;
+    }
+
+.notebook-item.active > .notebook-header {
+    background-color: #e3f2fd;
+}
+
+.notebook-title {
+    font-weight: 500;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notes-container {
+    display: none;
+    padding-left: 20px;
+    background-color: #f9f9f9;
+}
+
+.notebook-item.active .notes-container {
+    display: block;
+}
+
+.note-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: #495057;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: background-color 0.2s;
+}
+
+    .note-item:hover {
+        background-color: #e9ecef;
+        color: #212529;
+    }
+
+    .note-item.active {
+        border-left-color: #007bff;
+        background-color: #e9ecef;
+        font-weight: 500;
+    }
+
+.note-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.new-note-btn {
+    padding: 0.5rem 1rem;
+    color: #6c757d;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .new-note-btn:hover {
+        background-color: #e9ecef;
+        color: #007bff;
+    }
+
+.empty-state {
+    padding: 2rem;
+    text-align: center;
+    color: #6c757d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.empty-notes-message {
+    padding: 1rem;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+    .empty-notes-message i {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-notes-message p {
+        margin: 0;
+    }
+
+.toggle-icon {
+    transition: transform 0.2s;
+}
+
+.notebook-item.active .toggle-icon {
+    transform: rotate(180deg);
+}

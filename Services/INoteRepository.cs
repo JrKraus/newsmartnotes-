@@ -1,4 +1,5 @@
-﻿using termprojectJksmartnote.Models.Entities;   
+﻿using Microsoft.EntityFrameworkCore;
+using termprojectJksmartnote.Models.Entities;   
 
 namespace termprojectJksmartnote.Services
 {
@@ -8,7 +9,16 @@ namespace termprojectJksmartnote.Services
     public interface INoteRepository
     {
         // Note Operations
-        
+        Task<IEnumerable<Note>> GetNotesByNotebookIdAsync(int notebookId, string userId);
+
+        /// <summary>
+        /// Retrieves all notes associated with a specific notebook for the user
+        /// </summary>
+        /// <param name="note"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+
+
         Task<Note> CreateNoteAsync(Note note, string userId);
             /// Creates a new note associated with the specified user 
             /// <param name="noteId"></param>  the note to be created
@@ -43,11 +53,15 @@ namespace termprojectJksmartnote.Services
 
         // Notebook Operations
         
-        Task<Notebook> CreateNotebookAsync(Notebook notebook, string userId);
+        Task<Notebook> CreateNotebookAsync(Notebook notebook);
 
         /// Creates a new notebook associated with the specified user
         /// <param name="userId"></param>
         /// returns the created Notebook object
+        Task<ICollection<Notebook>> GetAllUserNotebooksWithNotesAsync(string userId);
+        // Retrieves all notebooks belonging to the user with their notes
+        /// <param name="userId"></param>
+        /// returns collection of notebooks and notes (empty if none found)
         Task<ICollection<Notebook>> GetAllUserNotebooksAsync(string userId);
         /// Retrieves all notebooks belonging to the user 
         /// <param name="notebookId"></param>
