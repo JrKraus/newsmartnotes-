@@ -2,9 +2,14 @@
 using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.Build.Framework;
 using termprojectJksmartnote.Models.Entities;
 using termprojectJksmartnote.Services;
+using Microsoft.AspNetCore.Http;
+using AspNetCoreGeneratedDocument;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace termprojectJksmartnote.Controllers
 {
@@ -32,6 +37,11 @@ namespace termprojectJksmartnote.Controllers
         {
             [Required]
             public string Title { get; set; }
+        }
+        public class NotebookDto
+        {
+            public string Title { get; set; }
+        
         }
 
         [HttpPost("create")]
@@ -99,6 +109,60 @@ namespace termprojectJksmartnote.Controllers
 
             return Ok(notebook);
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteNotebook(int id)
+        {
+            var userId = _userManager.GetUserId(User);
+
+            await _noteRepo.DeleteNotebookAsync(id, userId);
+
+            
+
+            return NoContent();
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateNotebook(int id, [FromBody] NotebookDto notebookDto)
+        {
+            var userId = _userManager.GetUserId(User);
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+            var existingNotebook = await _noteRepo.GetNotebookByIdAsync(id, userId);
+            if (existingNotebook == null) return NotFound();
+
+            existingNotebook.Title = notebookDto.Title;
+            await _noteRepo.UpdateNotebookAsync(existingNotebook, userId);
+
+            return Ok(new { message = "Notebook updated successfully", name = existingNotebook.Title });
+        }
+        // ...
+
+        [HttpGet("GetNotebooksSidebar")]
+        public async Task<IActionResult> GetNotebooksSidebar()
+        {
+            var userId = _userManager.GetUserId(User);
+            var notebooks = await _noteRepo.GetAllUserNotebooksWithNotesAsync(userId);
+
+            byte[] activeNotebookIdBytes;
+            int? activeNotebookId = null;
+            if (HttpContext.Session.TryGetValue("ActiveNotebookId", out activeNotebookIdBytes))
+            {
+                activeNotebookId = BitConverter.ToInt32(activeNotebookIdBytes, 0);
+            }
+
+            // Return a JSON result instead of a partial view
+            return new PartialViewResult
+            {
+                ViewName = "Views/Shared/View",
+                ViewData = new ViewDataDictionary<IEnumerable<Notebook>>(new EmptyModelMetadataProvider(), new ModelStateDictionary())
+                {
+                    Model = notebooks
+                },
+              
+                StatusCode = 200
+            };
+        }
+
+
     }
 
 

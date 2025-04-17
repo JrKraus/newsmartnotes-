@@ -7,6 +7,7 @@
             <partial name="View.cshtml" model="Model" />
         </div> *@
 
+
         <!-- Middle panel: Notes list -->
         <div class="col-md-3 col-lg-3 p-0 border-end notes-panel">
             <div class="notes-header p-3 border-bottom">
@@ -14,7 +15,14 @@
                 <button id="newNoteBtn" class="btn btn-sm btn-primary" style="display:none;">
                     <i class="bi bi-plus-circle"></i> New Note
                 </button>
+                <button id="deleteNotebookBtn" class="btn btn-sm btn-danger" style="display:none;" onclick="deleteNotebook()">
+                    <i class="bi bi-trash"></i> Delete Notebook
+                </button>
+                <button id="editNotebookBtn" class="btn btn-sm btn-secondary me-2" onclick="showEditNotebookModal()">
+                    <i class="bi bi-pencil"></i> Edit Notebook
+                </button>
             </div>
+
             <div id="notesList" class="notes-list p-2">
                 <!-- Notes will be loaded here dynamically -->
                 <div class="text-center p-5 text-muted">
@@ -25,6 +33,7 @@
         </div>
 
         <!-- Right panel: Note editor -->
+        <!-- Right panel: Note editor -->
         <div class="col-md-6 col-lg-7 p-0 editor-panel">
             <div id="noteEditorEmpty" class="text-center p-5 h-100 d-flex flex-column justify-content-center">
                 <i class="bi bi-sticky-fill text-muted" style="font-size: 4rem;"></i>
@@ -32,44 +41,68 @@
             </div>
 
             <div id="noteEditor" class="h-100 d-none">
-                <div class="editor-header p-3 border-bottom">
+                <div class="editor-header p-3 border-bottom d-flex justify-content-between align-items-center">
                     <input type="text" id="noteTitleField" class="form-control form-control-lg border-0" placeholder="Note Title">
-                    <input type="hidden" id="currentNoteId" value="" />
-                    <input type="hidden" id="currentNotebookId" value="" />
-                    <div class="note-meta text-muted small mt-1">
-                        <span id="lastSavedText">Not saved yet</span>
-                    </div>
+                    <button id="deleteNoteBtn" class="btn btn-sm btn-danger" onclick="deleteNote()">
+                        <i class="bi bi-trash"></i> Delete Note
+                    </button>
+                    <button id="tagNoteBtn" class="btn btn-sm btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#tagModal">
+                        <i class="bi bi-tag"></i> Tags
+                    </button>
                 </div>
-
-                <!-- Quill editor container -->
                 <div id="quillEditor" class="h-100 p-3"></div>
             </div>
         </div>
+
+
     </div>
 </div>
 
-<!-- Hidden modal for creating new notebooks (keep this) -->
-<div class="modal fade" id="newNotebookModal" tabindex="-1" aria-labelledby="newNotebookModalLabel" aria-hidden="true">
+ <!-- Add Tag Modal -->
+<div class="modal fade" id="tagModal" tabindex="-1" aria-labelledby="tagModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="newNotebookModalLabel">Create New Notebook</h5>
+                <h5 class="modal-title" id="tagModalLabel">Tag Note</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form asp-controller="Notebooks" asp-action="Create" method="post" id="createNotebookForm">
-                @Html.AntiForgeryToken()
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="Title" class="form-label">Notebook Title</label>
-                        <input type="text" class="form-control" id="Title" name="Title" required>
-                        <div class="invalid-feedback">Please enter a notebook title.</div>
-                    </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Existing Tags</label>
+                    <select id="existingTags" class="form-select">
+                        <option value="">Select a tag</option>
+                    </select>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Create Notebook</button>
+                <div class="mb-3">
+                    <label class="form-label">Create New Tag</label>
+                    <input type="text" id="newTag" class="form-control" placeholder="Enter new tag">
                 </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="applyTag()">Apply Tag</button>
+            </div>
+        </div>
+    </div>
+</div> 
+<!-- Modal for editing notebook name -->
+<div class="modal fade" id="editNotebookModal" tabindex="-1" aria-labelledby="editNotebookModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editNotebookModalLabel">Edit Notebook Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="editNotebookNameInput" class="form-label">New Notebook Name</label>
+                    <input type="text" id="editNotebookNameInput" class="form-control" placeholder="Enter new notebook name">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="updateNotebookName()">Save Changes</button>
+            </div>
         </div>
     </div>
 </div>

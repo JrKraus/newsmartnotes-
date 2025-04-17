@@ -1,12 +1,16 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models;
 using termprojectJksmartnote.Models.Entities;
 using termprojectJksmartnote.Services;
 
 namespace termprojectJksmartnote.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -25,15 +29,19 @@ namespace termprojectJksmartnote.Controllers
             if (User.Identity?.IsAuthenticated == true)
             {
                 var userId = _userManager.GetUserId(User);
-                ViewBag.Notebooks = await _noteRepo.GetAllUserNotebooksWithNotesAsync(userId);
+                var notebooks = await _noteRepo.GetAllUserNotebooksWithNotesAsync(userId);
 
-                // Pass success message to view if exists
+                ViewBag.Notebooks = notebooks; // Pass notebooks to the view
+
                 if (TempData["SuccessMessage"] != null)
                 {
                     ViewBag.SuccessMessage = TempData["SuccessMessage"];
                 }
+
+                return View(notebooks); // Pass notebooks as the model
             }
-            return View();
+
+            return View(Enumerable.Empty<Notebook>()); // Return an empty list if not authenticated
         }
         public IActionResult createnotebook()
         {
@@ -43,6 +51,16 @@ namespace termprojectJksmartnote.Controllers
         {
             return View();
         }
+        [HttpGet("GetNotebooksSidebar")]
+        public async Task<IActionResult> GetNotebooksSidebar()
+        {
+            var userId = _userManager.GetUserId(User);
+
+            var notebooks = await _noteRepo.GetAllUserNotebooksWithNotesAsync(userId);
+            HttpContext.Session.TryGetValue("ActiveNotebookId", out var activeNotebookId);
+            ViewBag.Notebooks = notebooks;
+            return View(notebooks);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -50,55 +68,6 @@ namespace termprojectJksmartnote.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //will fix this later when i create a veiw for this 
-
-        //[HttpGet]
-        //public async Task<IActionResult> Index()
-        //{
-        //    var userId = _userManager.GetUserId(User);
-        //    return View(await _noteRepo.GetAllUserNotebooksAsync(userId));
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create(Notebook notebook)
-        //{
-        //    if (!ModelState.IsValid) return View(notebook);
-
-        //    var userId = _userManager.GetUserId(User);
-        //    await _noteRepo.CreateNotebookAsync(notebook, userId);
-        //    return RedirectToAction("Index");
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> CreateNotebook(Notebook notebook)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        // If validation fails, redirect back to home with error message
-        //        TempData["ErrorMessage"] = "Please provide a valid notebook title.";
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    // Get current user ID
-        //    var userId = _userManager.GetUserId(User);
-        //    if (string.IsNullOrEmpty(userId))
-        //    {
-        //        return Challenge(); // Redirect to login if not authenticated
-        //    }
-
-        //    // Set creation metadata
-        //    notebook.UserId = userId;
-        //    notebook.CreatedAt = DateTime.UtcNow;
-
-        //    // Save to database using repository
-        //    await _noteRepo.CreateNotebookAsync(notebook, userId);
-
-        //    // Add success message
-        //    TempData["SuccessMessage"] = $"Notebook '{notebook.Title}' was successfully created.";
-
-        //    // Redirect back to home page
-        //    return RedirectToAction("Index");
-        //}
+        
     }
 }

@@ -128,5 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
         toastEl.addEventListener('hidden.bs.toast', function () {
             toastEl.remove();
         });
+       
     }
+     
 });

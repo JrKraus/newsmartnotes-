@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models.Entities;   
 
 namespace termprojectJksmartnote.Services
@@ -35,11 +36,11 @@ namespace termprojectJksmartnote.Services
             /// <param name="userId">ID of the user</param>
             /// returns collection of notes (empty if none found)
         Task UpdateNoteAsync(Note note, string userId);
-            /// Updates an existing note if it belongs to the user
-            /// <param name="note">Note object with updated data</param>
-            /// <param name="userId">ID of the user updating the note</param>
-            /// returns updated Note object
-        Task DeleteNoteAsync(int noteId, string userId);
+        /// Updates an existing note if it belongs to the user
+        /// <param name="note">Note object with updated data</param>
+        /// <param name="userId">ID of the user updating the note</param>
+        /// returns updated Note object
+        Task<bool> DeleteNoteAsync(int noteId, string userId);
             /// Deletes a note if it belongs to the user   
             /// <param name="noteId"></param>
             /// <param name="content"></param>
@@ -83,7 +84,10 @@ namespace termprojectJksmartnote.Services
         // <param name="userId"></param>
         // returns nothing accepted a message saying the notebook was deleted
 
+        Task<Notebook> GetNotebookByIdAsync(int id, string userId);
+
         // Tag Operations
+        Task<ICollection<Tag>> GetAllTagsAsync(string userId);
         Task<Tag> GetOrCreateTagAsync(string tagName);
         // Retrieves an existing tag or creates a new one if it doesn't exist
         // <param name="tagName"></param>
@@ -93,7 +97,7 @@ namespace termprojectJksmartnote.Services
         // <param name="count"></param>
         // returns a collection of Tag objects
 
-        Task AssociateTagToNoteAsync(int noteId, int tagId);
+        Task<bool> AssociateTagToNoteAsync(int noteId, int tagId, string userId);
         // Associates a tag with a note
         // <param name="noteId"></param>
         // <param name="tagId"></param>

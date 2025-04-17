@@ -176,7 +176,7 @@ namespace termprojectJksmartnote.Controllers
             if (!noteExists) return Forbid();
 
             var tag = await _noteRepo.GetOrCreateTagAsync(tagName);
-            await _noteRepo.AssociateTagToNoteAsync(noteId, tag.Id);
+            //wait _noteRepo.AssociateTagToNoteAsync(noteId, tag.Id);
             return NoContent();
         }
         // Associate a tag with a note
@@ -185,6 +185,7 @@ namespace termprojectJksmartnote.Controllers
         // <param name="noteId">The ID of the note to be associated with the tag</param>
         // <param name="tagName">The name of the tag to be associated with the note</param>
         // <returns>Nothing</returns>
+        //tag
 
         [HttpPost("tags/remove")]
         public async Task<IActionResult> RemoveTagFromNote(

@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models.Entities;
+using static Azure.Core.HttpHeader;
 
 namespace termprojectJksmartnote.Services
 {
@@ -124,15 +125,18 @@ namespace termprojectJksmartnote.Services
         // Deletes a note if it belongs to the user
         /// <param name="noteId"></param>
         ///<param name="userId"></param>
-        public async Task DeleteNoteAsync(int noteId, string userId)
-        {
-            var note = await GetNoteByIdAsync(noteId, userId);
-            if (note != null)
-            {
-                _context.Notes.Remove(note);
-                await _context.SaveChangesAsync();
-            }
-        }
+        public async Task<bool> DeleteNoteAsync(int noteId, string userId)
+{
+    var note = await GetNoteByIdAsync(noteId, userId);
+    if (note != null)
+    {
+        _context.Notes.Remove(note);
+        await _context.SaveChangesAsync();
+        return true;
+    }
+
+    return false;
+}
         //this is used for the auto save feature
         /// <param name="noteId"></param>
         ///  <param name="content"></param> 
@@ -254,7 +258,12 @@ namespace termprojectJksmartnote.Services
                 await _context.SaveChangesAsync();
             }
         }
-
+        public async Task<Notebook> GetNotebookByIdAsync(int id, string userId)
+        {
+            return await _context.Notebooks
+                
+                .FirstOrDefaultAsync(n => n.Id == id && n.UserId == userId);
+        }
         // Tag Operations
         /// Creates a new tag if it doesn't exist, or retrieves it if it does
         /// <param name="tagName"></param>
@@ -270,6 +279,19 @@ namespace termprojectJksmartnote.Services
             }
             return tag;
         }
+        public async Task<ICollection<Tag>> GetAllTagsAsync(string userId)
+        {
+           var tags = await _context.Tags
+                .Include(t => t.NoteTags)
+                .ThenInclude(nt => nt.Note)
+                    .ThenInclude(n => n.Notebook)
+                    .Where(t => t.NoteTags.Any(nt => nt.Note.Notebook.UserId == userId))
+                .Distinct()
+                .ToListAsync();
+            return tags ?? new List<Tag>();
+
+        }
+
         // Retrieves the most popular tags
         /// <param name="count"></param>
         /// returns a collection of Tag objects
@@ -284,11 +306,25 @@ namespace termprojectJksmartnote.Services
         /// <param name="noteId"></param>
         /// <param name="tagId"></param>
         /// returns nothing the tag was associated with the note now
-        public async Task AssociateTagToNoteAsync(int noteId, int tagId)
+        public async Task<bool> AssociateTagToNoteAsync(int noteId, int tagId, string userId)
         {
-            var noteTag = new NoteTag { NoteId = noteId, TagId = tagId };
-            _context.NoteTags.Add(noteTag);
-            await _context.SaveChangesAsync();
+            var note = await _context.Notes
+                .Include(n => n.NoteTags)
+                .Include(n => n.Notebook) // Include the Notebook to access UserId
+                .FirstOrDefaultAsync(n => n.Id == noteId && n.Notebook.UserId == userId);
+
+            if (note == null) return false;
+
+            var tag = await _context.Tags.FindAsync(tagId);
+            if (tag == null) return false;
+
+            if (!note.NoteTags.Any(nt => nt.TagId == tagId))
+            {
+                note.NoteTags.Add(new NoteTag { NoteId = noteId, TagId = tagId });
+                await _context.SaveChangesAsync();
+            }
+
+            return true;
         }
 
         // Removes the association between a tag and a note

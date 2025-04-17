@@ -12,11 +12,12 @@
         @if (Model != null && Model.Any())
         {
             @foreach (var notebook in Model)
-            {
+            {  
+                
                 <div class="notebook-item @(notebook.Id == ViewBag.ActiveNotebookId ? "active" : "")"
                      data-notebook-id="@notebook.Id">
-                    <div class="notebook-header"
-                         onclick="loadNotebookNotes(@notebook.Id, '@notebook.Title')">
+                    
+                    <div class="notebook-header">
                         <i class="bi bi-book-fill me-2"></i>
                         <span class="notebook-title">@notebook.Title</span>
                         <i class="bi bi-chevron-right ms-auto toggle-icon"></i>
@@ -63,3 +64,5 @@
         </div>
     </div>
 </div>
+
+ 

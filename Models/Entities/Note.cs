@@ -27,7 +27,7 @@ namespace termprojectJksmartnote.Models.Entities
         // Navigation properties
         //provide access to the notebook that this note belongs to
         [JsonIgnore]
-        public Notebook? Notebook { get; set; }
+        public Notebook Notebook { get; set; }
         //Collection of tags that are associated with this note 
         //this allows the many to many relationship between notes and tags
         public List<NoteTag> NoteTags { get; set; } = new();

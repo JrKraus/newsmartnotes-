@@ -23,6 +23,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 // Identity Configuration
 builder.Services.AddDefaultIdentity<User>(options => {
     options.SignIn.RequireConfirmedAccount = true;
@@ -40,6 +41,13 @@ builder.Services.AddCors(options => {
                .AllowAnyMethod();
     });
 });
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -77,6 +85,7 @@ app.UseCors();
 app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
 
 // Add this before your route mapping
 //app.MapGet("/", context => {

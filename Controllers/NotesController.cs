@@ -46,6 +46,10 @@ namespace termprojectJksmartnote.Controllers
             public string Content { get; set; }
             public int NotebookId { get; set; }
         }
+        public class TagDto
+        {
+            public string Tag { get; set; }
+        }
 
         // Note mapper to convert between entities and DTOs
         public static class NoteMapper
@@ -227,12 +231,12 @@ namespace termprojectJksmartnote.Controllers
 
             try
             {
-                //var success = await _noteRepo.DeleteNoteAsync(id, userId);
+                var success = await _noteRepo.DeleteNoteAsync(id, userId);
 
-                //if (!success)
-                //{
-                //    return NotFound();
-                //}
+                if (!success)
+                {
+                    return NotFound("note did not get deleted");
+                }
 
                 _logger.LogInformation("Note deleted: {NoteId}", id);
                 return NoContent();
