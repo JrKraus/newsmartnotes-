@@ -1,6 +1,5 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace termprojectJksmartnote.Models.Entities
 {
@@ -23,13 +22,11 @@ namespace termprojectJksmartnote.Models.Entities
         // Foreign Key
         // This links the notebook to a user
         // Reason: A notebook belongs to a user this sets up the relationship
-         [Required]
         public string UserId { get; set; }
 
         // Navigation properties
         // Provides access to the user that this notebook belongs to
-        
-        public User? User { get; set; }
+        public User User { get; set; }
         //this sets up the relationship between the notebook and the notes
         //this allows the one to many relationship between the notebook and the notes
         public List<Note> Notes { get; set; } = new();

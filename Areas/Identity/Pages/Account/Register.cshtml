@@ -1,58 +1,62 @@
 ﻿@page
 @using termprojectJksmartnote.Controllers
- @model termprojectJksmartnote.Areas.Identity.Pages.Account.RegisterModel
-@{
-    ViewData["Title"] = "Register";
-}
+     
 
-
+@model RegisterViewModel
 @using Microsoft.AspNetCore.Identity
 @using termprojectJksmartnote.Models.Entities
 
 @inject UserManager<User> UserManager
 @inject SignInManager<User> SignInManager
 
+@{
+    ViewData["Title"] = "Register";
+}
 
+<h1>@ViewData["Title"]</h1>
 
-<div class="row justify-content-center">
+<div class="row">
     <div class="col-md-4">
-        <form id="registerForm" asp-area="Identity" asp-page="/Account/Register"
-              asp-route-returnUrl="@Url.Action("Index", "Home")" method="post">
+        <form id="registerForm" asp-route-returnUrl="" method="post">
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             
+            <!-- Email Field -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Email">Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
+            <!-- Password Field -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.DisplayName" class="form-control" aria-required="true" placeholder="Display Name" />
-                <label asp-for="Input.DisplayName">Display Name</label>
-                <span asp-validation-for="Input.DisplayName" class="text-danger"></span>
+                <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Password">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
+            <!-- Confirm Password Field -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
 
+            <!-- Display Name Field -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                <input asp-for="DisplayName" class="form-control" aria-required="true" placeholder="Display Name" />
+                <label asp-for="DisplayName">Display Name</label>
+                <span asp-validation-for="DisplayName" class="text-danger"></span>
             </div>
 
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
+    
+    
+    
 </div>
-
-
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
