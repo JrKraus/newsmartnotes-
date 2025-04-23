@@ -1,105 +1,48 @@
-﻿using System.Security.Claims;
-using Humanizer;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Build.Framework;
 using termprojectJksmartnote.Models.Entities;
 using termprojectJksmartnote.Services;
 
 namespace termprojectJksmartnote.Controllers
 {
-
-
-   
-    [Route("api/[controller]")]
-    [ApiController]
-    public class NotebooksController : ControllerBase
+    /// <summary>
+    /// Controller for managing notebooks: listing, creation, and organization 
+    /// </summary>
+    public class NotebooksController : Controller
     {
-        private readonly INoteRepository _noteRepo;
-        private readonly UserManager<User> _userManager;
-        private readonly ILogger<NotebooksController> _logger;
+        private readonly INoteRepository _noteRepo; // Repository for managing notes and notebooks
+        private readonly UserManager<User> _userManager; // UserManager for managing user accounts
 
-        public NotebooksController(
-            INoteRepository noteRepo,
-            UserManager<User> userManager,
-            ILogger<NotebooksController> logger)
+        ///  Initializes a new instance of the NotebooksController 
+        /// <param name="noteRepo"></param>
+        /// <param name="userManager"></param>
+        public NotebooksController(INoteRepository noteRepo, UserManager<User> userManager)
         {
-            _noteRepo = noteRepo;
-            _userManager = userManager;
-            _logger = logger;
-        }
-        public class NotebookCreateDto
-        {
-            [Required]
-            public string Title { get; set; }
+            _noteRepo = noteRepo;  // Repository for managing notes and notebooks
+            _userManager = userManager; // UserManager for managing user accounts
         }
 
-        [HttpPost("create")]
-        public async Task<IActionResult> Create([FromForm] NotebookCreateDto dto)
-        {
-            if (!ModelState.IsValid)
-            {
-                // Return only validation errors for the fields that were actually submitted
-                var relevantErrors = ModelState
-                    .Where(m => m.Key == "Title")
-                    .ToDictionary(m => m.Key, m => m.Value.Errors);
-
-                if (relevantErrors.Count > 0)
-                    return BadRequest(relevantErrors);
-            }
-
-            // Get the current user's ID from the authenticated user
-            var userId = _userManager.GetUserId(User);
-            if (string.IsNullOrEmpty(userId))
-            {
-                return Unauthorized();
-            }
-            _logger.LogInformation("User authenticated: {IsAuthenticated}, UserId: {UserId}",
-            User.Identity.IsAuthenticated, _userManager.GetUserId(User));
-            try
-            {
-
-                var notebook = new Notebook
-                {
-                    Title = dto.Title,
-                    UserId = userId,
-                    CreatedAt = DateTime.UtcNow
-                };
-
-                // Save to database
-                var createdNotebook = await _noteRepo.CreateNotebookAsync(notebook);
-                _logger.LogInformation("Received notebook creation request. Title: {Title}", notebook.Title);
-                return CreatedAtAction(nameof(GetNotebook), new { id = createdNotebook.Id }, createdNotebook);
-            }
-            catch (Exception ex)
-            {
-                // Log the error
-                _logger.LogError(ex, "Error creating notebook");
-                return StatusCode(500, "An error occurred while creating the notebook");
-            }
-        }
-
-
-
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetNotebook(int id)
+        /// Displays all notebooks belonging to the current user <summary>
+        ///returns a view with all notebooks
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
             var userId = _userManager.GetUserId(User);
-            if (string.IsNullOrEmpty(userId))
-            {
-                return Unauthorized();
-            }
+            return View(await _noteRepo.GetAllUserNotebooksAsync(userId));
+        }
+        // Creates a new notebook for the current user
+        /// <param name="notebook">Notebook data from form submission</param>
+        /// returns a view with the created notebook
+        /// redirects to the index action on success
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Notebook notebook)
+        {
+            if (!ModelState.IsValid) return View(notebook);
 
-            var notebook = await _noteRepo.GetAllUserNotebooksWithNotesAsync(userId);
-            if (notebook == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(notebook);
+            var userId = _userManager.GetUserId(User);
+            await _noteRepo.CreateNotebookAsync(notebook, userId);
+            return RedirectToAction("Index");
         }
     }
-
-
 }

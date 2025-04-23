@@ -1,77 +1,8 @@
-﻿@model IEnumerable<termprojectJksmartnote.Models.Entities.Notebook>
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
 
-<div class="container-fluid h-100">
-    <div class="row h-100">
-        <!-- Left panel: Notebooks sidebar -->
-       @*  <div class="col-md-3 col-lg-2 p-0 border-end sidebar-panel">
-            <partial name="View.cshtml" model="Model" />
-        </div> *@
-
-        <!-- Middle panel: Notes list -->
-        <div class="col-md-3 col-lg-3 p-0 border-end notes-panel">
-            <div class="notes-header p-3 border-bottom">
-                <h5 id="currentNotebookTitle">Select a Notebook</h5>
-                <button id="newNoteBtn" class="btn btn-sm btn-primary" style="display:none;">
-                    <i class="bi bi-plus-circle"></i> New Note
-                </button>
-            </div>
-            <div id="notesList" class="notes-list p-2">
-                <!-- Notes will be loaded here dynamically -->
-                <div class="text-center p-5 text-muted">
-                    <i class="bi bi-journal-text fs-1"></i>
-                    <p class="mt-3">Select a notebook to view notes</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right panel: Note editor -->
-        <div class="col-md-6 col-lg-7 p-0 editor-panel">
-            <div id="noteEditorEmpty" class="text-center p-5 h-100 d-flex flex-column justify-content-center">
-                <i class="bi bi-sticky-fill text-muted" style="font-size: 4rem;"></i>
-                <h4 class="mt-3 text-muted">Select a note or create a new one</h4>
-            </div>
-
-            <div id="noteEditor" class="h-100 d-none">
-                <div class="editor-header p-3 border-bottom">
-                    <input type="text" id="noteTitleField" class="form-control form-control-lg border-0" placeholder="Note Title">
-                    <input type="hidden" id="currentNoteId" value="" />
-                    <input type="hidden" id="currentNotebookId" value="" />
-                    <div class="note-meta text-muted small mt-1">
-                        <span id="lastSavedText">Not saved yet</span>
-                    </div>
-                </div>
-
-                <!-- Quill editor container -->
-                <div id="quillEditor" class="h-100 p-3"></div>
-            </div>
-        </div>
-    </div>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-
-<!-- Hidden modal for creating new notebooks (keep this) -->
-<div class="modal fade" id="newNotebookModal" tabindex="-1" aria-labelledby="newNotebookModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="newNotebookModalLabel">Create New Notebook</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form asp-controller="Notebooks" asp-action="Create" method="post" id="createNotebookForm">
-                @Html.AntiForgeryToken()
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="Title" class="form-label">Notebook Title</label>
-                        <input type="text" class="form-control" id="Title" name="Title" required>
-                        <div class="invalid-feedback">Please enter a notebook title.</div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Create Notebook</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-

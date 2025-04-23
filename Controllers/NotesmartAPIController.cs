@@ -15,8 +15,8 @@ namespace termprojectJksmartnote.Controllers
     //comes from the following link
     // https://stackoverflow.com/questions/44390454/what-is-the-use-of-region-and-endregion-in-c
 
-    //[Route("api/notesmart")]
-   // [ApiController]
+    [Route("api/notesmart")]
+    [ApiController]
     [EnableCors("AllowPostman")]
     [Authorize]
     // This controller is responsible for handling all the requests related to notes, notebooks and tags
@@ -111,7 +111,7 @@ namespace termprojectJksmartnote.Controllers
             if (!ModelState.IsValid) return BadRequest("Search term required");
             return Ok(await _noteRepo.SearchNotesAsync(term, CurrentUserId));
         }
-        //#endregion
+        #endregion
         
         
 
@@ -122,39 +122,32 @@ namespace termprojectJksmartnote.Controllers
         //<param name="term">The search term to be used</param>
         //<returns>The notes that match the search term</returns>
 
-        //#region Notebooks
-        //[HttpPost("notebooks/create")]
-        //public async Task<IActionResult> CreateNotebook([FromForm] Notebook notebook)
-        //{
-        //    if (!ModelState.IsValid) return BadRequest(ModelState);
-        //    var userId = _userManager.GetUserId(User);
+        #region Notebooks
+        [HttpPost("notebooks/create")]
+        public async Task<IActionResult> CreateNotebook([FromBody] Notebook notebook)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        //    // Check if user is authenticated
-        //    if (string.IsNullOrEmpty(userId))
-        //    {
-        //        return Unauthorized();
-        //    }
-        //    var createdNotebook =await _noteRepo.CreateNotebookAsync(notebook, userId);
+            var createdNotebook = await _noteRepo.CreateNotebookAsync(notebook, CurrentUserId);
+            return CreatedAtAction(nameof(GetNotebook), new { id = createdNotebook.Id }, createdNotebook);
+        }
+        //create a new notebook
+        //this method is used to create a new notebook
+        //it takes in a notebook object and returns the created notebook
+        //<param name="notebook">The notebook object to be created</param>
+        //<returns>The created notebook object</returns>
 
-        //    return CreatedAtAction(nameof(GetNotebook), new { id = createdNotebook.Id }, createdNotebook);
-        //}
-        ////create a new notebook
-        ////this method is used to create a new notebook
-        ////it takes in a notebook object and returns the created notebook
-        ////<param name="notebook">The notebook object to be created</param>
-        ////<returns>The created notebook object</returns>
-
-        //[HttpGet("notebooks/{id}")]
-        //public async Task<IActionResult> GetNotebook(int id)
-        //{
-        //    var notebook = await _noteRepo.GetNotebookWithNotesAsync(id, CurrentUserId);
-        //    return notebook != null ? Ok(notebook) : NotFound();
-        //}
-        ////get a notebook by id
-        ////this method is used to get a notebook by its id
-        ////it takes in an id and returns the notebook object
-        ////<param name="id">The id of the notebook to be retrieved</param>
-        ////<returns>The notebook object</returns>
+        [HttpGet("notebooks/{id}")]
+        public async Task<IActionResult> GetNotebook(int id)
+        {
+            var notebook = await _noteRepo.GetNotebookWithNotesAsync(id, CurrentUserId);
+            return notebook != null ? Ok(notebook) : NotFound();
+        }
+        //get a notebook by id
+        //this method is used to get a notebook by its id
+        //it takes in an id and returns the notebook object
+        //<param name="id">The id of the notebook to be retrieved</param>
+        //<returns>The notebook object</returns>
        
 
         [HttpDelete("notebooks/{id}")]
