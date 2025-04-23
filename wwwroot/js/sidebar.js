@@ -3,9 +3,9 @@
     notebook.classList.toggle('active');
 }
 
-function createNote(notebookId) {
-    window.location.href = '/Notes/Create?notebookId=' + notebookId;
-}
+//function createNote(notebookId) {
+//    window.location.href = '/Notes/Create?notebookId=' + notebookId;
+//}
 window.refreshSidebar = async function () {
     //try {
         

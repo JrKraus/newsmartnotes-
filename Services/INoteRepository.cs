@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models.Entities;   
 
@@ -107,11 +108,15 @@ namespace termprojectJksmartnote.Services
         // <param name="noteId"></param>
         // <param name="tagId"></param>
         // returns nothing the tag was removed from the note now
-        Task UpdateTagAsync(int tagId, string newName);
+        Task<bool> UpdateTagAsync(int tagId, string newName, string userId);
         // Updates the name of an existing tag
         // <param name="tagId"></param>
         // <param name="newName"></param>
         // returns nothing the tag was updated now
+
+        Task<bool> DeleteTagAsync(int tagId, string userId);
+
+        Task<ICollection<Tag>> GetTagsByNoteIdAsync(int noteId);
 
 
         // Search Operations
@@ -140,7 +145,10 @@ namespace termprojectJksmartnote.Services
         // Retrieves user statistics including note, notebook, and tag counts
         // <param name="userId"></param>
         // returns a UserStatistics object containing the statistics
-        
+
+
+      
+
     }
 
     public class UserStatistics

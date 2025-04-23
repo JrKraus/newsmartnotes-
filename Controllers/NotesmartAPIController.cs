@@ -207,28 +207,8 @@ namespace termprojectJksmartnote.Controllers
         // <param name="noteId">The ID of the note to be removed from the tag</param>
         // <param name="tagId">The ID of the tag to be removed from the note</param>
         // <returns>Nothing</returns>
-        [HttpPut("tags/update")]
-        public async Task<IActionResult> UpdateTag(
-            [FromForm, Required, Range(1, int.MaxValue)] int tagId,
-            [FromForm, Required, StringLength(50)] string newName)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            // Use repository instead of direct context access
-            try
-            {
-                await _noteRepo.UpdateTagAsync(tagId, newName);
-                return NoContent();
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound("Tag not found");
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Conflict(ex.Message);
-            }
-        }
+        
+        
         // Update a tag 
         // This method is used to update a tag
         // It takes in a tag ID and a new name and returns nothing

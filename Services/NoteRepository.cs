@@ -342,7 +342,14 @@ namespace termprojectJksmartnote.Services
                 await _context.SaveChangesAsync();
             }
         }
-
+        public async Task<ICollection<Tag>> GetTagsByNoteIdAsync(int noteId)
+        {
+            return await _context.NoteTags
+                .Where(nt => nt.NoteId == noteId)
+                .Select(nt => nt.Tag)
+                .Distinct()
+                .ToListAsync();
+        }
         // Search Operations
         /// Searches for notes by title or content 
         /// <param name="searchTerm"></param>
@@ -391,17 +398,37 @@ namespace termprojectJksmartnote.Services
         /// <param name="tagId"></param>
         /// <param name="newName"></param>
         /// returns nothing the tag was updated now
-        public async Task UpdateTagAsync(int tagId, string newName)
+        public async Task<bool> UpdateTagAsync(int tagId, string newName, string userId)
         {
-            var tag = await _context.Tags.FindAsync(tagId);
-            if (tag == null) throw new KeyNotFoundException();
+            try
+            {
+                // Find tag that belongs to the user by checking tag associations with user's notes
+                var tag = await _context.Tags
+                    .Where(t => t.Id == tagId)
+                    .Where(t => t.NoteTags.Any(nt => nt.Note.Notebook.UserId == userId))
+                    .FirstOrDefaultAsync();
 
-            if (await _context.Tags.AnyAsync(t => t.Name == newName))
-                throw new InvalidOperationException("Tag name already exists");
+                if (tag == null) return false; // Tag not found or user doesn't have permission
 
-            tag.Name = newName;
-            await _context.SaveChangesAsync();
+                // Check if the new name already exists for this user's tags
+                if (await _context.Tags
+                    .Where(t => t.Name == newName)
+                    .Where(t => t.NoteTags.Any(nt => nt.Note.Notebook.UserId == userId))
+                    .AnyAsync())
+                {
+                    return false; // Tag name already exists
+                }
+
+                tag.Name = newName;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false; // Any other error during update
+            }
         }
+
         // Retrieves all notebooks belonging to the user with their notes
         /// <param name="userId"></param>
         /// returns collection of notebooks and notes (empty if none found)
@@ -414,7 +441,51 @@ namespace termprojectJksmartnote.Services
                 .ToListAsync();
         }
 
+        public async Task<bool> DeleteTagAsync(int tagId, string userId)
+        {
+            try
+            {
+                // 
+                var tag = await _context.Tags
+                        .Include(t => t.NoteTags)
+                        .ThenInclude(nt => nt.Note)
+                        .ThenInclude(n => n.Notebook)
+                        .FirstOrDefaultAsync(t => t.Id == tagId);
 
+                if (tag == null)
+                    return false;
+
+                // Check if user owns any notes with this tag
+                var userOwnsTag = tag.NoteTags
+                    .Any(nt => nt.Note.Notebook.UserId == userId);
+
+                if (!userOwnsTag)
+                    return false; // User doesn't own this tag
+
+                // Remove tag associations for this user's notes
+                var userNoteTags = tag.NoteTags
+                    .Where(nt => nt.Note.Notebook.UserId == userId)
+                    .ToList();
+
+                foreach (var noteTag in userNoteTags)
+                {
+                    _context.NoteTags.Remove(noteTag);
+                }
+
+                // If no other users are using this tag, delete it completely
+                if (!tag.NoteTags.Any(nt => nt.Note.Notebook.UserId != userId))
+                {
+                    _context.Tags.Remove(tag);
+                }
+
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         // Statistics
         /// Retrieves user statistics including total notes, notebooks, tags, notes per notebook, and tag usage number 
         /// <param name="userId"></param>
@@ -447,7 +518,7 @@ namespace termprojectJksmartnote.Services
                     .ToDictionaryAsync(g => g.Name, g => g.Count)
             };
         }
-        
+       
 
 
 

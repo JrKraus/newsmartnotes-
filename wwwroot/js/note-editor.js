@@ -3,6 +3,11 @@
  * Comprehensive implementation for note editing functionality
  */
 
+
+//const { Toast } = require("../lib/bootstrap/dist/js/bootstrap.bundle");
+
+//const { event } = require("jquery");
+
 // Global variables for editor state
 let quill; // Quill editor instance
 let autoSaveTimer; // Timer for auto-save functionality
@@ -179,11 +184,7 @@ function createNoteElement(note) {
     return noteElement;
 }
 
-/**
- * Processes the notes data and renders notes in the notes list
- * @param {Object|Array} data - Response data from the API
- * @param {AbortSignal} signal - Abort signal for the request
- */
+
 function renderNotesList(data, signal) {
     if (signal.aborted) {
         throw new Error('Request aborted');
@@ -364,34 +365,8 @@ document.addEventListener('DOMContentLoaded', function () {
             
         });
     });// Initialize Quill or get existing instance safely
-    /**
-     * Cancels any ongoing requests of the specified type
-     * @param {string} requestType - Type of request to cancel ("notebook" or "note")
-     */
-    //function cancelActiveRequest(requestType) {
-    //    if (requestType === "notebook" && activeRequests.loadingNotebook) {
-    //        console.log("Canceling active notebook request");
-    //        activeRequests.loadingNotebook.abort();
-    //        activeRequests.loadingNotebook = null;
-    //    } else if (requestType === "note" && activeRequests.loadingNote) {
-    //        console.log("Canceling active note request");
-    //        activeRequests.loadingNote.abort();
-    //        activeRequests.loadingNote = null;
-    //    }
-    //}
-
-    /**
-     * Loads notes for a specific notebook
-     * @param {number} notebookId - ID of the notebook to load notes for
-     * @param {string} notebookTitle - Title of the notebook
-     */
     
 
-    /**
-     * Loads content for a specific note
-     * @param {number} noteId - ID of the note to load
-     * @param {number} retryCount - Current retry attempt (for internal use)
-     */
     function loadNoteContent(noteId, retryCount = 0) {
         //quill = initializeQuill();
         try {
@@ -504,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Reset edit tracking
                     isEditorDirty = false;
-
+                    loadNoteTags(noteId)
                     // Clear the request object on success
                     activeRequests.loadingNote = null;
                 })
@@ -579,9 +554,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Make loadNoteContent globally available
     window.loadNoteContent = loadNoteContent;
 
-    /**
-     * Function to toggle notebook expansion
-     */
+    
+    // Function to toggle notebook expansion
+     
     window.toggleNotebook = function (notebookId) {
         try {
             // First find the notebook item
@@ -626,9 +601,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    /**
-     * Creates a new note in the current notebook
-     */
+    
+     //Creates a new note in the current notebook
+     
     function createNewNote() {
         // Check prerequisites
         if (!currentNotebookId) {
@@ -789,7 +764,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (response.status === 405) {
                         console.warn('Method Not Allowed error. Trying alternative API endpoint format...');
 
-                        // If we get a 405, try an alternative API pattern
+                        // If I get a 405, try an alternative API pattern
                         const altUrl = currentNoteId ? '/api/Notes/update' : '/api/Notes/create';
 
                         // Retry with the alternative URL
@@ -1149,35 +1124,53 @@ document.addEventListener('DOMContentLoaded', function () {
             showToast('Failed to tag note: ' + error.message, 'danger');
         }
     };
-    // Set up an event listener to load tags when the modal is about to be shown
-    // Set up an event listener to load tags when the modal is about to be shown
+
+    const tagModal = document.getElementById('tagModal');
+    const tagNoteBtn = document.getElementById('tagNoteBtn');
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Only set up listeners if tagModal exists
+        if (tagModal) {
+            // Add event listener for when the modal is about to be shown
+            tagNoteBtn.addEventListener('show.bs.modal', function (event) {
+                // Check if a note is selected
+                if (!currentNoteId) {
+                    // Prevent the modal from showing
+                    event.preventDefault();
+                    showToast('No note selected', 'warning');
+                    return;
+                }
+
+                // If I have a valid note, load the tags immediately before the modal shows
+               showTagModal();
+               refreshCurrentNote()
+            });
+
+            // I can also handle the button click if needed
+            tagNoteBtn.addEventListener('click', function (event) {
+                if (!currentNoteId) {
+                    // Prevent bootstrap from showing the modal
+                    event.preventDefault();
+                    event.stopPropagation();
+                    showTagModal();
+                    showToast('No note selected', 'warning');
+
+                }
+                // The modal show event will handle loading tags if there is a currentNoteId
+            });
+        }
+    });
    
-        // Get a reference to the tag modal - FIXED: using the correct modal ID
-       const tagModal = document.getElementById('tagModal');
-
-        // Add event listener for when the modal is about to be shown
-        // FIXED: using the correct Bootstrap event 'show.bs.modal'
-        tagModal.addEventListener('show.bs.modal', function (event) {
-            // Check if a note is selected
-            if (!currentNoteId) {
-                // Prevent the modal from showing
-                event.preventDefault();
-                showToast('No note selected', 'warning');
-                return;
-            }
-
-            // Load tags
-            showTagModal();
-        });
    
 
     // Updated to handle tag objects properly
-    window.showTagModal = async function () {
+    window.showTagModal = async function () 
+    {
         try {
             // Log the request URL for debugging
-            console.log('Fetching tags from:', '/api/Tags/Tags');
+            console.log('Fetching tags from:', '/api/Tags/gettag');
 
-            const response = await fetch('/api/Tags');
+            const response = await fetch('/api/Tags/gettag');
             console.log('Response status:', response.status);
 
             if (!response.ok) {
@@ -1187,34 +1180,80 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const tags = await response.json();
-            console.log('Tags received:', tags); // Log the actual data
+            console.log('Tags received:', tags);
 
-            const tagSelect = document.getElementById('existingTags');
-            console.log('Tag select element found:', !!tagSelect);
-
-            if (!tagSelect) {
-                console.error('Could not find the tag select element');
+            // Get the container for the tags
+            const tagContainer = document.getElementById('existingTagsContainer');
+            if (!tagContainer) {
+                console.error('Could not find the tag container element');
                 return false;
             }
 
-            tagSelect.innerHTML = '<option value="">Select a tag</option>';
+            // Clear existing content
+            tagContainer.innerHTML = '';
 
-            // Check if tags is an array and has items
-            if (!Array.isArray(tags)) {
-                console.warn('Tags is not an array:', tags);
-                // Try to handle it if it's an object
-                if (typeof tags === 'object' && tags !== null) {
-                    // Maybe it's an object with a property that contains the array
-                    const possibleArrays = Object.values(tags).filter(val => Array.isArray(val));
-                    if (possibleArrays.length > 0) {
-                        console.log('Found possible tag array:', possibleArrays[0]);
-                        populateTagOptions(possibleArrays[0], tagSelect);
-                    }
-                }
-            } else {
-                console.log('Processing tag array with', tags.length, 'items');
-                populateTagOptions(tags, tagSelect);
-            }
+            // Create a tag list with action buttons
+            
+
+            
+
+            // Add a separator
+            const separator = document.createElement('hr');
+            tagContainer.appendChild(separator);
+
+            // Add section title for existing tags
+            const existingTagsTitle = document.createElement('h5');
+            existingTagsTitle.textContent = 'Existing Tags';
+            existingTagsTitle.className = 'mb-3';
+            tagContainer.appendChild(existingTagsTitle);
+
+            // Create a tag list with action buttons
+            tags.forEach((tag, index) => {
+                const tagName = typeof tag === 'object' ? (tag.name || tag.Name || '') : tag;
+                const tagId = typeof tag === 'object' ? (tag.id || tag.Id || index) : index;
+
+                // Create a div for the tag with buttons
+                const tagDiv = document.createElement('div');
+                tagDiv.className = 'tag-item d-flex justify-content-between align-items-center mb-2 p-2 border rounded';
+                tagDiv.dataset.tagId = tagId;
+                tagDiv.dataset.tagName = tagName;
+
+                // Tag name
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = tagName;
+                nameSpan.className = 'tag-name';
+
+                // Buttons container
+                const buttonsDiv = document.createElement('div');
+                buttonsDiv.className = 'tag-actions';
+
+                // Apply tag button (new!)
+                const applyBtn = document.createElement('button');
+                applyBtn.className = 'btn btn-sm btn-success me-1';
+                applyBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Apply';
+                applyBtn.onclick = function () { applyTagToCurrentItem(tagId, tagName); };
+
+                // Edit button
+                const editBtn = document.createElement('button');
+                editBtn.className = 'btn btn-sm btn-outline-primary me-1';
+                editBtn.innerHTML = '<i class="bi bi-pencil"></i>';
+                editBtn.onclick = function () { editTag(tagId, tagName); };
+
+                // Delete button
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn btn-sm btn-outline-danger';
+                deleteBtn.innerHTML = '<i class="bi bi-trash"></i>';
+                deleteBtn.onclick = function () { deleteTag(tagId, tagName); };
+
+                // Append all elements
+                buttonsDiv.appendChild(applyBtn);
+                buttonsDiv.appendChild(editBtn);
+                buttonsDiv.appendChild(deleteBtn);
+                tagDiv.appendChild(nameSpan);
+                tagDiv.appendChild(buttonsDiv);
+                tagContainer.appendChild(tagDiv);
+            });
+
 
             // Clear new tag input
             document.getElementById('newTag').value = '';
@@ -1226,42 +1265,131 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Helper function to populate tag options
-    function populateTagOptions(tags, selectElement) {
-        tags.forEach((tag, index) => {
-            console.log(`Processing tag ${index}:`, tag);
-            const option = document.createElement('option');
+        
+    
+    window.getCurrentItemId = function () {
+        // First check if currentNoteId is available
+        if (currentNoteId) {
+            return currentNoteId;
+        }
 
-            // Handle different tag formats
-            if (typeof tag === 'object' && tag !== null) {
-                // Log the properties to see what's available
-                console.log('Tag properties:', Object.keys(tag));
+        // Fallback to looking for the element
+        const itemIdElement = document.getElementById('currentItemId') ||
+            document.getElementById('currentNoteId');
 
-                // Try different possible property names
-                const tagValue = tag.name || tag.Name || tag.tag || tag.Tag || tag.id || tag.Id;
-                const tagText = tag.name || tag.Name || tag.tag || tag.Tag || tag.id || tag.Id;
+        return itemIdElement ? itemIdElement.value : null;
+    };
 
-                option.value = tagValue;
-                option.textContent = tagText;
-            } else {
-                option.value = tag;
-                option.textContent = tag;
+    window.applyTagToCurrentItem = async function (tagId, tagName) {
+        const tagContainer = document.getElementById('existingTagsContainer');
+
+        try {
+            // Use the existing currentNoteId variable
+            if (!currentNoteId) {
+                showToast('No note selected to tag', 'warning');
+                return;
             }
 
-            selectElement.appendChild(option);
-            console.log('Added option:', option.value);
-        });
-    }
+            // Use the endpoint format matching your tagNote function
+            const response = await fetch(`/api/Tags/${currentNoteId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({ tag: tagName })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to apply tag: ${response.status}`);
+            }
+
+            const data = await response.json();
+            showToast(data.message || `Tag "${tagName}" applied successfully`, 'success');
+            loadNoteTags();
+            // Use the existing note list refresh function
+        } catch (error) {
+            console.error('Error applying tag:', error);
+            showToast(`Failed to apply tag: ${error.message}`, 'danger');
+            if (tagContainer) {
+                tagContainer.innerHTML = '<p class="text-danger">Error applying tag.</p>';
+            }
+        }
+    };
+
+    // Function to edit a tag
+    window.editTag = async function (tagId, currentName) {
+        const newName = prompt('Enter new name for the tag:', currentName);
+
+        if (!newName || newName === currentName) {
+            return; // User cancelled or didn't change the name
+        }
+
+        try {
+            const response = await fetch(`/api/Tags/Rename/${tagId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({
+                    id: tagId,
+                    newName: newName
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to rename tag: ${response.status}`);
+            }
+
+            showToast(`Tag renamed to "${newName}"`, 'success');
+            showTagModal(); // Refresh the tag list
+            refreshNotesList();
+        } catch (error) {
+            console.error('Error renaming tag:', error);
+            showToast(`Failed to rename tag: ${error.message}`, 'danger');
+        }
+    };
+
+    // Function to delete a tag
+    window.deleteTag = async function (tagId, tagName) {
+        if (!confirm(`Are you sure you want to delete the tag "${tagName}"?`)) {
+            return; // User cancelled
+        }
+
+        try {
+            const response = await fetch(`/api/Tags/${tagId}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to delete tag: ${response.status}`);
+            }
+
+            showToast(`Tag "${tagName}" deleted`, 'success');
+            showTagModal(); // Refresh the tag list
+            
+            
+        } catch (error) {
+            console.error('Error deleting tag:', error);
+            showToast(`Failed to delete tag: ${error.message}`, 'danger');
+        }
+    };
+
+    // Helper function to populate tag options
+    
 
     // No changes needed to applyTag function since it works correctly
     window.applyTag = async function () {
-        const existingTag = document.getElementById('existingTags').value;
         const newTag = document.getElementById('newTag').value.trim();
-        if (!existingTag && !newTag) {
-            showToast('Please select or create a tag', 'warning');
+        if (!newTag) {
+            showToast('Please enter a tag name', 'warning');
             return;
         }
-        const tagToApply = newTag || existingTag;
+
         try {
             const response = await fetch(`/api/Tags/${currentNoteId}`, {
                 method: 'POST',
@@ -1269,18 +1397,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/json',
                     'X-Requested-With': 'XMLHttpRequest'
                 },
-                body: JSON.stringify({ tag: tagToApply })
+                body: JSON.stringify({ tag: newTag })
             });
 
-            // Handle empty responses first
-            if (response.status === 204) { // No Content
-                showToast(`Tag "${tagToApply}" added successfully`, 'success');
+            if (response.status === 204) {
+                showToast(`Tag "${newTag}" added successfully`, 'success');
+               
+                document.getElementById('newTag').value = ''; // Clear the input
+                showTagModal(); // Refresh the tag list
                 refreshNotesList();
-
-                // Use Bootstrap 5 syntax to hide modal
-                const modalElement = document.getElementById('tagModal');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-                modal.hide();
                 return;
             }
 
@@ -1290,12 +1415,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             showToast(data.message, 'success');
-            refreshNotesList();
-
-            // Use Bootstrap 5 syntax to hide modal
-            const modalElement = document.getElementById('tagModal');
-            const modal = bootstrap.Modal.getInstance(modalElement);
-            modal.hide();
+            //refreshNotesList();
+            document.getElementById('newTag').value = ''; // Clear the input
+            showTagModal(); // Refresh the tag list
         } catch (error) {
             console.error('Error applying tag:', error);
             showToast(`Failed to apply tag: ${error.message}`, 'danger');
@@ -1306,7 +1428,65 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('editNotebookNameInput').value = notebookTitle;
         $('#editNotebookModal').modal('show');
     };
+    window.loadNoteTags = async function (noteId) {
+        if (!noteId) return;
+        try {
+            // Update the URL to match your controller endpoint
+            const response = await fetch(`/api/Notetag/${noteId}`);
+            if (!response.ok) {
+                throw new Error(`Failed to load tags: ${response.status}`);
+            }
+            const tags = await response.json();
+            displayNoteTags(tags);
+            showTagModal()
 
+        } catch (error) {
+            console.error('Error loading note tags:', error);
+        }
+    };
+    
+    window.displayNoteTags = async function (tags) {
+        const tagsContainer = document.getElementById('currentNoteTags');
+        if (!tagsContainer) return;
+
+        // Clear existing tags
+        tagsContainer.innerHTML = '';
+
+        // If no tags, show a placeholder
+        if (!tags || tags.length === 0) {
+            const noTagsSpan = document.createElement('span');
+            noTagsSpan.className = 'text-muted small';
+            noTagsSpan.textContent = 'No tags';
+            tagsContainer.appendChild(noTagsSpan);
+            return;
+        }
+
+        // Add each tag as a badge
+        tags.forEach(tag => {
+            // Access the tag name from TagId field (based on your DTO structure)
+            const tagName = typeof tag === 'object' ? (tag.tagId || tag.TagId || '') : tag;
+            const tagId = typeof tag === 'object' ? (tag.id || tag.Id || '') : '';
+
+            const tagBadge = document.createElement('span');
+            tagBadge.className = 'badge bg-primary me-1 mb-1';
+            tagBadge.textContent = tagName;
+            tagBadge.dataset.tagId = tagId;
+
+            // Add a remove button to each tag
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'btn-close btn-close-white ms-1';
+            removeBtn.style.fontSize = '0.5rem';
+            removeBtn.setAttribute('aria-label', 'Remove tag');
+            removeBtn.onclick = function (e) {
+                e.stopPropagation();
+                removeNoteTag(currentNoteId, tagId, tagName);
+                refreshCurrentNote()
+            };
+
+            tagBadge.appendChild(removeBtn);
+            tagsContainer.appendChild(tagBadge);
+        });
+    };
     window.refreshNotebookTitle = async function (notebookId) {
         try {
             // Fetch the current notebook data
@@ -1388,10 +1568,134 @@ document.addEventListener('DOMContentLoaded', function () {
             showToast(`Failed to update notebook name: ${error.message}`, 'danger');                                     
         }
     };
+     window.refreshCurrentNote = async function (){
+        try {
+            // Use the current note ID that's already in memory
+            if (!currentNoteId) {
+                console.log('No note is currently loaded to refresh');
+                return;
+            }
 
+            console.log(`Refreshing current note ID: ${currentNoteId}`);
+
+            // Cancel any ongoing note requests
+            cancelActiveRequest("note");
+
+            // Create new abort controller for this request
+            activeRequests.loadingNote = new AbortController();
+            const signal = activeRequests.loadingNote.signal;
+
+            // Set a timeout for the request
+            let loadingTimeoutId = setTimeout(() => {
+                if (activeRequests.loadingNote) {
+                    activeRequests.loadingNote.abort();
+                    showToast('Note refresh timeout. Please try again.', 'warning');
+                }
+            }, 15000); // 15 second timeout
+
+            // Fetch the current note data
+            fetch(`/api/Notes/${currentNoteId}`, { signal })
+                .then(response => {
+                    if (signal.aborted) {
+                        throw new Error('Request aborted');
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(`Failed to refresh note: ${response.status} ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(note => {
+                    if (signal.aborted) {
+                        throw new Error('Request aborted');
+                    }
+
+                    clearTimeout(loadingTimeoutId);
+                    console.log(`Successfully refreshed note: ${note.id}`);
+
+                    // Load the tags associated with this note
+                    loadNoteTags(currentNoteId);
+                    loadNoteTags();
+
+                    // Optional: Update other note details if needed
+                    // For example, update timestamp if it changed
+                    if (note.updatedAt) {
+                        updateLastSavedTime(new Date(note.updatedAt));
+                    }
+
+                    // Clear the request object on success
+                    activeRequests.loadingNote = null;
+
+                    // Show success notification
+                    showToast('Note refreshed successfully', 'success');
+                })
+                .catch(error => {
+                    clearTimeout(loadingTimeoutId);
+
+                    if (error.name === 'AbortError' || error.message === 'Request aborted') {
+                        console.log('Refreshing note request was aborted');
+                        activeRequests.loadingNote = null;
+                        return;
+                    }
+
+                    console.error(`Error refreshing note ${currentNoteId}:`, error);
+                    showToast('Failed to refresh note', 'danger');
+
+                    // Clear the request object on error
+                    activeRequests.loadingNote = null;
+                });
+        } catch (error) {
+            console.error('Error in refreshCurrentNote:', error);
+        }
+    }
 
     
+    window.removeNoteTag = async function (noteId, tagId, tagName) {
+        // Show loading indicator or disable the tag element
+        const tagElement = document.querySelector(`.tag[data-tag-id="${tagId}"]`);
+        if (tagElement) {
+            tagElement.classList.add('removing');
+        }
 
+        // Call the API endpoint to remove the tag
+        fetch(`/api/Notetag/Notes/${noteId}/Tags/${tagId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Remove the tag element from the UI
+                    if (tagElement) {
+                        tagElement.parentNode.removeChild(tagElement);
+
+                        refreshCurrentNote()
+                    }
+                    // Show success message
+                    showToast(`Tag "${tagName}" removed successfully`, 'success');
+                } else {
+                    throw new Error(data.error || 'Failed to remove tag');
+                }
+            })
+            .catch(error => {
+                console.error('Error removing tag:', error);
+                // Remove loading state if the operation failed
+                if (tagElement) {
+                    tagElement.classList.remove('removing');
+                }
+                showToast(`Failed to remove tag: ${error.message}`, 'error');
+            });
+    }
+
+    // Helper function to show notifications
+    
     
 
 

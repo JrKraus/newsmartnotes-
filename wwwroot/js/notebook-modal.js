@@ -1,4 +1,4 @@
-﻿// Notebook modal handling
+﻿ //Notebook modal handling
 document.addEventListener('DOMContentLoaded', function () {
     if (typeof bootstrap === 'undefined') {
         console.error('Bootstrap JavaScript is not loaded. Modal and toast functionality will not work.');

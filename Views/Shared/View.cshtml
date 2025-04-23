@@ -1,6 +1,12 @@
 ﻿@model IEnumerable<termprojectJksmartnote.Models.Entities.Notebook>
 
 <div class="sidebar-container h-100">
+    <script src="~/js/sidebar.js" asp-append-version="true"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  @*   <script src="~/js/note-editor.js" asp-append-version="true"></script> *@
+    <script src="~/js/notebook-modal.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
     <div class="sidebar-header p-3 border-bottom">
         <h4>Notebooks</h4>
         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newNotebookModal">
@@ -63,6 +69,7 @@
             </form>
         </div>
     </div>
+   
 </div>
 
  

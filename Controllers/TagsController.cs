@@ -34,15 +34,12 @@ namespace termprojectJksmartnote.Controllers
        
         
         
-        [HttpGet("Tags")]
+        [HttpGet("gettag")]
         public async Task<IActionResult> GetAllTags()
         {
             var userId = _userManager.GetUserId(User);
             var tags = await _noteRepo.GetAllTagsAsync(userId);
-            if(tags ==null )
-            {
-                return BadRequest( "tags are not there ");
-            }
+            
             return Ok(tags);
         }
         [HttpPost("{noteId}")]
@@ -87,5 +84,51 @@ namespace termprojectJksmartnote.Controllers
             await _noteRepo.RemoveTagFromNoteAsync(noteId, tagId);
             return RedirectToAction("Details", "Notes", new { id = noteId });
         }
+        [HttpPost("Rename/{tagId}")]
+        public async Task<IActionResult> RenameTag(int tagId, [FromBody] RenameTagDto renameDto)
+        {
+            var userId = _userManager.GetUserId(User);
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+            try
+            {
+                await _noteRepo.UpdateTagAsync(tagId, renameDto.NewName, userId);
+                return Ok(new { success = true, message = $"Tag renamed to '{renameDto.NewName}'" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, error = ex.Message });
+            }
+        }
+
+        [HttpDelete("{tagId}")]
+        public async Task<IActionResult> DeleteTag(int tagId)
+        {
+            var userId = _userManager.GetUserId(User);
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+            try
+            {
+                await _noteRepo.DeleteTagAsync(tagId, userId);
+                return Ok(new { success = true, message = "Tag deleted successfully" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, error = ex.Message });
+            }
+        }
+
+        public class RenameTagDto
+        {
+            [JsonPropertyName("newName")]
+            public string NewName { get; set; }
+        }
+
+
+        //create a function that popluate tags on notes creation 
+        //create the statics for tags 
+        //rework the menu 
+        //create a search funtion for tags and notes 
+
     }
 }

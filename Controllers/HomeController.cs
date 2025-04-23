@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -10,7 +11,7 @@ using termprojectJksmartnote.Services;
 
 namespace termprojectJksmartnote.Controllers
 {
-    
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -51,6 +52,12 @@ namespace termprojectJksmartnote.Controllers
         {
             return View();
         }
+        public IActionResult Statistics()
+        {
+            // Add any model data you need to pass to the partial view
+            return PartialView("statistics");
+        }
+
         [HttpGet("GetNotebooksSidebar")]
         public async Task<IActionResult> GetNotebooksSidebar()
         {

@@ -87,11 +87,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 
-// Add this before your route mapping
-//app.MapGet("/", context => {
-//    context.Response.Redirect("/Identity/Account/Login");
-//    return Task.CompletedTask;
-//});
+//Add this before your route mapping
 
 
 app.MapControllerRoute(

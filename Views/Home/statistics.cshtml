@@ -1,0 +1,43 @@
+﻿@model IEnumerable<termprojectJksmartnote.Models.Entities.Notebook>
+@{
+	ViewData["Title"] = "Statistics";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ <link rel="stylesheet" href="~/css/chart.css" asp-append-version="true" />
+
+
+<script src="~/js/stats.js" asp-append-version="true"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+<div class="container-fluid">
+        <h1>Notes Dashboard</h1>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-label">Total Notebooks</div>
+                <div class="stat-value" id="totalNotebooks">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Notes</div>
+                <div class="stat-value" id="totalNotes">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Tags</div>
+                <div class="stat-value" id="totalTags">-</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Notes per Notebook</h2>
+            <ul class="item-list" id="notesPerNotebook">
+                <li class="loading">Loading data...</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Tag Usage</h2>
+            <ul class="item-list" id="tagUsage">
+                <li class="loading">Loading data...</li>
+            </ul>
+        </div>
+
+</div>
