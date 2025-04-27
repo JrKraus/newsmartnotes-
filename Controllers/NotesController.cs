@@ -247,5 +247,30 @@ namespace termprojectJksmartnote.Controllers
                 return StatusCode(500, new { error = "An error occurred while deleting the note" });
             }
         }
+        [HttpGet("Search")]
+        public async Task<IActionResult> SearchNotes(string term)
+        {
+            var userId = _userManager.GetUserId(User);
+            var notes = await _noteRepo.SearchNotesAsync(term, userId);
+            return Ok(notes);
+        }
+        [HttpGet("SearchByTag/{tagName}")]
+        public async Task<IActionResult> SearchNotesByTagName(string tagName)
+        {
+            if (string.IsNullOrWhiteSpace(tagName))
+            {
+                return BadRequest("Tag name cannot be empty");
+            }
+
+            var userId = _userManager.GetUserId(User);
+            var notes = await _noteRepo.SearchNotesByTagNameAsync(tagName, userId);
+
+            return Ok(notes);
+        }
+
+
+
+
+
     }
 }

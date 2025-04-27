@@ -74,7 +74,12 @@ namespace termprojectJksmartnote.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult Searchbar()
+        {
+            // Add any model data you need to pass to the partial view
+            return PartialView("_SearchPartial");
+        }
 
-        
+
     }
 }

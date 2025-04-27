@@ -29,10 +29,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
                         
-                        <!-- Add your Tags navigation button here -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="statistics">stats</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="statistics">Stats</a>
+                        </li>
+
+                        <!-- Search page navigation button -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Searchbar">
+                                <i class="bi bi-search"></i> Search
+                            </a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -40,6 +47,7 @@
             </div>
         </nav>
     </header>
+
 
     <div class="container-fluid">
         <div class="row">

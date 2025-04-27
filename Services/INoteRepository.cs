@@ -89,7 +89,7 @@ namespace termprojectJksmartnote.Services
 
         // Tag Operations
         Task<ICollection<Tag>> GetAllTagsAsync(string userId);
-        Task<Tag> GetOrCreateTagAsync(string tagName);
+        Task<Tag> GetOrCreateTagAsync(string tagName, string userId);
         // Retrieves an existing tag or creates a new one if it doesn't exist
         // <param name="tagName"></param>
         // returns the Tag object
@@ -125,7 +125,7 @@ namespace termprojectJksmartnote.Services
         // <param name="searchTerm"></param>
         // <param name="userId"></param>
         // returns a collection of Note objects (empty if none found)
-        Task<ICollection<Note>> SearchNotesByTagAsync(int tagId, string userId);
+        Task<ICollection<Note>> SearchNotesByTagNameAsync(string tagName, string userId);
         // Searches for notes associated with a specific tag
         // <param name="tagId"></param> 
         // <param name="userId"></param>

@@ -168,7 +168,6 @@ namespace termprojectJksmartnote.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -247,7 +246,13 @@ namespace termprojectJksmartnote.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tags");
                 });
@@ -417,6 +422,17 @@ namespace termprojectJksmartnote.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("termprojectJksmartnote.Models.Entities.Tag", b =>
+                {
+                    b.HasOne("termprojectJksmartnote.Models.Entities.User", "User")
+                        .WithMany("Tags")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("termprojectJksmartnote.Models.Entities.Note", b =>
                 {
                     b.Navigation("NoteTags");
@@ -435,6 +451,8 @@ namespace termprojectJksmartnote.Data.Migrations
             modelBuilder.Entity("termprojectJksmartnote.Models.Entities.User", b =>
                 {
                     b.Navigation("Notebooks");
+
+                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

@@ -19,6 +19,7 @@ namespace termprojectJksmartnote.Controllers
         {
             public int Id { get; set; }
             public string Tag { get; set; }
+            
 
             
            
@@ -56,7 +57,7 @@ namespace termprojectJksmartnote.Controllers
             try
             {
                 //var userId = _userManager.GetUserId(User);
-                var tag = await _noteRepo.GetOrCreateTagAsync(tagDto.Tag);
+                var tag = await _noteRepo.GetOrCreateTagAsync(tagDto.Tag, userId);
                 var success = await _noteRepo.AssociateTagToNoteAsync(noteId, tag.Id, userId);
 
                 return Ok(new

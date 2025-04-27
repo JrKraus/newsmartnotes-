@@ -1,8 +1,4 @@
-﻿/**
- * NoteSmart - Note Editor Implementation
- * Comprehensive implementation for note editing functionality
- */
-
+﻿
 
 //const { Toast } = require("../lib/bootstrap/dist/js/bootstrap.bundle");
 
@@ -57,14 +53,11 @@ function refreshNotesList() {
             activeRequests.loadingNotebook = null;
         });
 }
-// Global tracking variables (assuming these are defined elsewhere in the codebase)
+
 // let currentNotebookId;
 // let activeRequests = { loadingNotebook: null, loadingNote: null };
 
-/**
- * Cancels an active request of the specified type
- * @param {string} requestType - Type of request to cancel ('notebook' or 'note')
- */
+
 function cancelActiveRequest(requestType) {
     const requestKey = `loading${requestType.charAt(0).toUpperCase() + requestType.slice(1)}`;
     if (activeRequests[requestKey] && activeRequests[requestKey].abort) {
@@ -74,10 +67,7 @@ function cancelActiveRequest(requestType) {
     }
 }
 
-/**
- * Updates UI to show the selected notebook as active
- * @param {string} notebookId - ID of the selected notebook
- */
+
 function updateNotebookSelectionUI(notebookId) {
     // Reset active state on all notebooks
     document.querySelectorAll('.notebook-item').forEach(item => {
@@ -120,9 +110,9 @@ function updateNotebookInfoUI(notebookId, notebookTitle) {
     if (deleteNotebookBtn) deleteNotebookBtn.style.display = 'inline-block';
 }
 
-/**
- * Shows a loading indicator in the notes list
- */
+
+  //Shows a loading indicator in the notes list
+ 
 function showNotesLoadingIndicator() {
     const notesList = document.getElementById('notesList');
     if (notesList) {
@@ -130,10 +120,9 @@ function showNotesLoadingIndicator() {
     }
 }
 
-/**
- * Shows an error message in the notes list
- * @param {string} errorMessage - Error message to display
- */
+
+ // Shows an error message in the notes list
+ 
 function showNotesError(errorMessage) {
     const notesList = document.getElementById('notesList');
     if (notesList) {
@@ -219,12 +208,7 @@ function renderNotesList(data, signal) {
     });
 }
 
-/**
- * Fetches notes for a specific notebook from the API
- * @param {string} notebookId - ID of the notebook to fetch notes for
- * @param {AbortSignal} signal - Abort signal for the request
- * @returns {Promise} - Promise resolving to the API response
- */
+
 function fetchNotebookNotes(notebookId, signal) {
     return fetch(`/api/Notes/ByNotebook/${notebookId}`, { signal })
         .then(response => {
@@ -245,11 +229,7 @@ function fetchNotebookNotes(notebookId, signal) {
         });
 }
 
-/**
- * Main function to load notes for a specific notebook
- * @param {string} notebookId - ID of the notebook to load
- * @param {string} notebookTitle - Title of the notebook to load
- */
+
 window.loadNotebookNotes = (notebookId, notebookTitle) => {
     console.log(`Loading notes for notebook: ${notebookId} - ${notebookTitle}`);
 
@@ -376,13 +356,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const MAX_RETRIES = 3;
             console.log(`Loading note ID: ${noteId}`);
 
-            // FIX: Prevent loading the same note repeatedly
+            //  Prevent loading the same note repeatedly
             if (currentNoteId === noteId && !retryCount) {
                 console.log(`Note ${noteId} already loaded, skipping reload`);
                 return;
             }
 
-            // FIX: Cancel any ongoing note requests
+            //  Cancel any ongoing note requests
             cancelActiveRequest("note");
 
             // Create new abort controller for this request
@@ -416,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error setting Quill text:', err);
             }
 
-            // FIX: Set loading state variable
+            //Set loading state variable
             let loadingTimeoutId = setTimeout(() => {
                 // If the request takes too long, abort it
                 if (activeRequests.loadingNote) {
@@ -822,7 +802,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 console.error('Error saving note:', error);
 
-                // FIX: Handle 405 errors with more specific guidance
+                //Handle 405 errors with more specific guidance
                 if (error.message.includes('405') || error.message.includes('Method Not Allowed')) {
                     showToast('API endpoint issue. Please check server logs.', 'danger');
                 } else {
@@ -831,9 +811,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    /**
-     * Updates the last saved time in the UI
-     */
+    
     function updateLastSavedTime(date) {
         lastSavedTime = date;
         const timeString = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -843,9 +821,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    /**
-     * Resets the auto-save timer
-     */
+    
     function resetAutoSaveTimer() {
         clearTimeout(autoSaveTimer);
         autoSaveTimer = setTimeout(function () {
@@ -855,9 +831,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000); // Auto-save after 2 seconds of inactivity
     }
 
-    /**
-     * Shows a toast notification
-     */
+    
     function showToast(message, type = 'info') {
         // Create toast container if it doesn't exist
         let toastContainer = document.querySelector('.toast-container');
@@ -907,9 +881,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Make showToast globally available
     window.showToast = showToast;
 
-    /**
-     * Initialize all event handlers
-     */
+    
     function initializeEventHandlers() {
         // Initialize notebook toggle handlers
         document.querySelectorAll('.notebook-header').forEach(header => {
@@ -967,9 +939,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    /**
-     * Simple debounce function to prevent rapid repeated clicks
-     */
+    
     function debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -1694,8 +1664,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    // Helper function to show notifications
-    
+   
     
 
 

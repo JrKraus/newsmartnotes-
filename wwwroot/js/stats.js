@@ -24,21 +24,7 @@ async function fetchNotesData() {
         updateDashboard(data);
     } catch (error) {
         console.error('Error fetching data:', error);
-        // Use fallback data if fetch fails
-        //const fallbackData = {
-        //    notesPerNotebook: {
-        //        "cool": 3,
-        //        "Test": 1
-        //    },
-        //    tagUsageFrequency: {
-        //        "fsdsfsd": 1,
-        //        "newhope": 2
-        //    },
-        //    totalNotebooks: 2,
-        //    totalNotes: 4,
-        //    totalTags: 2
-        //};
-        //updateDashboard(fallbackData);
+        
     }
 }
 

@@ -1,0 +1,112 @@
+﻿@model termprojectJksmartnote.Models.ViewModels.SearchViewModel
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/chart.css" asp-append-version="true" />
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+<script src="~/js/search.js" asp-append-version="true"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="search-container mb-3 p-3 border rounded">
+    <form id="searchForm" class="d-flex">
+        <!-- Search type dropdown -->
+        <div class="dropdown me-2" style="min-width: 150px;">
+            <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="searchTypeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Search by Title
+            </button>
+            <ul class="dropdown-menu w-100" aria-labelledby="searchTypeDropdown">
+                <li><a class="dropdown-item search-type-option" href="#" data-type="title">Search by Title</a></li>
+                <li><a class="dropdown-item search-type-option" href="#" data-type="tag">Search by Tag</a></li>
+            </ul>
+        </div>
+
+        <!-- Search input field -->
+        <div class="flex-grow-1 position-relative">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search notes by title...">
+            <div id="tagSuggestions" class="dropdown-menu w-100 position-absolute" style="display: none; max-height: 200px; overflow-y: auto;">
+                <!-- Tag suggestions will appear here -->
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary ms-2">
+            <i class="bi bi-search"></i>
+        </button>
+    </form>
+</div>
+
+<div id="searchResults" class="mt-3">
+    <!-- Search results will be displayed here -->
+</div>
+
+
+<div class="modal fade" id="noteEditModal" tabindex="-1" aria-labelledby="noteEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="noteEditModalLabel">Edit Note</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Note Title -->
+                <div class="mb-3">
+                    <label for="modalNoteTitleField" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="modalNoteTitleField" placeholder="Note Title">
+                </div>
+
+                <!-- Note Content (Quill Editor) -->
+                <div class="mb-3">
+                    <label class="form-label">Content</label>
+                    <div id="modalQuillEditor" style="height: 200px;"></div>
+                </div>
+
+                <!-- Tags Section -->
+                <div class="mb-3">
+                    <label class="form-label">Tags</label>
+                    <div class="d-flex align-items-center mb-2">
+                        <div id="modalCurrentNoteTags" class="me-2 flex-grow-1"></div>
+                        <button type="button" class="btn btn-sm btn-secondary" id="modalTagNoteBtn">
+                            <i class="bi bi-tag"></i> Manage Tags
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger me-2" id="modalDeleteNoteBtn">Delete</button>
+                <button type="button" class="btn btn-primary" id="modalSaveNoteBtn">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="tagModal" tabindex="-1" aria-labelledby="tagModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="tagModalLabel">Tag Note</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+
+                <div id="existingTagsContainer" class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
+                    <!-- Tags will be populated here -->
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Create New Tag</label>
+                <input type="text" id="newTag" class="form-control" placeholder="Enter new tag">
+            </div>
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-primary" onclick="applyTag()">Apply Tag</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" >Close Menu</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <!-- Toasts will be dynamically added here -->
+</div>

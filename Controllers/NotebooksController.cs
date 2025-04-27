@@ -134,7 +134,7 @@ namespace termprojectJksmartnote.Controllers
 
             return Ok(new { message = "Notebook updated successfully", name = existingNotebook.Title });
         }
-        // ...
+       
 
         [HttpGet("GetNotebooksSidebar")]
         public async Task<IActionResult> GetNotebooksSidebar()

@@ -163,14 +163,7 @@ namespace termprojectJksmartnote.Services
         /// returns created Notebook object
         public async Task<Notebook> CreateNotebookAsync(Notebook notebook)
         {
-            // Double-check for null or empty userId
-
-
-
-
-            // If needed, you can also load and set the User navigation property
-            // This avoids duplicate/conflicting assignments
-
+            
             _context.Notebooks.Add(notebook);
             await _context.SaveChangesAsync();
 
@@ -268,27 +261,37 @@ namespace termprojectJksmartnote.Services
         /// Creates a new tag if it doesn't exist, or retrieves it if it does
         /// <param name="tagName"></param>
         /// returns tag object
-        public async Task<Tag> GetOrCreateTagAsync(string tagName)
+        public async Task<Tag> GetOrCreateTagAsync(string tagName, string userId)
         {
-            var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Name == tagName);
+            // First check if the user already has this tag
+            var tag = await _context.Tags
+                .FirstOrDefaultAsync(t => t.Name == tagName && t.UserId == userId);
+
             if (tag == null)
             {
-                tag = new Tag { Name = tagName };
+                // Create a new tag with the user ID
+                tag = new Tag
+                {
+                    Name = tagName,
+                    UserId = userId
+                };
                 _context.Tags.Add(tag);
                 await _context.SaveChangesAsync();
             }
             return tag;
         }
+
         public async Task<ICollection<Tag>> GetAllTagsAsync(string userId)
         {
-           var tags = await _context.Tags
-                .Include(t => t.NoteTags)
-                .ThenInclude(nt => nt.Note)
-                    .ThenInclude(n => n.Notebook)
-                    .Where(t => t.NoteTags.Any(nt => nt.Note.Notebook.UserId == userId))
-                .Distinct()
-                .ToListAsync();
-            return tags ?? new List<Tag>();
+                var tags = await _context.Tags
+            .Where(t => t.UserId == userId)
+            .Include(t => t.NoteTags)
+            .ThenInclude(nt => nt.Note)
+            .ThenInclude(n => n.Notebook)
+            .Distinct()
+            .ToListAsync();
+
+                return tags ?? new List<Tag>();
 
         }
 
@@ -357,27 +360,51 @@ namespace termprojectJksmartnote.Services
         /// return collection of Note objects (empty if none found)
         public async Task<ICollection<Note>> SearchNotesAsync(string searchTerm, string userId)
         {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return new List<Note>();
+
             return await _context.Notes
                 .Include(n => n.NoteTags)
                     .ThenInclude(nt => nt.Tag)
                 .Where(n => n.Notebook.UserId == userId &&
-                           (n.Title.Contains(searchTerm) || n.Content.Contains(searchTerm)))
+                           (n.Title.Contains(searchTerm) ||
+                            n.Content.Contains(searchTerm)))
+                .OrderByDescending(n => n.UpdatedAt)
                 .ToListAsync();
+            //    return await _context.Notes
+            //.Include(n => n.Notebook)
+            //.Include(n => n.NoteTags)
+            //    .ThenInclude(nt => nt.Tag)
+            //.Where(n => n.Notebook.UserId == userId &&
+            //           (n.Title.Contains(searchTerm) ||
+            //            n.Content.Contains(searchTerm)))
+            //.OrderByDescending(n => n.UpdatedAt)
+            //.ToListAsync();
         }
+        
 
         // Searches for notes associated with a specific tag
         /// <param name="tagId"></param>
         /// <param name="userId"></param>
         /// return collection of Note objects (empty if none found)
-        public async Task<ICollection<Note>> SearchNotesByTagAsync(int tagId, string userId)
+        public async Task<ICollection<Note>> SearchNotesByTagNameAsync(string tagName, string userId)
         {
+            // Normalize tag name for consistent searching  
+            tagName = tagName.Trim().ToLower();
+
+           
+
             return await _context.Notes
                 .Include(n => n.NoteTags)
                     .ThenInclude(nt => nt.Tag)
+                .Include(n => n.Notebook)
                 .Where(n => n.Notebook.UserId == userId &&
-                           n.NoteTags.Any(nt => nt.TagId == tagId))
+                           n.NoteTags.Any(nt => nt.Tag.Name.ToLower() == searchTerm))
+                .OrderByDescending(n => n.UpdatedAt)
                 .ToListAsync();
+
         }
+
 
         // Batch Operations
 
@@ -445,47 +472,33 @@ namespace termprojectJksmartnote.Services
         {
             try
             {
-                // 
+                // Find the tag that belongs to this user
                 var tag = await _context.Tags
-                        .Include(t => t.NoteTags)
-                        .ThenInclude(nt => nt.Note)
-                        .ThenInclude(n => n.Notebook)
-                        .FirstOrDefaultAsync(t => t.Id == tagId);
+                    .Include(t => t.NoteTags)
+                    .FirstOrDefaultAsync(t => t.Id == tagId && t.UserId == userId);
 
                 if (tag == null)
-                    return false;
+                    return false; // Tag doesn't exist or doesn't belong to this user
 
-                // Check if user owns any notes with this tag
-                var userOwnsTag = tag.NoteTags
-                    .Any(nt => nt.Note.Notebook.UserId == userId);
-
-                if (!userOwnsTag)
-                    return false; // User doesn't own this tag
-
-                // Remove tag associations for this user's notes
-                var userNoteTags = tag.NoteTags
-                    .Where(nt => nt.Note.Notebook.UserId == userId)
-                    .ToList();
-
-                foreach (var noteTag in userNoteTags)
+                // Remove all note-tag associations
+                foreach (var noteTag in tag.NoteTags.ToList())
                 {
                     _context.NoteTags.Remove(noteTag);
                 }
 
-                // If no other users are using this tag, delete it completely
-                if (!tag.NoteTags.Any(nt => nt.Note.Notebook.UserId != userId))
-                {
-                    _context.Tags.Remove(tag);
-                }
+                // Delete the tag itself
+                _context.Tags.Remove(tag);
 
                 await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
             {
+                // Consider logging the exception
                 return false;
             }
         }
+
         // Statistics
         /// Retrieves user statistics including total notes, notebooks, tags, notes per notebook, and tag usage number 
         /// <param name="userId"></param>

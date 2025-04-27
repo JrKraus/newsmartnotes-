@@ -24,5 +24,7 @@ namespace termprojectJksmartnote.Models.Entities
         // Navigation property
         public List<Notebook> Notebooks { get; set; } = new();
 
+        public List<Tag> Tags { get; set; } = new();
+
     }
 }

@@ -56,70 +56,7 @@ namespace termprojectJksmartnote.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Gets statistics for a specific notebook
-        ///// </summary>
-        ///// <param name="notebookId">ID of the notebook</param>
-        ///// <returns>Statistics for the specified notebook</returns>
-        //[HttpGet("notebooks/{notebookId}")]
-        //public async Task<IActionResult> GetNotebookStatistics(int notebookId)
-        //{
-        //    try
-        //    {
-        //        var userId = _userManager.GetUserId(User);
-        //        if (string.IsNullOrEmpty(userId))
-        //        {
-        //            return Unauthorized("User not authenticated");
-        //        }
-
-                
-                
-                
-
-        //        var statistics = await _noteRepo.(notebookId);
-        //        return Ok(statistics);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error retrieving notebook statistics for notebook {NotebookId}", notebookId);
-        //        return StatusCode(500, new
-        //        {
-        //            success = false,
-        //            message = "An error occurred while retrieving notebook statistics",
-        //            error = ex.Message
-        //        });
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Gets tag usage statistics for the current user
-        ///// </summary>
-        ///// <returns>Tag usage statistics including frequency and distribution</returns>
-        //[HttpGet("tags")]
-        //public async Task<IActionResult> GetTagStatistics()
-        //{
-        //    try
-        //    {
-        //        var userId = _userManager.GetUserId(User);
-        //        if (string.IsNullOrEmpty(userId))
-        //        {
-        //            return Unauthorized("User not authenticated");
-        //        }
-
-        //        var statistics = await UserStatistics.(userId);
-        //        return Ok(statistics);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error retrieving tag statistics");
-        //        return StatusCode(500, new
-        //        {
-        //            success = false,
-        //            message = "An error occurred while retrieving tag statistics",
-        //            error = ex.Message
-        //        });
-        //    }
-        //}
+       
     }
 
 }
