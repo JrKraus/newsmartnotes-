@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Azure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models.Entities;
@@ -392,17 +393,16 @@ namespace termprojectJksmartnote.Services
             // Normalize tag name for consistent searching  
             tagName = tagName.Trim().ToLower();
 
-           
+
 
             return await _context.Notes
-                .Include(n => n.NoteTags)
+                    .Include(n => n.NoteTags)
                     .ThenInclude(nt => nt.Tag)
-                .Include(n => n.Notebook)
-                .Where(n => n.Notebook.UserId == userId &&
-                           n.NoteTags.Any(nt => nt.Tag.Name.ToLower() == searchTerm))
-                .OrderByDescending(n => n.UpdatedAt)
-                .ToListAsync();
-
+            .Include(n => n.Notebook)
+            .Where(n => n.Notebook.UserId == userId &&
+                       n.NoteTags.Any(nt => nt.Tag.Name.ToLower() == tagName))
+            .OrderByDescending(n => n.UpdatedAt)
+            .ToListAsync();     
         }
 
 
