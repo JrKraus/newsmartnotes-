@@ -20,7 +20,7 @@ namespace termprojectJksmartnote.Controllers
         /// SignInManager is used to sign in users
         /// </summary>
         private readonly SignInManager<User> _signInManager;
-        
+
         /// <summary>
         /// UserManager is used to manage users
         /// </summary>
@@ -59,7 +59,7 @@ namespace termprojectJksmartnote.Controllers
                 Email = model.Email,
                 DisplayName = model.DisplayName
             };
-            
+
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
@@ -77,9 +77,9 @@ namespace termprojectJksmartnote.Controllers
             return View(model);
         }
         // ---------- Authentication ---------- //
-        
+
         /// Login action method to display the login form
-        
+
         [HttpGet("Login")]
         public IActionResult Login() => View();
         /// <summary>
@@ -173,4 +173,3 @@ namespace termprojectJksmartnote.Controllers
         public bool RememberMe { get; set; }
     }
 }
-

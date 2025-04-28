@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JD6z2x+Xrp56X1xxh2zIeOY02EX7PitLeHfYBVRjHUY=",
+  "Hash": "hk+cfgGAymA4oRNDJl7UGkiJ/bK8ae8rfmKORb/IEtg=",
   "Source": "termprojectJksmartnote",
   "BasePath": "_content/termprojectJksmartnote",
   "Mode": "Default",
@@ -1459,8 +1459,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xr1pjtbmtu",
-      "Integrity": "w3O+yqdooIaHntCDgVAgNBuztnhmSBbE50BZUjjCGvM=",
+      "Fingerprint": "fgrsl95vfn",
+      "Integrity": "/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\search.js"
@@ -5524,6 +5524,51 @@
       ]
     },
     {
+      "Route": "js/search.fgrsl95vfn.js",
+      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "37408"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 27 Apr 2025 04:31:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fgrsl95vfn"
+        },
+        {
+          "Name": "label",
+          "Value": "js/search.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o="
+        }
+      ]
+    },
+    {
       "Route": "js/search.js",
       "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
       "Selectors": [],
@@ -5534,7 +5579,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "37569"
+          "Value": "37408"
         },
         {
           "Name": "Content-Type",
@@ -5542,11 +5587,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"w3O+yqdooIaHntCDgVAgNBuztnhmSBbE50BZUjjCGvM=\""
+          "Value": "\"/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 04:19:06 GMT"
+          "Value": "Sun, 27 Apr 2025 04:31:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5556,52 +5601,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-w3O+yqdooIaHntCDgVAgNBuztnhmSBbE50BZUjjCGvM="
-        }
-      ]
-    },
-    {
-      "Route": "js/search.xr1pjtbmtu.js",
-      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "37569"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"w3O+yqdooIaHntCDgVAgNBuztnhmSBbE50BZUjjCGvM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 04:19:06 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "xr1pjtbmtu"
-        },
-        {
-          "Name": "label",
-          "Value": "js/search.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-w3O+yqdooIaHntCDgVAgNBuztnhmSBbE50BZUjjCGvM="
+          "Value": "sha256-/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o="
         }
       ]
     },

@@ -396,8 +396,8 @@ namespace termprojectJksmartnote.Services
 
 
             return await _context.Notes
-                    .Include(n => n.NoteTags)
-                    .ThenInclude(nt => nt.Tag)
+              .Include(n => n.NoteTags)
+            .ThenInclude(nt => nt.Tag)
             .Include(n => n.Notebook)
             .Where(n => n.Notebook.UserId == userId &&
                        n.NoteTags.Any(nt => nt.Tag.Name.ToLower() == tagName))

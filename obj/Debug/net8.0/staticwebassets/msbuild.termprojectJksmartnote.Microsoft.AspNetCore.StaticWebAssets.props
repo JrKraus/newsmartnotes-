@@ -120,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xr1pjtbmtu</Fingerprint>
-      <Integrity>w3O+yqdooIaHntCDgVAgNBuztnhmSBbE50BZUjjCGvM=</Integrity>
+      <Fingerprint>fgrsl95vfn</Fingerprint>
+      <Integrity>/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\search.js'))</OriginalItemSpec>

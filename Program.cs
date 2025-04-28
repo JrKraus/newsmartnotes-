@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using termprojectJksmartnote.Data;
 using NuGet.Protocol.Plugins;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,6 +49,10 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.SignIn.RequireConfirmedEmail = false; // Require confirmed email to sign in
+});
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
