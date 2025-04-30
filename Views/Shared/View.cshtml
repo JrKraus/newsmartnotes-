@@ -1,75 +1,114 @@
 ﻿@model IEnumerable<termprojectJksmartnote.Models.Entities.Notebook>
+<a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+<div id="main-content" tabindex="-1" aria-label="Notebook Sidebar Main Content">
+    <div class="sidebar-container h-100" aria-label="Notebook Navigation" role="navigation">
 
-<div class="sidebar-container h-100">
-    <script src="~/js/sidebar.js" asp-append-version="true"></script>
-    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-  @*   <script src="~/js/note-editor.js" asp-append-version="true"></script> *@
-    <script src="~/js/notebook-modal.js" asp-append-version="true"></script>
-   @*  <script src="~/js/site.js" asp-append-version="true"></script>
- *@
-    <div class="sidebar-header p-3 border-bottom">
-        <h4>Notebooks</h4>
-        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newNotebookModal">
-            <i class="bi bi-plus-circle"></i> New Notebook
-        </button>
-    </div>
-
-    <div class="notebooks-container p-2">
-        @if (Model != null && Model.Any())
-        {
-            @foreach (var notebook in Model)
-            {  
-                
-                <div class="notebook-item @(notebook.Id == ViewBag.ActiveNotebookId ? "active" : "")"
-                     data-notebook-id="@notebook.Id">
-                    
-                    <div class="notebook-header">
-                        <i class="bi bi-book-fill me-2"></i>
-                        <span class="notebook-title">@notebook.Title</span>
-                        <i class="bi bi-chevron-right ms-auto toggle-icon"></i>
-                    </div>
-                </div>
+        <script src="~/js/sidebar.js" asp-append-version="true"></script>
+        <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  
+        <script src="~/js/notebook-modal.js" asp-append-version="true"></script>
+  
+        <div class="sidebar-header p-3 border-bottom">
+            <h2 id="notebooksHeading">Notebooks</h2>
+            <button type="button" class="btn btn-sm btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newNotebookModal"
+                    aria-label="Create new notebook">
+                <i class="bi bi-plus-circle" aria-hidden="true"></i> New Notebook
+            </button>
+        </div>
+        <ul class="notebooks-container p-2 list-unstyled" aria-labelledby="notebooksHeading">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var notebook in Model)
+                {
+                    <li>
+                        <button type="button"
+                                class="notebook-item btn  w-100 text-start @(notebook.Id == ViewBag.ActiveNotebookId ? "active" : "")"
+                                data-notebook-id="@notebook.Id"
+                                aria-current="@(notebook.Id == ViewBag.ActiveNotebookId ? "true" : "false")"
+                                aria-label="Select notebook: @notebook.Title">
+                            <span class="notebook-header d-flex align-items-center">
+                                <i class="bi bi-book-fill me-2" aria-hidden="true"></i>
+                                <span class="notebook-title">@notebook.Title</span>
+                                <i class="bi bi-chevron-right ms-auto toggle-icon" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </li>
+                }
             }
-        }
-        else
-        {
-            <div class="empty-state p-4 text-center">
-                <i class="bi bi-journals fs-1 mb-3 text-muted"></i>
-                <h5>No Notebooks Yet</h5>
-                <p class="text-muted">Start organizing your notes by creating your first notebook.</p>
-                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#newNotebookModal">
-                    <i class="bi bi-plus-circle me-2"></i> Create First Notebook
-                </button>
-            </div>
-        }
+            else
+            {
+                <li>
+                    <div class="empty-state p-4 text-center">
+                        <i class="bi bi-journals fs-1 mb-3 text-muted" aria-hidden="true"></i>
+                        <h5>No Notebooks Yet</h5>
+                        <p class="text-muted">Start organizing your notes by creating your first notebook.</p>
+                        <button type="button" class="btn btn-primary mt-2"
+                                data-bs-toggle="modal"
+                                data-bs-target="#newNotebookModal"
+                                aria-label="Create first notebook">
+                            <i class="bi bi-plus-circle me-2" aria-hidden="true"></i> Create First Notebook
+                        </button>
+                    </div>
+                </li>
+            }
+        </ul>
+
+       
     </div>
 </div>
 
 <!-- Modal for creating a new notebook -->
-<div class="modal fade" id="newNotebookModal" tabindex="-1" aria-labelledby="newNotebookModalLabel" aria-hidden="true">
+<div class="modal fade" id="newNotebookModal" tabindex="-1"
+     aria-labelledby="newNotebookModalLabel"
+     aria-modal="true"
+     role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="newNotebookModalLabel">Create New Notebook</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
             <form asp-controller="Notebooks" asp-action="Create" method="post" id="createNotebookForm">
                 @Html.AntiForgeryToken()
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="Title" class="form-label">Notebook Title</label>
-                        <input type="text" class="form-control" id="Title" name="Title" required>
+                        <input type="text" class="form-control" id="Title" name="Title" required aria-required="true">
                         <div class="invalid-feedback">Please enter a notebook title.</div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                        Cancel
+                    </button>
                     <button type="submit" class="btn btn-primary">Create Notebook</button>
                 </div>
             </form>
         </div>
     </div>
-   
 </div>
+<style>
+    :focus {
+        
+        outline-offset: 2px;
+    }
+    .visually-hidden-focusable {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: #222;
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 1000;
+}
+.visually-hidden-focusable:focus {
+    left: 0;
+}
 
+</style>
  

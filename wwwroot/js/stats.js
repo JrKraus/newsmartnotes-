@@ -8,9 +8,8 @@
 
 // Fetch data from API
 window.getCurrentItemId = function () {
-    // This function would return the currently selected item's ID
-    // For demonstration, we'll return a sample value
-    return "cool"; // Sample notebook ID
+  
+    return "cool"; 
 };
 
 // Fetch data from API

@@ -711,11 +711,11 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('Id', currentNoteId);
         }
 
-        // Add CSRF token
-        const tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
-        if (tokenElement) {
-            formData.append('__RequestVerificationToken', tokenElement.value);
-        }
+        //// Add CSRF token
+        //const tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
+        //if (tokenElement) {
+        //    formData.append('__RequestVerificationToken', tokenElement.value);
+        //}
 
         // Use the right API endpoint format based on your backend API
         // Choose endpoint based on operation

@@ -653,7 +653,7 @@
         bsTagModal.show();
     }
 
-    // Add this function to your search.js file
+    
     function showToast(message, type = 'info') {
         // Create toast container if it doesn't exist
         let toastContainer = document.querySelector('.toast-container');
@@ -978,4 +978,8 @@
             }
         }
     }
+    searchTypeDropdown.addEventListener('click', function () {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+    });
 });

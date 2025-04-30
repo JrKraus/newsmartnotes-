@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hk+cfgGAymA4oRNDJl7UGkiJ/bK8ae8rfmKORb/IEtg=",
+  "Hash": "/FqJReTBpKlTXzOVwMFWF9A6qTHwsySkDIrVjvgbvBE=",
   "Source": "termprojectJksmartnote",
   "BasePath": "_content/termprojectJksmartnote",
   "Mode": "Default",
@@ -1354,8 +1354,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "h9jdjmmd5y",
-      "Integrity": "O7KTBY5y8bWxlpNTKPWhVsBOiHNHeztnhOL19uwLKGk=",
+      "Fingerprint": "ewdu2fdlea",
+      "Integrity": "InBSs3s1vCT1UTHQnpvWTJMVQInZStp9qSTxoZkqQ/g=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\sidebar.css"
@@ -1438,8 +1438,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ibi0xiu8x4",
-      "Integrity": "Qnrruqm3B+C3Gb6IG5CH0FEM5yirE4LLeBuaMJELbU0=",
+      "Fingerprint": "yxgie7wzh7",
+      "Integrity": "us/PTnwvfyOfi+apa86njMzQMFsHJCjNt4bDZWI6E0M=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\note-editor.js"
@@ -1459,8 +1459,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "fgrsl95vfn",
-      "Integrity": "/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o=",
+      "Fingerprint": "9usda1md7l",
+      "Integrity": "QWFES0RJ1Vse+muwNiF5Re/DClGCsr28l0nMYTXZsxU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\search.js"
@@ -2904,7 +2904,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2688"
+          "Value": "15480"
         },
         {
           "Name": "Content-Type",
@@ -2912,11 +2912,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"O7KTBY5y8bWxlpNTKPWhVsBOiHNHeztnhOL19uwLKGk=\""
+          "Value": "\"InBSs3s1vCT1UTHQnpvWTJMVQInZStp9qSTxoZkqQ/g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 16:43:02 GMT"
+          "Value": "Wed, 30 Apr 2025 21:37:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2926,12 +2926,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-O7KTBY5y8bWxlpNTKPWhVsBOiHNHeztnhOL19uwLKGk="
+          "Value": "sha256-InBSs3s1vCT1UTHQnpvWTJMVQInZStp9qSTxoZkqQ/g="
         }
       ]
     },
     {
-      "Route": "css/sidebar.h9jdjmmd5y.css",
+      "Route": "css/sidebar.ewdu2fdlea.css",
       "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\css\\sidebar.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2941,7 +2941,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2688"
+          "Value": "15480"
         },
         {
           "Name": "Content-Type",
@@ -2949,11 +2949,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"O7KTBY5y8bWxlpNTKPWhVsBOiHNHeztnhOL19uwLKGk=\""
+          "Value": "\"InBSs3s1vCT1UTHQnpvWTJMVQInZStp9qSTxoZkqQ/g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 16:43:02 GMT"
+          "Value": "Wed, 30 Apr 2025 21:37:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2963,7 +2963,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "h9jdjmmd5y"
+          "Value": "ewdu2fdlea"
         },
         {
           "Name": "label",
@@ -2971,7 +2971,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-O7KTBY5y8bWxlpNTKPWhVsBOiHNHeztnhOL19uwLKGk="
+          "Value": "sha256-InBSs3s1vCT1UTHQnpvWTJMVQInZStp9qSTxoZkqQ/g="
         }
       ]
     },
@@ -2998,7 +2998,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 16:43:02 GMT"
+          "Value": "Wed, 30 Apr 2025 20:01:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3035,7 +3035,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 16:43:02 GMT"
+          "Value": "Wed, 30 Apr 2025 20:01:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5442,51 +5442,6 @@
       ]
     },
     {
-      "Route": "js/note-editor.ibi0xiu8x4.js",
-      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "63094"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Qnrruqm3B+C3Gb6IG5CH0FEM5yirE4LLeBuaMJELbU0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 26 Apr 2025 18:40:02 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ibi0xiu8x4"
-        },
-        {
-          "Name": "label",
-          "Value": "js/note-editor.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Qnrruqm3B+C3Gb6IG5CH0FEM5yirE4LLeBuaMJELbU0="
-        }
-      ]
-    },
-    {
       "Route": "js/note-editor.js",
       "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
       "Selectors": [],
@@ -5497,7 +5452,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "63094"
+          "Value": "63104"
         },
         {
           "Name": "Content-Type",
@@ -5505,11 +5460,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Qnrruqm3B+C3Gb6IG5CH0FEM5yirE4LLeBuaMJELbU0=\""
+          "Value": "\"us/PTnwvfyOfi+apa86njMzQMFsHJCjNt4bDZWI6E0M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 26 Apr 2025 18:40:02 GMT"
+          "Value": "Wed, 30 Apr 2025 19:30:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5519,13 +5474,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Qnrruqm3B+C3Gb6IG5CH0FEM5yirE4LLeBuaMJELbU0="
+          "Value": "sha256-us/PTnwvfyOfi+apa86njMzQMFsHJCjNt4bDZWI6E0M="
         }
       ]
     },
     {
-      "Route": "js/search.fgrsl95vfn.js",
-      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
+      "Route": "js/note-editor.yxgie7wzh7.js",
+      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5534,7 +5489,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "37408"
+          "Value": "63104"
         },
         {
           "Name": "Content-Type",
@@ -5542,11 +5497,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o=\""
+          "Value": "\"us/PTnwvfyOfi+apa86njMzQMFsHJCjNt4bDZWI6E0M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 04:31:11 GMT"
+          "Value": "Wed, 30 Apr 2025 19:30:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5556,7 +5511,52 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fgrsl95vfn"
+          "Value": "yxgie7wzh7"
+        },
+        {
+          "Name": "label",
+          "Value": "js/note-editor.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-us/PTnwvfyOfi+apa86njMzQMFsHJCjNt4bDZWI6E0M="
+        }
+      ]
+    },
+    {
+      "Route": "js/search.9usda1md7l.js",
+      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "37618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QWFES0RJ1Vse+muwNiF5Re/DClGCsr28l0nMYTXZsxU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 20:33:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9usda1md7l"
         },
         {
           "Name": "label",
@@ -5564,7 +5564,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o="
+          "Value": "sha256-QWFES0RJ1Vse+muwNiF5Re/DClGCsr28l0nMYTXZsxU="
         }
       ]
     },
@@ -5579,7 +5579,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "37408"
+          "Value": "37618"
         },
         {
           "Name": "Content-Type",
@@ -5587,11 +5587,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o=\""
+          "Value": "\"QWFES0RJ1Vse+muwNiF5Re/DClGCsr28l0nMYTXZsxU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 04:31:11 GMT"
+          "Value": "Wed, 30 Apr 2025 20:33:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5601,7 +5601,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/4JOcpvj/fFTN57msdw2v/rHRHgEP7RDoablXhl1A3o="
+          "Value": "sha256-QWFES0RJ1Vse+muwNiF5Re/DClGCsr28l0nMYTXZsxU="
         }
       ]
     },

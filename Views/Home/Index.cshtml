@@ -7,35 +7,43 @@
     <script src="~/js/note-editor.js" asp-append-version="true"></script>
    @*  <script src="~/js/notebook-modal.js" asp-append-version="true"></script> *@
    @*  <script src="~/js/site.js" asp-append-version="true"></script> *@
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
 
     
     
-    <div class="row h-100">
+    <div class="row h-100" id="main-content" tabindex="-1" aria-label="Notebook and Notes Main Content">
         <!-- Left panel: Notebooks sidebar -->
-        <div class="col-md-3 col-lg-2 p-0 border-end sidebar-panel">
+        <div class="col-md-3 col-lg-2 p-0 border-end sidebar-panel"
+             aria-label="Notebook Navigation" role="navigation">
             @await Html.PartialAsync("/Views/Shared/view.cshtml")
         </div>
 
 
         <!-- Middle panel: Notes list -->
-        <div class="col-md-3 col-lg-3 p-0 border-end notes-panel">
+        <div class="col-md-3 col-lg-3 p-0 border-end notes-panel" aria-label="Notes List" role="region">
             <div class="notes-header p-3 border-bottom">
                 <h5 id="currentNotebookTitle">Select a Notebook</h5>
-                <button id="newNoteBtn" class="btn btn-sm btn-primary" style="display:none;">
-                    <i class="bi bi-plus-circle"></i> New Note
+                <label for="noteTitleField" class="visually-hidden">Note Title</label>
+                
+                <button id="newNoteBtn" class="btn btn-sm btn-primary" style="display:none;" aria-label="Create new note">
+                    <i class="bi bi-plus-circle" aria-hidden="true"></i> New Note
                 </button>
-                <button id="deleteNotebookBtn" class="btn btn-sm btn-danger" style="display:none;" onclick="deleteNotebook()">
-                    <i class="bi bi-trash"></i> Delete Notebook
+                <button id="deleteNotebookBtn" class="btn btn-sm btn-danger" style="display:none;" aria-label="Delete Notebook" onclick="deleteNotebook()">
+                    <i class="bi bi-trash" aria-hidden="true"></i> Delete Notebook
                 </button>
                 <button id="editNotebookBtn" class="btn btn-sm btn-secondary me-2" onclick="showEditNotebookModal()">
                     <i class="bi bi-pencil"></i> Edit Notebook
                 </button>
             </div>
 
-            <div id="notesList" class="notes-list p-2">
+            <div id="notesList" class="notes-list p-2" aria-live="polite"
+                 aria-atomic="true"
+                 aria-relevant="additions removals text"
+                 role="region"
+                 aria-label="Notes list">
                 <!-- Notes will be loaded here dynamically -->
-                <div class="text-center p-5 text-muted">
-                    <i class="bi bi-journal-text fs-1"></i>
+                <div class="text-center p-5 text-muted" tabindex="0" aria-live="polite">
+                    <i class="bi bi-journal-text fs-1" aria-hidden="true"></i>
                     <p class="mt-3">Select a notebook to view notes</p>
                 </div>
             </div>
@@ -43,7 +51,7 @@
 
         
         <!-- Right panel: Note editor -->
-        <div class="col-md-6 col-lg-7 p-0 editor-panel">
+        <div class="col-md-6 col-lg-7 p-0 editor-panel" aria-label="Note Editor" role="region">
             <div id="noteEditorEmpty" class="text-center p-5 h-100 d-flex flex-column justify-content-center">
                 <i class="bi bi-sticky-fill text-muted" style="font-size: 4rem;"></i>
                 <h4 class="mt-3 text-muted">Select a note or create a new one</h4>
@@ -77,7 +85,7 @@
 </div>
 
  <!-- Add Tag Modal -->
-<div class="modal fade" id="tagModal" tabindex="-1" aria-labelledby="tagModalLabel" aria-hidden="true">
+<div class="modal fade" id="tagModal" tabindex="-1" aria-labelledby="tagModalLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -97,7 +105,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-               
+                
                 <button type="button" class="btn btn-primary" onclick="applyTag()">Apply Tag</button>
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick="refreshCurrentNote()">Close Menu</button>
             </div>
@@ -129,5 +137,21 @@
     
    
 </div>
+<style>
+    .visually-hidden-focusable {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        background: #222;
+        color: #fff;
+        padding: 8px 16px;
+        z-index: 1000;
+    }
+
+        .visually-hidden-focusable:focus {
+            left: 0;
+        }
+
+</style>
 
 
