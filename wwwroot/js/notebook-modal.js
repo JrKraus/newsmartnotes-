@@ -1,4 +1,4 @@
-﻿ //Notebook modal handling
+﻿
 document.addEventListener('DOMContentLoaded', function () {
     if (typeof bootstrap === 'undefined') {
         console.error('Bootstrap JavaScript is not loaded. Modal and toast functionality will not work.');
@@ -9,16 +9,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const notebookForm = document.getElementById('createNotebookForm');
 
     if (notebookModal && notebookForm) {
-        // Initialize the Bootstrap modal
+       
         const modal = new bootstrap.Modal(notebookModal);
 
-        // Check for success message from TempData (should be passed via data attribute)
+            
         const successMessage = document.body.getAttribute('data-success-message');
         if (successMessage && successMessage.trim() !== '') {
             showToast(successMessage, 'success');
         }
 
-        // Form submission handling with AJAX
+            
         notebookForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
                 .then(response => {
                     if (!response.ok) {
-                        // Parse the error response to get detailed validation errors
+                            
                         return response.json().then(errorData => {
                             throw new Error(JSON.stringify(errorData));
                         });
@@ -53,12 +53,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 .catch(error => {
                     console.error('Error:', error);
 
-                    // Try to parse the error message if it's JSON
+                        
                     try {
                         const errorData = JSON.parse(error.message);
                         let errorMessage = 'Validation failed: ';
 
-                        // Handle structured error responses from ASP.NET Core
+                        
                         if (errorData.errors) {
                             errorMessage += Object.entries(errorData.errors)
                                 .map(([field, msgs]) => `${field}: ${msgs.join(', ')}`)
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         showToast(errorMessage, 'danger');
                     } catch (e) {
-                        // Fallback for non-JSON errors
+                            
                         showToast('Failed to create notebook: ' + error.message, 'danger');
                     }
                 });
@@ -79,21 +79,21 @@ document.addEventListener('DOMContentLoaded', function () {
             
         });
 
-        // Reset form when modal is hidden
+            
         notebookModal.addEventListener('hidden.bs.modal', function () {
             notebookForm.reset();
             notebookForm.classList.remove('was-validated');
 
-            // Clear any validation classes from fields
+            
             notebookForm.querySelectorAll('.is-invalid, .is-valid').forEach(field => {
                 field.classList.remove('is-invalid', 'is-valid');
             });
         });
     }
 
-    // Function to show toast notifications
+        
     function showToast(message, type = 'info') {
-        // Create toast container if it doesn't exist
+            
         let toastContainer = document.querySelector('.toast-container');
         if (!toastContainer) {
             toastContainer = document.createElement('div');
@@ -101,14 +101,14 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.appendChild(toastContainer);
         }
 
-        // Create toast element
+        
         const toastEl = document.createElement('div');
         toastEl.className = `toast align-items-center text-white bg-${type} border-0`;
         toastEl.setAttribute('role', 'alert');
         toastEl.setAttribute('aria-live', 'assertive');
         toastEl.setAttribute('aria-atomic', 'true');
 
-        // Create toast content
+        
         toastEl.innerHTML = `
             <div class="d-flex">
                 <div class="toast-body">
@@ -120,11 +120,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         toastContainer.appendChild(toastEl);
 
-        // Initialize and show the toast
+            
         const toast = new bootstrap.Toast(toastEl, { autohide: true, delay: 3000 });
         toast.show();
 
-        // Remove the toast element after it's hidden
+        
         toastEl.addEventListener('hidden.bs.toast', function () {
             toastEl.remove();
         });

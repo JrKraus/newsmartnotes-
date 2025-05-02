@@ -1,450 +1,307 @@
-﻿/*.sidebar-container {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    width: 280px;
-    background-color: #f8f9fa;
-    border-right: 1px solid #dee2e6;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-.sidebar-header {
-    padding: 1rem;
-    border-bottom: 1px solid #dee2e6;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.notebooks-container {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-bottom: 20px;
-}
-
-.notebook-item {
-    border-bottom: 1px solid #eaeaea;
-}
-
-.notebook-header {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.2s;
-}
-
-    .notebook-header:hover {
-        background-color: #e9ecef;
-    }
-
-.notebook-item.active > .notebook-header {
-    background-color: #e3f2fd;
-}
-
-.notebook-title {
-    font-weight: 500;
-    flex-grow: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.notes-container {
-    display: none;
-    padding-left: 20px;
-    background-color: #f9f9f9;
-}
-
-.notebook-item.active .notes-container {
-    display: block;
-}
-
-.note-item {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    color: #495057;
-    text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: background-color 0.2s;
-}
-
-    .note-item:hover {
-        background-color: #e9ecef;
-        color: #212529;
-    }
-
-    .note-item.active {
-        border-left-color: #007bff;
-        background-color: #e9ecef;
-        font-weight: 500;
-    }
-
-.note-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.new-note-btn {
-    padding: 0.5rem 1rem;
-    color: #6c757d;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-    .new-note-btn:hover {
-        background-color: #e9ecef;
-        color: #007bff;
-    }
-
-.empty-state {
-    padding: 2rem;
-    text-align: center;
-    color: #6c757d;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.empty-notes-message {
-    padding: 1rem;
-    text-align: center;
-    color: #999;
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-    .empty-notes-message i {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .empty-notes-message p {
-        margin: 0;
-    }
-
-.toggle-icon {
-    transition: transform 0.2s;
-}
-
-.notebook-item.active .toggle-icon {
-    transform: rotate(180deg);
-}
-*/
-
+﻿
 /* Dynamic Sidebar CSS with Responsive Design */
 :root {
-    --sidebar-width: 280px;
-    --sidebar-collapsed-width: 60px;
-    --primary-color: #007bff;
-    --primary-light: #e3f2fd;
-    --border-color: #dee2e6;
-    --hover-bg: #e9ecef;
-    --text-primary: #212529;
-    --text-secondary: #6c757d;
-    --transition-speed: 0.3s;
+    --sidebar-width: 280px; /* Default sidebar width */
+    --sidebar-collapsed-width: 60px; /* Collapsed sidebar width */
+    --primary-color: #007bff; /* Bootstrap primary color */
+    --primary-light: #e3f2fd; /* Light primary color for active items */
+    --border-color: #dee2e6; /* Light border color */
+    --hover-bg: #e9ecef; /* Light background color for hover effects */
+    --text-primary: #212529; /* Dark text color */
+    --text-secondary: #6c757d; /* Gray text color */
+    --transition-speed: 0.3s; /* Transition speed for animations */
 }
 
 /* Sidebar Container with Responsive Behavior */
 .sidebar-container {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    width: var(--sidebar-width);
-    background-color: #f8f9fa;
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    transition: width var(--transition-speed), transform var(--transition-speed);
-    z-index: 100;
+    position: sticky; /* Fixed position for sidebar */
+    top: 0; /* Stick to the top */
+    height: 100vh; /* Full height */
+    width: var(--sidebar-width); /* Default width */
+    background-color: #f8f9fa; /* Light background */
+    border-right: 1px solid var(--border-color); /* Light border */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column layout */
+    overflow-y: auto; /* Scrollable content */
+    transition: width var(--transition-speed), transform var(--transition-speed); /* Smooth transition for width and transform */
+    z-index: 100; /* Ensure sidebar is above other content */
 }
 
 /* Collapsed state for sidebar */
 .sidebar-collapsed .sidebar-container {
-    width: var(--sidebar-collapsed-width);
+    width: var(--sidebar-collapsed-width); /* Collapsed width */
 }
 
 .sidebar-hidden .sidebar-container {
-    transform: translateX(-100%);
+    transform: translateX(-100%); /* Hide sidebar off-screen */
 }
 
 /* Sidebar Header with Toggle Button */
 .sidebar-header {
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: #f8f9fa;
-    z-index: 10;
-    transition: padding var(--transition-speed);
+    padding: 1rem; /* Padding for header */
+    border-bottom: 1px solid var(--border-color); /* Light border */
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    position: sticky; /* Sticky header */
+    top: 0; /* Stick to the top */
+    background-color: #f8f9fa; /* Light background */
+    z-index: 10; /* Ensure header is above other content */
+    transition: padding var(--transition-speed); /* Smooth transition for padding */
 }
 
-.sidebar-collapsed .sidebar-header {
-    padding: 1rem 0.5rem;
-    justify-content: center;
+.sidebar-collapsed .sidebar-header { /* Collapsed state for header */
+    padding: 1rem 0.5rem; /* Reduced padding */
+    justify-content: center; /* Center items */
 }
 
-.sidebar-title {
-    font-weight: 600;
-    font-size: 1.1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: opacity var(--transition-speed), font-size var(--transition-speed);
+.sidebar-title { /* Title in header */
+    font-weight: 600; /* Bold text */
+    font-size: 1.1rem; /* Font size */
+    white-space: nowrap; /* No line breaks */
+    text-overflow: ellipsis; /* Ellipsis for overflow */
+    transition: opacity var(--transition-speed), font-size var(--transition-speed); /* Smooth transition for opacity and font size */
 }
 
-.sidebar-collapsed .sidebar-title {
-    opacity: 0;
-    width: 0;
-    font-size: 0;
+.sidebar-collapsed .sidebar-title { /* Collapsed state for title */
+    opacity: 0; /* Hide title */
+    width: 0; /* No width */
+    font-size: 0; /* No font size */    
 }
 
 .sidebar-toggle {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    padding: 0.25rem;
-    border-radius: 4px;
-    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    background: none; /* No background */
+    border: none; /* No border */
+    color: var(--text-secondary); /* Gray text */
+    cursor: pointer; /* Pointer cursor */
+    padding: 0.25rem; /* Padding for button */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color var(--transition-speed), transform var(--transition-speed); /* Smooth transition for background and transform */
 }
 
-    .sidebar-toggle:hover {
-        background-color: var(--hover-bg);
-        color: var(--primary-color);
+    .sidebar-toggle:hover { /* Hover effect for button */
+        background-color: var(--hover-bg); /* Light background */
+        color: var(--primary-color); /* Primary color text */
     }
 
-.sidebar-collapsed .sidebar-toggle {
+.sidebar-collapsed .sidebar-toggle { /* Collapsed state for button */
     transform: rotate(180deg);
 }
 
 /* Notebooks Container */
-.notebooks-container {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-bottom: 20px;
-    scrollbar-width: thin;
-    scrollbar-color: #ccc transparent;
-    transition: padding var(--transition-speed);
+.notebooks-container { /* Container for notebooks */
+    flex-grow: 1; /* Take remaining space */
+    overflow-y: auto; /* Scrollable content */
+    padding-bottom: 20px; /* Padding for bottom */
+    scrollbar-width: thin; /* Thin scrollbar for Firefox */
+    scrollbar-color: #ccc transparent; /* Scrollbar color for Firefox */
+    transition: padding var(--transition-speed); /* Smooth transition for padding */
 }
 
-    .notebooks-container::-webkit-scrollbar {
-        width: 6px;
+    .notebooks-container::-webkit-scrollbar { /* Custom scrollbar for WebKit browsers */
+        width: 6px; /* Width of scrollbar */
     }
 
-    .notebooks-container::-webkit-scrollbar-track {
-        background: transparent;
+    .notebooks-container::-webkit-scrollbar-track { /* Track of scrollbar */
+        background: transparent; /* Transparent background */   
     }
 
-    .notebooks-container::-webkit-scrollbar-thumb {
-        background-color: #ccc;
-        border-radius: 3px;
+    .notebooks-container::-webkit-scrollbar-thumb { /* Thumb of scrollbar */
+        background-color: #ccc; /* Gray color */
+        border-radius: 3px; /* Rounded corners */
     }
 
-.sidebar-collapsed .notebooks-container {
-    padding: 0.5rem 0;
+.sidebar-collapsed .notebooks-container { /* Collapsed state for container */
+    padding: 0.5rem 0; /* Reduced padding */
 }
 
 /* Notebook Items with Smooth Animation */
 .notebook-item {
-    border-bottom: 1px solid #eaeaea;
-    transition: background-color var(--transition-speed);
+    border-bottom: 1px solid #eaeaea; /* Light border */
+    transition: background-color var(--transition-speed); /* Smooth transition for background */
 }
 
 .notebook-header {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: all var(--transition-speed);
+    padding: 0.75rem 1rem; /* Padding for header */
+    cursor: pointer; /* Pointer cursor */
+    display: flex; /* Flexbox layout */
+    align-items: center; /* Center items vertically */
+    transition: all var(--transition-speed); /* Smooth transition for all properties */
 }
 
-    .notebook-header:hover {
-        background-color: var(--hover-bg);
+    .notebook-header:hover { /* Hover effect for header */
+        background-color: var(--hover-bg); /* Light background */   
     }
 
-.notebook-item.active > .notebook-header {
-    background-color: var(--primary-light);
+.notebook-item.active > .notebook-header { /* Active state for header */
+    background-color: var(--primary-light); /* Light primary background */
 }
 
-.sidebar-collapsed .notebook-header {
-    padding: 0.75rem 0.5rem;
-    justify-content: center;
+.sidebar-collapsed .notebook-header { /* Collapsed state for header */
+    padding: 0.75rem 0.5rem; /* Reduced padding */
+    justify-content: center; /* Center items */
 }
 
-.notebook-icon {
-    margin-right: 0.75rem;
-    font-size: 1rem;
-    flex-shrink: 0;
-    color: var(--text-secondary);
-    transition: margin var(--transition-speed), color var(--transition-speed);
+.notebook-icon { /* Icon in notebook header */
+    margin-right: 0.75rem; /* Margin for icon */
+    font-size: 1rem; /* Font size */
+    flex-shrink: 0; /* Prevent shrinking */
+    color: var(--text-secondary); /* Gray text */
+    transition: margin var(--transition-speed), color var(--transition-speed); /* Smooth transition for margin and color */
 }
 
-.notebook-item.active .notebook-icon {
-    color: var(--primary-color);
+.notebook-item.active .notebook-icon { /* Active state for icon */
+    color: var(--primary-color); /* Primary color text */
 }
 
-.sidebar-collapsed .notebook-icon {
-    margin-right: 0;
-    font-size: 1.2rem;
+.sidebar-collapsed .notebook-icon { /* Collapsed state for icon */
+    margin-right: 0; /* No margin */
+    font-size: 1.2rem; /* Increased font size */
 }
 
-.notebook-title {
-    font-weight: 500;
-    flex-grow: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: opacity var(--transition-speed), width var(--transition-speed);
+.notebook-title { /* Title in notebook header */
+    font-weight: 500; /* Medium weight */
+    flex-grow: 1; /* Take remaining space */
+    white-space: nowrap; /* No line breaks */
+    overflow: hidden; /* No overflow */
+    text-overflow: ellipsis; /* Ellipsis for overflow */
+    transition: opacity var(--transition-speed), width var(--transition-speed); /* Smooth transition for opacity and width */
 }
 
-.sidebar-collapsed .notebook-title {
-    opacity: 0;
-    width: 0;
-    font-size: 0;
+.sidebar-collapsed .notebook-title { /* Collapsed state for title */
+    opacity: 0; /* Hide title */
+    width: 0; /* No width */
+    font-size: 0; /* No font size */    
 }
 
 /* Notes Container with Animation */
 .notes-container {
-    max-height: 0;
-    overflow: hidden;
-    padding-left: 0;
-    background-color: #f9f9f9;
-    transition: max-height var(--transition-speed), padding-left var(--transition-speed);
+    max-height: 0; /* Collapsed state */
+    overflow: hidden; /* Hide overflow */
+    padding-left: 0; /* No padding */
+    background-color: #f9f9f9; /* Light background */
+    transition: max-height var(--transition-speed), padding-left var(--transition-speed); /* Smooth transition for max-height and padding */
 }
 
 .notebook-item.active .notes-container {
     max-height: 50vh; /* Adjustable based on need */
-    padding-left: 20px;
+    padding-left: 20px; /* Padding for expanded state */
 }
 
-.sidebar-collapsed .notes-container {
-    padding-left: 0;
+.sidebar-collapsed .notes-container { /* Collapsed state for notes container */
+    padding-left: 0; /* No padding */
 }
 
-.sidebar-collapsed .notebook-item.active .notes-container {
-    max-height: 0;
+.sidebar-collapsed .notebook-item.active .notes-container { /* Collapsed state for notes container */
+    max-height: 0; /* Collapsed state */
 }
 
-/* Note Items with Better Visual Feedback */
+
 .note-item {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    color: var(--text-primary);
-    text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: all var(--transition-speed);
-    border-radius: 0 4px 4px 0;
-    position: relative;
-    overflow: hidden;
+    display: flex; /* Flexbox layout */
+    align-items: center; /* Center items vertically */
+    padding: 0.5rem 1rem; /* Padding for note item */
+    color: var(--text-primary); /* Dark text color */
+    text-decoration: none; /* No underline */
+    border-left: 3px solid transparent; /* Transparent border */
+    transition: all var(--transition-speed); /* Smooth transition for all properties */
+    border-radius: 0 4px 4px 0; /* Rounded corners */
+    position: relative; /* Relative position for pseudo-element */
+    overflow: hidden; /* Hide overflow */
 }
 
     .note-item:hover {
-        background-color: var(--hover-bg);
+        background-color: var(--hover-bg); /* Light background */
     }
 
     .note-item.active {
-        border-left-color: var(--primary-color);
-        background-color: #e9ecef;
-        font-weight: 500;
+        border-left-color: var(--primary-color); /* Primary color border */
+        background-color: #e9ecef; /* Light background */
+        font-weight: 500; /* Medium weight */
     }
 
-    .note-item::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 5px;
-        height: 5px;
-        background: rgba(0, 123, 255, 0.3);
-        opacity: 0;
-        border-radius: 100%;
-        transform: scale(1) translate(-50%, -50%);
-        transform-origin: 50% 50%;
+    .note-item::after { /* Pseudo-element for ripple effect */
+        content: ''; /* Empty content */
+        position: absolute; /* Absolute position */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        width: 5px; /* Initial width */
+        height: 5px; /* Initial height */
+        background: rgba(0, 123, 255, 0.3); /* Light primary color */
+        opacity: 0; /* Invisible */
+        border-radius: 100%; /* Circle shape */
+        transform: scale(1) translate(-50%, -50%); /* Centered */
+        transform-origin: 50% 50%; /* Origin for scaling */
     }
 
     .note-item:active::after {
-        opacity: 1;
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        transform: scale(0) translate(-50%, -50%);
-        transition: transform 0.3s, opacity 0.3s;
+        opacity: 1; /* Visible */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        border-radius: 0; /* Square shape */
+        transform: scale(0) translate(-50%, -50%); /* Centered */
+        transition: transform 0.3s, opacity 0.3s; /* Smooth transition for transform and opacity */
     }
 
 .note-icon {
-    margin-right: 0.5rem;
-    font-size: 0.875rem;
-    color: var(--text-secondary);
+    margin-right: 0.5rem; /* Margin for icon */
+    font-size: 0.875rem; /* Font size */
+    color: var(--text-secondary); /* Gray text */   
 }
 
-.note-item.active .note-icon {
-    color: var(--primary-color);
+.note-item.active .note-icon { /* Active state for icon */
+    color: var(--primary-color); /* Primary color text */
 }
 
-.note-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-grow: 1;
-    transition: color var(--transition-speed);
+.note-title { /* Title in note item */
+    white-space: nowrap; /* No line breaks */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Ellipsis for overflow */
+    flex-grow: 1; /* Take remaining space */
+    transition: color var(--transition-speed); /* Smooth transition for color */
 }
 
-.note-item:hover .note-title {
-    color: var(--primary-color);
+.note-item:hover .note-title { /* Hover effect for title */
+    color: var(--primary-color); /* Primary color text */
 }
 
 /* New Note Button with Animation */
-.new-note-btn {
-    padding: 0.5rem 1rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all var(--transition-speed);
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    margin: 0.5rem 0.5rem 0;
+.new-note-btn { /* Button for new note */
+    padding: 0.5rem 1rem; /* Padding for button */
+    color: var(--text-secondary); /* Gray text */
+    cursor: pointer; /* Pointer cursor */
+    transition: all var(--transition-speed); /* Smooth transition for all properties */
+    display: flex; /* Flexbox layout */
+    align-items: center; /* Center items vertically */
+    border-radius: 4px; /* Rounded corners */
+    margin: 0.5rem 0.5rem 0; /* Margin for button */
 }
 
-    .new-note-btn:hover {
-        background-color: var(--hover-bg);
-        color: var(--primary-color);
-        transform: translateY(-1px);
+    .new-note-btn:hover { /* Hover effect for button */
+        background-color: var(--hover-bg); /* Light background */
+        color: var(--primary-color); /* Primary color text */
+        transform: translateY(-1px); /* Lift effect */
     }
 
-    .new-note-btn:active {
-        transform: translateY(0);
+    .new-note-btn:active { /* Active state for button */
+        transform: translateY(0); /* Reset lift effect */
     }
 
-.new-note-icon {
-    margin-right: 0.5rem;
+.new-note-icon { /* Icon in new note button */
+    margin-right: 0.5rem; /* Margin for icon */
 }
 
-.sidebar-collapsed .new-note-btn {
-    padding: 0.5rem;
-    justify-content: center;
+.sidebar-collapsed .new-note-btn { /* Collapsed state for button */
+    padding: 0.5rem; /* Reduced padding */
+    justify-content: center; /* Center items */
 }
 
-.sidebar-collapsed .new-note-icon {
-    margin-right: 0;
+.sidebar-collapsed .new-note-icon { /* Collapsed state for icon */
+    margin-right: 0; /* No margin */
 }
 
 .new-note-text {
-    transition: opacity var(--transition-speed), width var(--transition-speed);
+    transition: opacity var(--transition-speed), width var(--transition-speed); /* Smooth transition for opacity and width */
 }
 
 .sidebar-collapsed .new-note-text {
@@ -455,173 +312,174 @@
 
 /* Empty States */
 .empty-state {
-    padding: 2rem 1rem;
-    text-align: center;
-    color: var(--text-secondary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    transition: padding var(--transition-speed);
+    padding: 2rem 1rem; /* Padding for empty state */
+    text-align: center; /* Center text */
+    color: var(--text-secondary); /* Gray text */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column layout */
+    align-items: center; /* Center items */
+    justify-content: center; /* Center items vertically */
+    height: 100%; /* Full height */
+    transition: padding var(--transition-speed); /* Smooth transition for padding */
 }
 
-.sidebar-collapsed .empty-state {
-    padding: 1rem 0.5rem;
+.sidebar-collapsed .empty-state { /* Collapsed state for empty state */
+    padding: 1rem 0.5rem; /* Reduced padding */
 }
 
-.empty-state-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #adb5bd;
-    transition: font-size var(--transition-speed);
+.empty-state-icon { /* Icon in empty state */
+    font-size: 2.5rem; /* Font size */
+    margin-bottom: 1rem; /* Margin for icon */
+    color: #adb5bd; /* Gray color */
+    transition: font-size var(--transition-speed); /* Smooth transition for font size */
 }
 
-.sidebar-collapsed .empty-state-icon {
-    font-size: 1.5rem;
+.sidebar-collapsed .empty-state-icon { /* Collapsed state for icon */
+    font-size: 1.5rem; /* Reduced font size */
 }
 
-.empty-state-text {
-    transition: opacity var(--transition-speed);
+.empty-state-text { /* Text in empty state */
+    transition: opacity var(--transition-speed); /* Smooth transition for opacity */
 }
 
-.sidebar-collapsed .empty-state-text {
-    opacity: 0;
-    height: 0;
-    font-size: 0;
+.sidebar-collapsed .empty-state-text { /* Collapsed state for text */
+    opacity: 0; /* Hide text */
+    height: 0; /* No height */
+    font-size: 0; /* No font size */
 }
 
-.empty-notes-message {
-    padding: 1rem;
-    text-align: center;
-    color: #999;
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    transition: padding var(--transition-speed);
+.empty-notes-message { /* Message for empty notes */
+    padding: 1rem; /* Padding for message */
+    text-align: center; /* Center text */
+    color: #999; /* Gray color */
+    font-size: 0.9rem; /* Font size */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column layout */
+    align-items: center; /* Center items */
+    gap: 0.5rem; /* Space between items */
+    transition: padding var(--transition-speed); /* Smooth transition for padding */
 }
 
-    .empty-notes-message i {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        transition: font-size var(--transition-speed);
+    .empty-notes-message i { /* Icon in empty notes message */
+        font-size: 1.5rem; /* Font size */
+        margin-bottom: 0.5rem; /* Margin for icon */
+        transition: font-size var(--transition-speed); /* Smooth transition for font size */
     }
 
-    .empty-notes-message p {
-        margin: 0;
-        transition: opacity var(--transition-speed);
+    .empty-notes-message p { /* Text in empty notes message */
+        margin: 0; /* No margin */
+        transition: opacity var(--transition-speed); /* Smooth transition for opacity */
     }
 
-.sidebar-collapsed .empty-notes-message {
-    padding: 0.5rem;
+.sidebar-collapsed .empty-notes-message { /* Collapsed state for empty notes message */
+    padding: 0.5rem; /* Reduced padding */
 }
 
-    .sidebar-collapsed .empty-notes-message i {
-        font-size: 1rem;
+    .sidebar-collapsed .empty-notes-message i { /* Collapsed state for icon */
+        font-size: 1rem; /* Reduced font size */
     }
 
-    .sidebar-collapsed .empty-notes-message p {
-        opacity: 0;
-        height: 0;
-        font-size: 0;
+    .sidebar-collapsed .empty-notes-message p { /* Collapsed state for text */
+        opacity: 0; /* Hide text */
+        height: 0; /* No height */
+        font-size: 0; /* No font size */
     }
 
 /* Toggle Icon Animation */
 .toggle-icon {
-    transition: transform var(--transition-speed);
+    transition: transform var(--transition-speed); /* Smooth transition for transform */
 }
 
 .notebook-item.active .toggle-icon {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* Rotate icon for active state */
 }
 
 .sidebar-collapsed .toggle-icon {
-    opacity: 0;
-    width: 0;
+    opacity: 0; /* Hide icon */
+    width: 0; /* No width */
 }
 
 /* Tooltip for collapsed sidebar */
 .sidebar-tooltip {
-    position: fixed;
-    left: calc(var(--sidebar-collapsed-width) + 10px);
-    background-color: #333;
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: opacity var(--transition-speed), transform var(--transition-speed);
-    pointer-events: none;
-    z-index: 1000;
-    white-space: nowrap;
+    position: fixed; /* Fixed position */
+    left: calc(var(--sidebar-collapsed-width) + 10px); /* Position next to collapsed sidebar */
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    padding: 0.25rem 0.5rem; /* Padding for tooltip */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 0.875rem; /* Font size */
+    opacity: 0; /* Invisible */
+    transform: translateX(-10px); /* Shift to the left */
+    transition: opacity var(--transition-speed), transform var(--transition-speed); /* Smooth transition for opacity and transform */
+    pointer-events: none; /* Ignore pointer events */
+    z-index: 1000; /* Ensure tooltip is above other content */
+    white-space: nowrap; /* No line breaks */
 }
 
-.sidebar-collapsed .notebook-header:hover .sidebar-tooltip,
-.sidebar-collapsed .new-note-btn:hover .sidebar-tooltip {
-    opacity: 1;
-    transform: translateX(0);
+.sidebar-collapsed .notebook-header:hover .sidebar-tooltip, /* Tooltip for notebook header */
+.sidebar-collapsed .new-note-btn:hover .sidebar-tooltip { /* Tooltip for new note button */
+    opacity: 1; /* Visible */
+    transform: translateX(0); /* Reset shift */
 }
 
 /* Responsive Adaptations */
 @media (max-width: 992px) {
     :root {
-        --sidebar-width: 240px;
+        --sidebar-width: 240px; /* Adjusted width for smaller screens */
     }
 }
 
 @media (max-width: 768px) {
     .sidebar-container {
-        position: fixed;
-        width: var(--sidebar-width);
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        z-index: 1000;
+        position: fixed; /* Fixed position for mobile */
+        width: var(--sidebar-width); /* Full width */
+        box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Shadow for mobile */
+        z-index: 1000; /* Ensure sidebar is above other content */
     }
 
     .sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity var(--transition-speed), visibility var(--transition-speed);
+        position: fixed; /* Fixed position for overlay */
+        top: 0; /* Top of the screen */
+        left: 0; /* Left of the screen */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+        z-index: 999; /* Ensure overlay is above other content */
+        opacity: 0; /* Invisible */
+        visibility: hidden; /* Hidden */
+        transition: opacity var(--transition-speed), visibility var(--transition-speed); /* Smooth transition for opacity and visibility */
     }
 
-    .sidebar-visible .sidebar-overlay {
-        opacity: 1;
-        visibility: visible;
+    .sidebar-visible .sidebar-overlay { /* Visible state for overlay */
+        opacity: 1; /* Visible */
+        visibility: visible; /* Visible */
     }
 
-    .sidebar-toggle-mobile {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
-        background-color: var(--primary-color);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        z-index: 100;
-        cursor: pointer;
-        transition: background-color var(--transition-speed);
+    .sidebar-toggle-mobile { /* Toggle button for mobile */
+        position: fixed; /* Fixed position */
+        bottom: 20px; /* Bottom of the screen */
+        right: 20px; /* Right of the screen */
+        width: 50px; /* Width of button */
+        height: 50px; /* Height of button */
+        border-radius: 25px; /* Circular button */
+        background-color: var(--primary-color); /* Primary color */
+        color: white; /* White text */
+        display: flex; /* Flexbox layout */
+        align-items: center; /* Center items vertically */
+        justify-content: center; /* Center items horizontally */
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Shadow for button */
+        z-index: 100; /* Ensure button is above other content */
+        cursor: pointer; /* Pointer cursor */
+        transition: background-color var(--transition-speed); /* Smooth transition for background color */
     }
 
         .sidebar-toggle-mobile:hover {
-            background-color: #0069d9;
+            background-color: #0069d9; /* Darker primary color on hover */
         }
 }
 
 @media (max-width: 576px) {
+    /* Adjustments for extra small screens */
     :root {
         --sidebar-width: 100%;
     }
