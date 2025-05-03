@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
+﻿
 using termprojectJksmartnote.Models.Entities;
 
 namespace termprojectJksmartnote.Services

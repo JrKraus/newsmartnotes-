@@ -7,9 +7,13 @@ h1 {
 
 .stats-container {
     display: grid; /* Use grid layout */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive columns */
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* Responsive columns */
     gap: 20px; /* Space between grid items */
     margin-bottom: 30px; /* Space below the stats */
+    margin: 0 auto; /* Centers the grid horizontally */
+    max-width: 1200px; /*limits the maximum width*/
+    justify-content: center; /*center the stats*/
+    width: fit-content; 
 }
 
 .stat-card {

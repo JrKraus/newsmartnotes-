@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 theme: 'snow',
                 placeholder: 'Compose your note...',
                 modules: {
-                    toolbar: [
+                    toolbar: [   //all the tools that is in the editbar 
                         ['bold', 'italic', 'underline', 'strike'],
                         ['blockquote', 'code-block'],
                         [{ 'header': 1 }, { 'header': 2 }],
@@ -1365,6 +1365,11 @@ document.addEventListener('DOMContentLoaded', function () {
     window.showEditNotebookModal = function () {
         const notebookTitle = document.getElementById('currentNotebookTitle').textContent;
         document.getElementById('editNotebookNameInput').value = notebookTitle;
+        const warningMessage = document.getElementById('noNotebookSelectedWarning');
+        const saveButton = document.getElementById('saveNotebookButton');
+        saveButton.disabled = false;
+        
+        warningMessage.style.display = 'none';
         $('#editNotebookModal').modal('show');
     };
 
@@ -1477,9 +1482,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Updates a notebook's name
     window.updateNotebookName = async function () {
         const newName = document.getElementById('editNotebookNameInput').value.trim();
+        const saveButton = document.getElementById('saveNotebookButton');
+        const warningMessage = document.getElementById('noNotebookSelectedWarning');
+        saveButton.disabled = false;
         if (!newName) {
             showToast('Please enter a valid notebook name', 'warning');
             return;
+        }
+        if (!currentNotebookId) {
+            saveButton.disabled = true;
+            warningMessage.style.display = 'block';
+        }
+        else {
+            saveButton.disable = false;
+            warningMessage.style.display = 'none';
         }
         try {
             const response = await fetch(`/api/Notebooks/${currentNotebookId}`, {
@@ -1504,6 +1520,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Close modal
             $('#editNotebookModal').modal('hide');
+          
         } catch (error) {
             console.error('Error updating notebook name:', error);
             showToast(`Failed to update notebook name: ${error.message}`, 'danger');

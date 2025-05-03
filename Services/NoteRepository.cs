@@ -1,6 +1,5 @@
 ﻿using Azure;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models.Entities;
 

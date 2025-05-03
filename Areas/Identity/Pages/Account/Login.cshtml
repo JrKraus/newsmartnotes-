@@ -47,7 +47,22 @@
         </section>
     </div>
 </div>
+<style>
+    .visually-hidden-focusable {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        background: #222;
+        color: #fff;
+        padding: 8px 16px;
+        z-index: 1000;
+    }
 
+        .visually-hidden-focusable:focus {
+            left: 0;
+        }
+
+</style>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

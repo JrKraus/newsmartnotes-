@@ -32,11 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
             return new Quill(editorContainer, {
                 theme: 'snow',
                 placeholder: 'Compose your note...',
-                modules: {
+                modules: {   //all the tools that is in the editbar 
                     toolbar: [
-                        ['bold', 'italic', 'underline'],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        ['blockquote', 'code-block'],
+                        [{ 'header': 1 }, { 'header': 2 }],
                         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                        ['link'],
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],
+                        ['link', 'image'],
                         ['clean']
                     ]
                 }
