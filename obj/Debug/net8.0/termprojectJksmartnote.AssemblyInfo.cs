@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("termprojectJksmartnote")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31fda9e9decf091457cb46bd7f64f8d7a12aa427")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c252542519e71625bb2f28c203225b1f42ef1f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("termprojectJksmartnote")]
 [assembly: System.Reflection.AssemblyTitleAttribute("termprojectJksmartnote")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

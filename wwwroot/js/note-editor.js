@@ -1,23 +1,20 @@
 ﻿
+// Variables to keep track of the note editor state
+let quill; // The rich text editor
+let autoSaveTimer; // Timer for auto-saving notes
+let currentNoteId = null; // ID of the note being edited
+let currentNotebookId = null; // ID of the current notebook
+let isEditorDirty = false; // Tracks if changes need to be saved
+let lastSavedTime = null; // When the note was last saved
 
-//const { Toast } = require("../lib/bootstrap/dist/js/bootstrap.bundle");
-
-//const { event } = require("jquery");
-
-// Global variables for editor state
-let quill; // Quill editor instance
-let autoSaveTimer; // Timer for auto-save functionality
-let currentNoteId = null;
-let currentNotebookId = null;
-let isEditorDirty = false;
-let lastSavedTime = null;
-
-// FIX: Add request tracking to prevent race conditions
+// Keeps track of active server requests to prevent conflicts
 let activeRequests = {
-    loadingNotebook: null, // AbortController for loading notebooks
-    loadingNote: null      // AbortController for loading notes
+    loadingNotebook: null, // For notebook loading requests
+    loadingNote: null      // For note loading requests
 };
-//let currentNotebookId = null;
+
+// Cancels an in-progress request to prevent conflicts
+// type: the request type to cancel ("loadingNotebook" or "loadingNote")
 const cancelActiveRequests = (type) => {
     if (activeRequests[type] && activeRequests[type].abort) {
         console.log(`Aborting active ${type} request`);
@@ -25,20 +22,21 @@ const cancelActiveRequests = (type) => {
         activeRequests[type] = null;
     }
 };
+
+// Reloads the list of notes for the current notebook
 function refreshNotesList() {
     if (!currentNotebookId) {
         console.warn('No active notebook to refresh');
         return;
     }
-
-    // Create new abort controller for this refresh request
+    // Create a way to cancel this request if needed
     activeRequests.loadingNotebook = new AbortController();
     const signal = activeRequests.loadingNotebook.signal;
 
-    // Show loading indicator
+    // Show loading spinner
     showNotesLoadingIndicator();
 
-    // Fetch and render the updated notes
+    // Get notes from server and update the UI
     fetchNotebookNotes(currentNotebookId, signal)
         .then(data => {
             renderNotesList(data, signal);
@@ -54,10 +52,8 @@ function refreshNotesList() {
         });
 }
 
-// let currentNotebookId;
-// let activeRequests = { loadingNotebook: null, loadingNote: null };
-
-
+// Cancels an active request by type
+// requestType: either "notebook" or "note"
 function cancelActiveRequest(requestType) {
     const requestKey = `loading${requestType.charAt(0).toUpperCase() + requestType.slice(1)}`;
     if (activeRequests[requestKey] && activeRequests[requestKey].abort) {
@@ -67,19 +63,19 @@ function cancelActiveRequest(requestType) {
     }
 }
 
-
+// Updates the UI to show which notebook is selected
+// notebookId: the ID of the selected notebook
 function updateNotebookSelectionUI(notebookId) {
-    // Reset active state on all notebooks
+    // Remove active class from all notebooks
     document.querySelectorAll('.notebook-item').forEach(item => {
         item.classList.remove('active');
     });
 
-    // Set active state on selected notebook
+    // Add active class to the selected notebook
     const notebookElement = document.querySelector(`.notebook-item[data-notebook-id="${notebookId}"]`);
     if (notebookElement) {
         notebookElement.classList.add('active');
-
-        // Toggle icon rotation
+        // Rotate the arrow icon
         const toggleIcon = notebookElement.querySelector('.toggle-icon');
         if (toggleIcon) {
             toggleIcon.classList.toggle('rotated');
@@ -87,11 +83,9 @@ function updateNotebookSelectionUI(notebookId) {
     }
 }
 
-/**
- * Updates the UI fields with current notebook information
- * @param {string} notebookId - ID of the current notebook
- * @param {string} notebookTitle - Title of the current notebook
- */
+// Updates the UI with the current notebook info
+// notebookId: ID of the current notebook
+// notebookTitle: title of the current notebook
 function updateNotebookInfoUI(notebookId, notebookTitle) {
     // Update hidden field with notebook ID
     const notebookIdField = document.getElementById('currentNotebookId');
@@ -110,9 +104,7 @@ function updateNotebookInfoUI(notebookId, notebookTitle) {
     if (deleteNotebookBtn) deleteNotebookBtn.style.display = 'inline-block';
 }
 
-
-  //Shows a loading indicator in the notes list
- 
+// Shows a loading spinner in the notes list
 function showNotesLoadingIndicator() {
     const notesList = document.getElementById('notesList');
     if (notesList) {
@@ -120,9 +112,8 @@ function showNotesLoadingIndicator() {
     }
 }
 
-
- // Shows an error message in the notes list
- 
+// Shows an error message in the notes list
+// errorMessage: the error message to display
 function showNotesError(errorMessage) {
     const notesList = document.getElementById('notesList');
     if (notesList) {
@@ -130,11 +121,9 @@ function showNotesError(errorMessage) {
     }
 }
 
-/**
- * Creates a note element for display in the notes list
- * @param {Object} note - Note data object
- * @returns {HTMLElement} - Created note element
- */
+// Creates a note element for the notes list
+// note: the note data object
+// returns: HTML element for the note
 function createNoteElement(note) {
     const noteElement = document.createElement('div');
     noteElement.className = 'note-item';
@@ -150,17 +139,17 @@ function createNoteElement(note) {
       </div>
     </div>`;
 
-    // Attach event listener for note selection
+    // When note is clicked, load its content
     noteElement.addEventListener('click', function (e) {
         e.preventDefault();
 
-        // Prevent rapid clicking
+        // Prevent clicking if already loading a note
         if (activeRequests.loadingNote) {
             console.log('Already loading a note, ignoring click');
             return;
         }
 
-        // Update UI
+        // Update UI to show which note is selected
         document.querySelectorAll('.note-item').forEach(item => {
             item.classList.remove('active');
         });
@@ -173,7 +162,9 @@ function createNoteElement(note) {
     return noteElement;
 }
 
-
+// Renders the list of notes in the UI
+// data: the notes data from the server
+// signal: abort signal to cancel the operation
 function renderNotesList(data, signal) {
     if (signal.aborted) {
         throw new Error('Request aborted');
@@ -199,7 +190,7 @@ function renderNotesList(data, signal) {
         return;
     }
 
-    // Render each note
+    // Add each note to the list
     notes.forEach(note => {
         if (!note || !note.id) return;
         const noteElement = createNoteElement(note);
@@ -208,7 +199,10 @@ function renderNotesList(data, signal) {
     });
 }
 
-
+// Gets notes for a notebook from the server
+// notebookId: ID of the notebook
+// signal: abort signal to cancel the request
+// returns: Promise with the notes data
 function fetchNotebookNotes(notebookId, signal) {
     return fetch(`/api/Notes/ByNotebook/${notebookId}`, { signal })
         .then(response => {
@@ -229,26 +223,28 @@ function fetchNotebookNotes(notebookId, signal) {
         });
 }
 
-
+// Loads notes for a notebook (called from HTML)
+// notebookId: ID of the notebook to load
+// notebookTitle: title of the notebook
 window.loadNotebookNotes = (notebookId, notebookTitle) => {
     console.log(`Loading notes for notebook: ${notebookId} - ${notebookTitle}`);
 
-    // Prevent loading the same notebook repeatedly
+    // Don't reload if it's already the current notebook
     if (currentNotebookId === notebookId) {
         console.log(`Notebook ${notebookId} already active, skipping reload`);
         return;
     }
 
     try {
-        // Cancel any ongoing notebook and note requests
+        // Cancel any ongoing requests
         cancelActiveRequest("notebook");
         cancelActiveRequest("note");
 
-        // Create new abort controller for this request
+        // Create new abort controller
         activeRequests.loadingNotebook = new AbortController();
         const signal = activeRequests.loadingNotebook.signal;
 
-        // Update UI elements
+        // Update UI
         updateNotebookSelectionUI(notebookId);
         currentNotebookId = notebookId;
         updateNotebookInfoUI(notebookId, notebookTitle);
@@ -256,18 +252,16 @@ window.loadNotebookNotes = (notebookId, notebookTitle) => {
         // Show loading state
         showNotesLoadingIndicator();
 
-        // Fetch and render notes
+        // Get and display notes
         fetchNotebookNotes(notebookId, signal)
             .then(data => {
                 renderNotesList(data, signal);
-                // Request completed successfully
                 activeRequests.loadingNotebook = null;
             })
             .catch(error => {
                 if (error.name === 'AbortError' || error.message === 'Request aborted') {
                     console.log('Loading notes request was aborted');
                     return;
-                   
                 }
 
                 console.error('Error loading notes:', error);
@@ -275,7 +269,6 @@ window.loadNotebookNotes = (notebookId, notebookTitle) => {
                     showNotesError(error.message);
                 }
 
-                // Clear the request object on error
                 activeRequests.loadingNotebook = null;
             });
     } catch (err) {
@@ -284,6 +277,9 @@ window.loadNotebookNotes = (notebookId, notebookTitle) => {
     }
 };
 
+// Creates HTML for a list of notes
+// notes: array of note objects
+// returns: HTML string
 function generateNotesHTML(notes) {
     return notes.map(note => `
         <div class="note-item" data-note-id="${note.id}">
@@ -297,11 +293,12 @@ function generateNotesHTML(notes) {
         </div>`
     ).join('');
 }
+
 document.addEventListener('DOMContentLoaded', function () {
 
-   
+    // Sets up the Quill rich text editor
     function initializeQuill() {
-        // Look for the existing ID in your HTML
+        // Find the editor container
         const editorContainer = document.getElementById('quillEditor');
 
         if (!editorContainer) {
@@ -310,6 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
+            // Create Quill editor with toolbar options
             return new Quill(editorContainer, {
                 theme: 'snow',
                 placeholder: 'Compose your note...',
@@ -336,40 +334,42 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!quill) {
         console.error('Failed to initialize Quill editor');
     }
+
+    // Set up notebook click handlers
     const notebookItems = document.querySelectorAll('.notebook-item');
     notebookItems.forEach(item => {
         item.addEventListener('click', (event) => {
             const notebookId = item.getAttribute('data-notebook-id');
-            const notebookTitle = item.textContent.trim(); // Or however you get the title
-            window.loadNotebookNotes(notebookId, notebookTitle); // Call the function
-            
+            const notebookTitle = item.textContent.trim();
+            window.loadNotebookNotes(notebookId, notebookTitle);
         });
-    });// Initialize Quill or get existing instance safely
-    
+    });
 
+    // Loads a note's content into the editor
+    // noteId: ID of the note to load
+    // retryCount: number of retry attempts (for error handling)
     function loadNoteContent(noteId, retryCount = 0) {
-        //quill = initializeQuill();
         try {
-            // Hide empty state and show editor using Bootstrap classes
+            // Show editor and hide empty state
             document.getElementById('noteEditorEmpty').classList.add('d-none');
             document.getElementById('noteEditor').classList.remove('d-none');
             const MAX_RETRIES = 3;
             console.log(`Loading note ID: ${noteId}`);
 
-            //  Prevent loading the same note repeatedly
+            // Don't reload if it's already the current note
             if (currentNoteId === noteId && !retryCount) {
                 console.log(`Note ${noteId} already loaded, skipping reload`);
                 return;
             }
 
-            //  Cancel any ongoing note requests
+            // Cancel any ongoing note requests
             cancelActiveRequest("note");
 
-            // Create new abort controller for this request
+            // Create new abort controller
             activeRequests.loadingNote = new AbortController();
             const signal = activeRequests.loadingNote.signal;
 
-            // Ensure Quill is initialized
+            // Make sure Quill is ready
             if (!quill) {
                 quill = initializeQuill();
                 if (!quill) {
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            // Find note title field (trying multiple potential IDs)
+            // Find the title field (trying different possible IDs)
             const noteTitleField = document.getElementById('note-Title') ||
                 document.getElementById('noteTitle') ||
                 document.getElementById('noteTitleField');
@@ -396,16 +396,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error setting Quill text:', err);
             }
 
-            //Set loading state variable
+            // Set timeout to abort if taking too long
             let loadingTimeoutId = setTimeout(() => {
-                // If the request takes too long, abort it
                 if (activeRequests.loadingNote) {
                     activeRequests.loadingNote.abort();
                     showToast('Note loading timeout. Please try again.', 'warning');
                 }
-            }, 15000); // 15 second timeout
+            }, 15000); // 15 seconds
 
-            // Fetch note data
+            // Get note data from server
             fetch(`/api/Notes/${noteId}`, { signal })
                 .then(response => {
                     if (signal.aborted) {
@@ -431,12 +430,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     clearTimeout(loadingTimeoutId);
                     console.log(`Successfully loaded note: ${note.id}`);
 
-                    // Update title if field exists
+                    // Update title
                     if (noteTitleField) {
                         noteTitleField.value = note.title || 'Untitled';
                     }
 
-                    // Update editor content safely
+                    // Update editor content
                     try {
                         quill.setContents([]);
                         quill.clipboard.dangerouslyPasteHTML(0, note.content || '');
@@ -445,22 +444,21 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.error('Error updating Quill content:', err);
                     }
 
-                    // Update note ID and reference
+                    // Update note ID
                     currentNoteId = note.id;
                     const currentNoteIdField = document.getElementById('currentNoteId');
                     if (currentNoteIdField) {
                         currentNoteIdField.value = note.id;
                     }
 
-                    // Update timestamp if function exists
+                    // Update last saved time
                     if (note.updatedAt) {
                         updateLastSavedTime(new Date(note.updatedAt));
                     }
 
-                    // Reset edit tracking
+                    // Reset tracking
                     isEditorDirty = false;
                     loadNoteTags(noteId)
-                    // Clear the request object on success
                     activeRequests.loadingNote = null;
                 })
                 .catch(error => {
@@ -474,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     console.error(`Error loading note ${noteId}:`, error);
 
-                    // Implement retry for server errors
+                    // Retry for server errors
                     if (retryCount < MAX_RETRIES &&
                         (error.message.includes('500') ||
                             error.message.includes('NetworkError'))) {
@@ -482,7 +480,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         const delay = Math.pow(2, retryCount) * 1000;
                         console.log(`Retrying (${retryCount + 1}/${MAX_RETRIES}) after ${delay}ms`);
 
-                        // Clear the current request before retrying
                         activeRequests.loadingNote = null;
 
                         setTimeout(() => {
@@ -496,9 +493,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         noteTitleField.value = 'Error loading note';
                     }
 
-                    // Update editor with error message safely
+                    // Show error in editor
                     try {
-                        //quill.setText('');
                         quill.clipboard.dangerouslyPasteHTML(0, `
                             <div class="error-message" style="color: #d9534f; padding: 15px; border: 1px solid #d9534f; border-radius: 4px;">
                                 <h3>Error Loading Note</h3>
@@ -508,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         `);
 
-                        // Use event delegation for retry button
+                        // Add retry button handler
                         document.querySelector('.ql-editor').addEventListener('click', function (event) {
                             if (event.target.classList.contains('retry-button')) {
                                 loadNoteContent(noteId);
@@ -520,26 +516,24 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.error('Error showing error message in editor:', err);
                     }
 
-                    // Clear the request object on error
                     activeRequests.loadingNote = null;
                 });
         } catch (error) {
             console.error('Error loading note:', error);
-            // Show empty state if error occurs
+            // Show empty state if error
             document.getElementById('noteEditorEmpty').classList.remove('d-none');
             document.getElementById('noteEditor').classList.add('d-none');
         }
     }
 
-    // Make loadNoteContent globally available
+    // Make loadNoteContent available globally
     window.loadNoteContent = loadNoteContent;
 
-    
-    // Function to toggle notebook expansion
-     
+    // Toggles a notebook's expanded/collapsed state
+    // notebookId: ID of the notebook to toggle
     window.toggleNotebook = function (notebookId) {
         try {
-            // First find the notebook item
+            // Find the notebook element
             const notebookItem = document.querySelector(
                 `.notebook-item[data-notebook-id="${notebookId}"]`
             );
@@ -549,30 +543,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Check if notes container exists
+            // Find or create notes container
             let notesContainer = document.getElementById(`notes-${notebookId}`);
 
-            // If the container doesn't exist, create one
             if (!notesContainer) {
                 console.log(`Creating notes container for notebook ID: ${notebookId}`);
                 notesContainer = document.createElement('div');
                 notesContainer.id = `notes-${notebookId}`;
                 notesContainer.className = 'notes-container';
-
-                // Insert after the notebook item
                 notebookItem.after(notesContainer);
             }
 
             // Toggle expanded class
             notesContainer.classList.toggle('expanded');
 
-            // Toggle icon rotation
+            // Toggle arrow icon rotation
             const toggleIcon = notebookItem.querySelector('.toggle-icon');
             if (toggleIcon) {
                 toggleIcon.classList.toggle('rotated');
             }
 
-            // Always load notes because in your HTML they're displayed in the main notes panel
+            // Load notes
             const notebookTitle = notebookItem.querySelector('.notebook-title')?.textContent || '';
             loadNotebookNotes(notebookId, notebookTitle);
 
@@ -581,20 +572,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    
-     //Creates a new note in the current notebook
-     
+    // Creates a new empty note in the current notebook
     function createNewNote() {
-        // Check prerequisites
+        // Make sure a notebook is selected
         if (!currentNotebookId) {
             showToast('Please select a notebook first', 'warning');
             return;
         }
 
-        // FIX: Cancel any ongoing note request
+        // Cancel any ongoing note requests
         cancelActiveRequest("note");
 
-        // Ensure Quill is initialized
+        // Make sure Quill is ready
         if (!quill) {
             quill = initializeQuill();
             if (!quill) {
@@ -603,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Get references to DOM elements
+        // Get UI elements
         const noteEditorEmpty = document.getElementById('noteEditorEmpty');
         const noteEditor = document.getElementById('noteEditor');
         const noteTitleField = document.getElementById('noteTitleField') ||
@@ -646,19 +635,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         isEditorDirty = false;
         isNoteDeleted = false;
-       
     }
 
-    // Make createNewNote globally available
+    // Make createNewNote available globally
     window.createNewNote = createNewNote;
 
-    /**
-     * Saves the current note
-     */
+    // Saves the current note to the server
     function saveNote() {
         if (!isEditorDirty || !quill) return;
 
-        // Check if the note has been deleted
+        // Don't save if note was deleted
         if (isNoteDeleted) {
             console.log('Note has been deleted, save operation aborted');
             return;
@@ -684,21 +670,21 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Validate notebook
+        // Make sure a notebook is selected
         if (!currentNotebookId) {
             showToast('Cannot save note: No notebook selected', 'danger');
             return;
         }
 
-        // Create an AbortController for the save request
+        // Create abort controller for timeout
         const saveController = new AbortController();
         const signal = saveController.signal;
 
-        // Set a timeout to abort the request if it takes too long
+        // Set timeout to abort if taking too long
         const saveTimeoutId = setTimeout(() => {
             saveController.abort();
             showToast('Save operation timed out. Please try again.', 'warning');
-        }, 10000); // 10 second timeout
+        }, 10000); // 10 seconds
 
         // Prepare form data
         const formData = new FormData();
@@ -711,17 +697,10 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('Id', currentNoteId);
         }
 
-        //// Add CSRF token
-        //const tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
-        //if (tokenElement) {
-        //    formData.append('__RequestVerificationToken', tokenElement.value);
-        //}
-
-        // Use the right API endpoint format based on your backend API
-        // Choose endpoint based on operation
+        // Choose endpoint based on operation (create or update)
         const url = currentNoteId
-            ? `/api/Notes/${currentNoteId}` // RESTful approach
-            : '/api/Notes';
+            ? `/api/Notes/${currentNoteId}` // Update existing note
+            : '/api/Notes'; // Create new note
 
         const method = currentNoteId ? 'PUT' : 'POST';
 
@@ -744,12 +723,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (response.status === 405) {
                         console.warn('Method Not Allowed error. Trying alternative API endpoint format...');
 
-                        // If I get a 405, try an alternative API pattern
+                        // Try alternative API pattern if 405 error
                         const altUrl = currentNoteId ? '/api/Notes/update' : '/api/Notes/create';
 
-                        // Retry with the alternative URL
+                        // Retry with alternative URL
                         return fetch(altUrl, {
-                            method: 'POST', // Always use POST for the alternative format
+                            method: 'POST', // Always use POST for alternative format
                             body: formData
                         });
                     }
@@ -763,7 +742,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(response => {
-                // Check if this is from our alternative approach
+                // Check if this is from alternative approach
                 if (!response.ok && response.status === 405) {
                     throw new Error('Both API endpoint formats failed. Please check your API documentation.');
                 }
@@ -802,7 +781,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 console.error('Error saving note:', error);
 
-                //Handle 405 errors with more specific guidance
+                // Handle 405 errors with more specific guidance
                 if (error.message.includes('405') || error.message.includes('Method Not Allowed')) {
                     showToast('API endpoint issue. Please check server logs.', 'danger');
                 } else {
@@ -811,7 +790,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    
+    // Updates the last saved time display
+    // date: Date object of when the note was saved
     function updateLastSavedTime(date) {
         lastSavedTime = date;
         const timeString = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -821,7 +801,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    
+    // Resets the auto-save timer
     function resetAutoSaveTimer() {
         clearTimeout(autoSaveTimer);
         autoSaveTimer = setTimeout(function () {
@@ -831,7 +811,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000); // Auto-save after 2 seconds of inactivity
     }
 
-    
+    // Shows a toast notification
+    // message: text to display
+    // type: bootstrap color type (success, danger, warning, info)
     function showToast(message, type = 'info') {
         // Create toast container if it doesn't exist
         let toastContainer = document.querySelector('.toast-container');
@@ -860,7 +842,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         toastContainer.appendChild(toastEl);
 
-        // Initialize and show the toast
+        // Show the toast
         try {
             const toast = new bootstrap.Toast(toastEl, { autohide: true, delay: 3000 });
             toast.show();
@@ -878,14 +860,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Make showToast globally available
+    // Make showToast available globally
     window.showToast = showToast;
 
-    
+    // Sets up all event handlers
     function initializeEventHandlers() {
-        // Initialize notebook toggle handlers
+        // Set up notebook toggle handlers
         document.querySelectorAll('.notebook-header').forEach(header => {
-            // FIX: Use a single event handler with debounce
+            // Use a single event handler with debounce to prevent multiple clicks
             if (!header.hasEventListener) {
                 header.hasEventListener = true;
                 header.addEventListener('click', debounce(function (e) {
@@ -898,11 +880,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Initialize note click handlers with debounce to prevent double-clicks
+        // Set up note click handlers with debounce
         document.querySelectorAll('[data-note-id]').forEach(noteLink => {
             if (!noteLink.hasEventListener) {
                 noteLink.hasEventListener = true;
-                noteLink.addEventListener('click', debounce(function (e) {                                                                  
+                noteLink.addEventListener('click', debounce(function (e) {
                     e.preventDefault();
                     const noteId = this.dataset.noteId;
                     loadNoteContent(noteId);
@@ -910,7 +892,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Initialize new note button
+        // Set up new note button
         const newNoteBtn = document.getElementById('newNoteBtn');
         if (newNoteBtn && !newNoteBtn.hasEventListener) {
             newNoteBtn.hasEventListener = true;
@@ -929,7 +911,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Set up auto-save for content changes only once
+        // Set up auto-save for content changes
         if (quill && !quill.hasChangeListener) {
             quill.hasChangeListener = true;
             quill.on('text-change', function () {
@@ -939,7 +921,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    
+    // Prevents multiple rapid calls to a function
+    // func: the function to debounce
+    // wait: milliseconds to wait between calls
     function debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -977,8 +961,10 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (err) {
         console.error('Error setting up mutation observer:', err);
     }
+
+    // Deletes the current notebook
     window.deleteNotebook = async function () {
-        const notebookId = currentNotebookId; // Ensure `currentNotebookId` is set when selecting a notebook
+        const notebookId = currentNotebookId;
 
         if (!notebookId) {
             showToast('No notebook selected', 'warning');
@@ -1005,14 +991,16 @@ document.addEventListener('DOMContentLoaded', function () {
             showToast('Notebook deleted successfully', 'success');
 
             // Refresh the notebook list
-            location.reload(); // Reload the page or re-fetch notebooks dynamically
+            location.reload();
         } catch (error) {
             console.error('Error deleting notebook:', error);
             showToast('Failed to delete notebook: ' + error.message, 'danger');
         }
     };
+
+    // Deletes the current note
     window.deleteNote = async function () {
-        const noteId = currentNoteId; // Ensure `currentNoteId` is set when selecting a note
+        const noteId = currentNoteId;
 
         if (!noteId) {
             showToast('No note selected', 'warning');
@@ -1035,9 +1023,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!response.ok) {
                 throw new Error(`Failed to delete note: ${response.status}`);
             }
-            else
-            {
-
+            else {
                 showToast('Note deleted successfully', 'success');
 
                 // Clear the editor and reset state
@@ -1046,21 +1032,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('noteEditorEmpty').classList.remove('d-none');
                 document.getElementById('noteEditor').classList.add('d-none');
 
-                // Optionally reload notes list
+                // Refresh notes list
                 isNoteDeleted = false;
                 refreshNotesList();
-               
-                
-
             }
-
-           
-
         } catch (error) {
             console.error('Error deleting note:', error);
             showToast('Failed to delete note: ' + error.message, 'danger');
         }
     };
+
+    // Adds a tag to the current note
     window.tagNote = async function () {
         const noteId = currentNoteId;
         if (!noteId) {
@@ -1073,11 +1055,10 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         try {
-            // Fixed endpoint to match the controller route structure
             const response = await fetch(`/api/Tags/${noteId}`, {
                 method: 'POST',
                 headers: {
-                'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                     'X-Requested-With': 'XMLHttpRequest'
                 },
                 body: JSON.stringify({ tag: tag })
@@ -1095,6 +1076,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+    // Set up tag modal
     const tagModal = document.getElementById('tagModal');
     const tagNoteBtn = document.getElementById('tagNoteBtn');
 
@@ -1111,12 +1093,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                // If I have a valid note, load the tags immediately before the modal shows
-               showTagModal();
-               refreshCurrentNote()
+                // Load tags before showing modal
+                showTagModal();
+                refreshCurrentNote()
             });
 
-            // I can also handle the button click if needed
+            // Handle button click
             tagNoteBtn.addEventListener('click', function (event) {
                 if (!currentNoteId) {
                     // Prevent bootstrap from showing the modal
@@ -1124,20 +1106,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     event.stopPropagation();
                     showTagModal();
                     showToast('No note selected', 'warning');
-
                 }
-                // The modal show event will handle loading tags if there is a currentNoteId
             });
         }
     });
-   
-   
 
-    // Updated to handle tag objects properly
-    window.showTagModal = async function () 
-    {
+    // Shows the tag management modal
+    window.showTagModal = async function () {
         try {
-            // Log the request URL for debugging
+            // Get all tags from server
             console.log('Fetching tags from:', '/api/Tags/gettag');
 
             const response = await fetch('/api/Tags/gettag');
@@ -1152,7 +1129,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const tags = await response.json();
             console.log('Tags received:', tags);
 
-            // Get the container for the tags
+            // Get container for tags
             const tagContainer = document.getElementById('existingTagsContainer');
             if (!tagContainer) {
                 console.error('Could not find the tag container element');
@@ -1162,27 +1139,22 @@ document.addEventListener('DOMContentLoaded', function () {
             // Clear existing content
             tagContainer.innerHTML = '';
 
-            // Create a tag list with action buttons
-            
-
-            
-
-            // Add a separator
+            // Add separator
             const separator = document.createElement('hr');
             tagContainer.appendChild(separator);
 
-            // Add section title for existing tags
+            // Add section title
             const existingTagsTitle = document.createElement('h5');
             existingTagsTitle.textContent = 'Existing Tags';
             existingTagsTitle.className = 'mb-3';
             tagContainer.appendChild(existingTagsTitle);
 
-            // Create a tag list with action buttons
+            // Create tag list with buttons
             tags.forEach((tag, index) => {
                 const tagName = typeof tag === 'object' ? (tag.name || tag.Name || '') : tag;
                 const tagId = typeof tag === 'object' ? (tag.id || tag.Id || index) : index;
 
-                // Create a div for the tag with buttons
+                // Create a div for the tag
                 const tagDiv = document.createElement('div');
                 tagDiv.className = 'tag-item d-flex justify-content-between align-items-center mb-2 p-2 border rounded';
                 tagDiv.dataset.tagId = tagId;
@@ -1197,7 +1169,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const buttonsDiv = document.createElement('div');
                 buttonsDiv.className = 'tag-actions';
 
-                // Apply tag button (new!)
+                // Apply tag button
                 const applyBtn = document.createElement('button');
                 applyBtn.className = 'btn btn-sm btn-success me-1';
                 applyBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Apply';
@@ -1215,7 +1187,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 deleteBtn.innerHTML = '<i class="bi bi-trash"></i>';
                 deleteBtn.onclick = function () { deleteTag(tagId, tagName); };
 
-                // Append all elements
+                // Add all elements to the container
                 buttonsDiv.appendChild(applyBtn);
                 buttonsDiv.appendChild(editBtn);
                 buttonsDiv.appendChild(deleteBtn);
@@ -1223,7 +1195,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 tagDiv.appendChild(buttonsDiv);
                 tagContainer.appendChild(tagDiv);
             });
-
 
             // Clear new tag input
             document.getElementById('newTag').value = '';
@@ -1235,8 +1206,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-        
-    
+    // Gets the ID of the current item (note)
     window.getCurrentItemId = function () {
         // First check if currentNoteId is available
         if (currentNoteId) {
@@ -1250,17 +1220,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return itemIdElement ? itemIdElement.value : null;
     };
 
+    // Applies a tag to the current note
+    // tagId: ID of the tag
+    // tagName: name of the tag
     window.applyTagToCurrentItem = async function (tagId, tagName) {
         const tagContainer = document.getElementById('existingTagsContainer');
 
         try {
-            // Use the existing currentNoteId variable
             if (!currentNoteId) {
                 showToast('No note selected to tag', 'warning');
                 return;
             }
 
-            // Use the endpoint format matching your tagNote function
             const response = await fetch(`/api/Tags/${currentNoteId}`, {
                 method: 'POST',
                 headers: {
@@ -1277,7 +1248,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const data = await response.json();
             showToast(data.message || `Tag "${tagName}" applied successfully`, 'success');
             loadNoteTags();
-            // Use the existing note list refresh function
         } catch (error) {
             console.error('Error applying tag:', error);
             showToast(`Failed to apply tag: ${error.message}`, 'danger');
@@ -1287,7 +1257,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Function to edit a tag
+    // Edits a tag's name
+    // tagId: ID of the tag
+    // currentName: current name of the tag
     window.editTag = async function (tagId, currentName) {
         const newName = prompt('Enter new name for the tag:', currentName);
 
@@ -1321,7 +1293,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Function to delete a tag
+    // Deletes a tag
+    // tagId: ID of the tag
+    // tagName: name of the tag
     window.deleteTag = async function (tagId, tagName) {
         if (!confirm(`Are you sure you want to delete the tag "${tagName}"?`)) {
             return; // User cancelled
@@ -1338,21 +1312,15 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!response.ok) {
                 throw new Error(`Failed to delete tag: ${response.status}`);
             }
-
             showToast(`Tag "${tagName}" deleted`, 'success');
             showTagModal(); // Refresh the tag list
-            
-            
         } catch (error) {
             console.error('Error deleting tag:', error);
             showToast(`Failed to delete tag: ${error.message}`, 'danger');
         }
     };
 
-    // Helper function to populate tag options
-    
-
-    // No changes needed to applyTag function since it works correctly
+    // Applies a new tag from the input field
     window.applyTag = async function () {
         const newTag = document.getElementById('newTag').value.trim();
         if (!newTag) {
@@ -1372,7 +1340,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (response.status === 204) {
                 showToast(`Tag "${newTag}" added successfully`, 'success');
-               
+
                 document.getElementById('newTag').value = ''; // Clear the input
                 showTagModal(); // Refresh the tag list
                 refreshNotesList();
@@ -1385,7 +1353,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             showToast(data.message, 'success');
-            //refreshNotesList();
             document.getElementById('newTag').value = ''; // Clear the input
             showTagModal(); // Refresh the tag list
         } catch (error) {
@@ -1393,15 +1360,19 @@ document.addEventListener('DOMContentLoaded', function () {
             showToast(`Failed to apply tag: ${error.message}`, 'danger');
         }
     };
+
+    // Shows the edit notebook modal
     window.showEditNotebookModal = function () {
         const notebookTitle = document.getElementById('currentNotebookTitle').textContent;
         document.getElementById('editNotebookNameInput').value = notebookTitle;
         $('#editNotebookModal').modal('show');
     };
+
+    // Loads tags for a note
+    // noteId: ID of the note
     window.loadNoteTags = async function (noteId) {
         if (!noteId) return;
         try {
-            // Update the URL to match your controller endpoint
             const response = await fetch(`/api/Notetag/${noteId}`);
             if (!response.ok) {
                 throw new Error(`Failed to load tags: ${response.status}`);
@@ -1409,12 +1380,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const tags = await response.json();
             displayNoteTags(tags);
             showTagModal()
-
         } catch (error) {
             console.error('Error loading note tags:', error);
         }
     };
-    
+
+    // Displays tags for a note
+    // tags: array of tag objects
     window.displayNoteTags = async function (tags) {
         const tagsContainer = document.getElementById('currentNoteTags');
         if (!tagsContainer) return;
@@ -1422,7 +1394,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Clear existing tags
         tagsContainer.innerHTML = '';
 
-        // If no tags, show a placeholder
+        // If no tags, show placeholder
         if (!tags || tags.length === 0) {
             const noTagsSpan = document.createElement('span');
             noTagsSpan.className = 'text-muted small';
@@ -1433,7 +1405,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Add each tag as a badge
         tags.forEach(tag => {
-            // Access the tag name from TagId field (based on your DTO structure)
+            // Get tag name and ID
             const tagName = typeof tag === 'object' ? (tag.tagId || tag.TagId || '') : tag;
             const tagId = typeof tag === 'object' ? (tag.id || tag.Id || '') : '';
 
@@ -1442,7 +1414,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tagBadge.textContent = tagName;
             tagBadge.dataset.tagId = tagId;
 
-            // Add a remove button to each tag
+            // Add remove button
             const removeBtn = document.createElement('button');
             removeBtn.className = 'btn-close btn-close-white ms-1';
             removeBtn.style.fontSize = '0.5rem';
@@ -1457,9 +1429,12 @@ document.addEventListener('DOMContentLoaded', function () {
             tagsContainer.appendChild(tagBadge);
         });
     };
+
+    // Refreshes the notebook title in the UI
+    // notebookId: ID of the notebook
     window.refreshNotebookTitle = async function (notebookId) {
         try {
-            // Fetch the current notebook data
+            // Get notebook data
             const response = await fetch(`/api/Notebooks/${notebookId}`, {
                 method: 'GET',
                 headers: {
@@ -1467,26 +1442,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     'X-Requested-With': 'XMLHttpRequest'
                 }
             });
-
             if (!response.ok) throw new Error('Failed to fetch notebook details');
 
             const notebook = await response.json();
 
-            // Update the title in the UI
+            // Update title in UI
             document.getElementById('currentNotebookTitle').textContent = notebook.title;
 
-            // Also update page title if applicable
+            // Update page title
             if (document.title.includes('Notebook:')) {
                 document.title = `Notebook: ${notebook.title}`;
             }
 
-            // Update the notebook title in the sidebar - being more specific with the selector
+            // Update sidebar title
             const sidebarNotebookTitles = document.querySelectorAll(`.notebook-item[data-notebook-id="${notebookId}"] .notebook-title`);
             sidebarNotebookTitles.forEach(titleElement => {
                 titleElement.textContent = notebook.title;
             });
 
-            // Update any other places where the notebook title is displayed
+            // Update any other title elements
             const notebookTitleElements = document.querySelectorAll('.notebook-title-display');
             notebookTitleElements.forEach(element => {
                 element.textContent = notebook.title;
@@ -1499,12 +1473,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return null;
         }
     };
-   
 
-
-
-    window.updateNotebookName = async function ()
-    {
+    // Updates a notebook's name
+    window.updateNotebookName = async function () {
         const newName = document.getElementById('editNotebookNameInput').value.trim();
         if (!newName) {
             showToast('Please enter a valid notebook name', 'warning');
@@ -1517,30 +1488,32 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/json',
                     'X-Requested-With': 'XMLHttpRequest'
                 },
-                body: JSON.stringify({ Title: newName }) // Changed from 'name' to 'Title' to match backend DTO
+                body: JSON.stringify({ Title: newName }) // Match backend DTO
             });
             if (!response.ok) throw new Error('Failed to update notebook name');
 
-            // Parse the response to get the updated name
+            // Get updated name from response
             const result = await response.json();
             showToast(`Notebook name updated to "${result.name}"`, 'success');
 
-            
-
-            // Update UI with the new name
+            // Update UI
             document.getElementById('currentNotebookTitle').textContent = newName;
             await refreshNotebookTitle(currentNotebookId);
-            await refreshSidebar();
+           
+            location.reload(); //loads new notebook name
+
             // Close modal
             $('#editNotebookModal').modal('hide');
         } catch (error) {
             console.error('Error updating notebook name:', error);
-            showToast(`Failed to update notebook name: ${error.message}`, 'danger');                                     
+            showToast(`Failed to update notebook name: ${error.message}`, 'danger');
         }
     };
-     window.refreshCurrentNote = async function (){
+
+    // Refreshes the current note data
+    window.refreshCurrentNote = async function () {
         try {
-            // Use the current note ID that's already in memory
+            // Make sure a note is loaded
             if (!currentNoteId) {
                 console.log('No note is currently loaded to refresh');
                 return;
@@ -1551,19 +1524,19 @@ document.addEventListener('DOMContentLoaded', function () {
             // Cancel any ongoing note requests
             cancelActiveRequest("note");
 
-            // Create new abort controller for this request
+            // Create new abort controller
             activeRequests.loadingNote = new AbortController();
             const signal = activeRequests.loadingNote.signal;
 
-            // Set a timeout for the request
+            // Set timeout
             let loadingTimeoutId = setTimeout(() => {
                 if (activeRequests.loadingNote) {
                     activeRequests.loadingNote.abort();
                     showToast('Note refresh timeout. Please try again.', 'warning');
                 }
-            }, 15000); // 15 second timeout
+            }, 15000); // 15 seconds
 
-            // Fetch the current note data
+            // Get note data
             fetch(`/api/Notes/${currentNoteId}`, { signal })
                 .then(response => {
                     if (signal.aborted) {
@@ -1583,20 +1556,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     clearTimeout(loadingTimeoutId);
                     console.log(`Successfully refreshed note: ${note.id}`);
 
-                    // Load the tags associated with this note
+                    // Load tags
                     loadNoteTags(currentNoteId);
                     loadNoteTags();
 
-                    // Optional: Update other note details if needed
-                    // For example, update timestamp if it changed
+                    // Update timestamp
                     if (note.updatedAt) {
                         updateLastSavedTime(new Date(note.updatedAt));
                     }
 
-                    // Clear the request object on success
                     activeRequests.loadingNote = null;
-
-                    // Show success notification
                     showToast('Note refreshed successfully', 'success');
                 })
                 .catch(error => {
@@ -1610,8 +1579,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     console.error(`Error refreshing note ${currentNoteId}:`, error);
                     showToast('Failed to refresh note', 'danger');
-
-                    // Clear the request object on error
                     activeRequests.loadingNote = null;
                 });
         } catch (error) {
@@ -1619,15 +1586,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    
+    // Removes a tag from a note
+    // noteId: ID of the note
+    // tagId: ID of the tag
+    // tagName: name of the tag
     window.removeNoteTag = async function (noteId, tagId, tagName) {
-        // Show loading indicator or disable the tag element
+        // Show loading state
         const tagElement = document.querySelector(`.tag[data-tag-id="${tagId}"]`);
         if (tagElement) {
             tagElement.classList.add('removing');
         }
 
-        // Call the API endpoint to remove the tag
+        // Remove the tag
         fetch(`/api/Notetag/Notes/${noteId}/Tags/${tagId}`, {
             method: 'DELETE',
             headers: {
@@ -1642,13 +1612,11 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(data => {
                 if (data.success) {
-                    // Remove the tag element from the UI
+                    // Remove tag from UI
                     if (tagElement) {
                         tagElement.parentNode.removeChild(tagElement);
-
                         refreshCurrentNote()
                     }
-                    // Show success message
                     showToast(`Tag "${tagName}" removed successfully`, 'success');
                 } else {
                     throw new Error(data.error || 'Failed to remove tag');
@@ -1656,17 +1624,11 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => {
                 console.error('Error removing tag:', error);
-                // Remove loading state if the operation failed
+                // Remove loading state
                 if (tagElement) {
                     tagElement.classList.remove('removing');
                 }
                 showToast(`Failed to remove tag: ${error.message}`, 'error');
             });
     }
-
-   
-    
-
-
-
 });
