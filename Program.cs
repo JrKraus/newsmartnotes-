@@ -2,10 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models.Entities;
 using termprojectJksmartnote.Services;
 using Microsoft.AspNetCore.Identity;
-using termprojectJksmartnote.Data;
-using NuGet.Protocol.Plugins;
+
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Identity.UI.Services;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,13 +58,6 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.ReferenceHandler =
             ReferenceHandler.IgnoreCycles;
     });
-//builder.Services.ConfigureApplicationCookie(options =>
-//{
-//    options.LoginPath = "/Identity/Account/Login";
-//    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-//    options.LogoutPath = "/Identity/Account/Logout";
-//    options.ExpireTimeSpan = TimeSpan.FromDays(14); // Cookie expiration
-//});
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<INoteRepository, NoteRepository>();

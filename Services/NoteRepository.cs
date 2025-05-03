@@ -3,28 +3,21 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using termprojectJksmartnote.Models.Entities;
-using static Azure.Core.HttpHeader;
 
 namespace termprojectJksmartnote.Services
 {
-
-    //here we are implementing the INoteRepository interface
-    // this class is responsible for all the database operations related to notes, notebooks and tags
-    //it also creates the user stats
+    // This class does all my database work for notes, notebooks, and tags.
+    // I also use it to create user statistics.
     public class NoteRepository : INoteRepository
     {
-        // Database context is used to interact with the database
+        // I use this to talk to my database
         private readonly ApplicationDbContext _context;
-        /// UserManager is used to manage user accounts
+        // I use this to manage user accounts
         private readonly UserManager<User> _userManager;
-        // the follow linked help me understand user manager 
-        // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-7.0
 
-        /// Constructor for NoteRepository 
-
-
-        /// <param name="context"></param>
-        /// <param name="userManager"></param>
+        // This is my constructor for NoteRepository.
+        // context: lets me access the database
+        // userManager: lets me manage users
         public NoteRepository(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
@@ -32,15 +25,14 @@ namespace termprojectJksmartnote.Services
         }
 
         // Note Operations
-        /// Creates a new note associated with the specified us 
-        /// Creates a new note associated with the specified us
-        /// <param name="note"></param>
-        /// <param name="userId"></param>
-        /// returns the created Note object
-        /// <exception cref="InvalidOperationException"></exception>
+
+        // I create a new note for a user.
+        // note: the Note object to create
+        // userId: the user's ID
+        // Returns: the created Note object
         public async Task<Note> CreateNoteAsync(Note note, string userId)
         {
-            // Validate notebook ownership
+            // Make sure the notebook belongs to the user
             var notebookExists = await _context.Notebooks
                 .AnyAsync(n => n.Id == note.NotebookId && n.UserId == userId);
 
@@ -49,57 +41,54 @@ namespace termprojectJksmartnote.Services
                 throw new InvalidOperationException("Notebook not found or access denied");
             }
 
-            // Set timestamps
+            // Set time for when the note is created and updated
             note.CreatedAt = DateTime.UtcNow;
             note.UpdatedAt = DateTime.UtcNow;
 
-            // Add and save
+            // Add the note to the database and save it
             _context.Notes.Add(note);
             await _context.SaveChangesAsync();
 
             return note;
         }
 
-        /// Retrieves a specific note by ID if it belongs to the user 
-        /// <param name="noteId"></param>
-        /// <param name="userId"></param>
-        /// return Note object or null if not found/unauthorized
+        // I get a note by its ID for a user.
+        // id: the note's ID
+        // userId: the user's ID
+        // Returns: the Note object, or null if not found or not owned by the user
         public async Task<Note?> GetNoteByIdAsync(int id, string userId)
         {
             try
             {
-                // First validate the parameters
+                // Make sure the ID and user ID are valid
                 if (id <= 0)
                 {
                     throw new ArgumentException("Invalid note ID", nameof(id));
                 }
-
                 if (string.IsNullOrEmpty(userId))
                 {
                     throw new ArgumentException("User ID cannot be null or empty", nameof(userId));
                 }
 
-                // Query with Include to get related entities if needed
+                // Get the note and its notebook, check ownership
                 var note = await _context.Notes
-                     .Include(n => n.Notebook)
-                     .FirstOrDefaultAsync(n => n.Id == id &&
-                                            n.Notebook != null &&
-                                            n.Notebook.UserId == userId);
+                    .Include(n => n.Notebook)
+                    .FirstOrDefaultAsync(n => n.Id == id &&
+                                              n.Notebook != null &&
+                                              n.Notebook.UserId == userId);
 
                 return note;
             }
-            
             catch (Exception ex)
             {
                 Console.Error.WriteLine($"Database error retrieving note {id} for user {userId}: {ex.Message}");
-                throw; // Re-throw to be handled by the controller
-
+                throw;
             }
         }
-        /// Retrieves all notes belonging to the user 
-        /// <param name="userId"></param>
-        /// returns collection of notes (empty if none found)
 
+        // I get all notes for a user.
+        // userId: the user's ID
+        // Returns: a collection of notes for that user
         public async Task<ICollection<Note>> GetAllUserNotesAsync(string userId)
         {
             return await _context.Notes
@@ -109,10 +98,10 @@ namespace termprojectJksmartnote.Services
                 .Where(n => n.Notebook.UserId == userId)
                 .ToListAsync();
         }
-        /// Updates an existing note if it belongs to the user
-        /// <param name="note"></param>
-        /// <param name="userId"></param>
-        /// returns updated Note object
+
+        // I update a note for a user.
+        // note: the Note object with updated data
+        // userId: the user's ID
         public async Task UpdateNoteAsync(Note note, string userId)
         {
             var existingNote = await GetNoteByIdAsync(note.Id, userId);
@@ -123,25 +112,27 @@ namespace termprojectJksmartnote.Services
                 await _context.SaveChangesAsync();
             }
         }
-        // Deletes a note if it belongs to the user
-        /// <param name="noteId"></param>
-        ///<param name="userId"></param>
-        public async Task<bool> DeleteNoteAsync(int noteId, string userId)
-{
-    var note = await GetNoteByIdAsync(noteId, userId);
-    if (note != null)
-    {
-        _context.Notes.Remove(note);
-        await _context.SaveChangesAsync();
-        return true;
-    }
 
-    return false;
-}
-        //this is used for the auto save feature
-        /// <param name="noteId"></param>
-        ///  <param name="content"></param> 
-        ///  <param name="userId" ></param>  
+        // I delete a note for a user.
+        // noteId: the note's ID
+        // userId: the user's ID
+        // Returns: true if deleted, false otherwise
+        public async Task<bool> DeleteNoteAsync(int noteId, string userId)
+        {
+            var note = await GetNoteByIdAsync(noteId, userId);
+            if (note != null)
+            {
+                _context.Notes.Remove(note);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
+        // I quickly update just the content of a note (for auto-save).
+        // noteId: the note's ID
+        // content: the new content to save
+        // userId: the user's ID
         public async Task QuickUpdateNoteContentAsync(int noteId, string content, string userId)
         {
             var note = await _context.Notes
@@ -157,30 +148,19 @@ namespace termprojectJksmartnote.Services
 
         // Notebook Operations
 
-        /// Creates a new notebook associated with the specified user 
-        /// Creates a new notebook associated with the specified user    
-        /// <param name="notebook"></param>
-        /// <param name="userId"></param>
-        /// returns created Notebook object
+        // I create a new notebook for a user.
+        // notebook: the Notebook object to create
+        // Returns: the created Notebook object
         public async Task<Notebook> CreateNotebookAsync(Notebook notebook)
         {
-            
             _context.Notebooks.Add(notebook);
             await _context.SaveChangesAsync();
-
             return notebook;
-
-
-            
         }
 
-
-
-        /// Retrieves all notebooks belonging to the user 
-        /// Retrieves all notebooks belonging to the user
-        /// <param name="userId"></param>
-        /// returns collection of notebooks (empty if none found)
-
+        // I get all notebooks for a user (with notes).
+        // userId: the user's ID
+        // Returns: a collection of notebooks for that user
         public async Task<ICollection<Notebook>> GetAllUserNotebooksAsync(string userId)
         {
             return await _context.Notebooks
@@ -188,10 +168,11 @@ namespace termprojectJksmartnote.Services
                 .Where(n => n.UserId == userId)
                 .ToListAsync();
         }
-        // Retrieves a specific notebook by ID if it belongs to the user 
-        /// <param name="notebookId"></param>
-        /// <param name="userId"></param>
-        /// return Notebook object or null if not found/unauthorized
+
+        // I get a notebook (with notes) by its ID for a user.
+        // notebookId: the notebook's ID
+        // userId: the user's ID
+        // Returns: the Notebook object, or null if not found or not owned by the user
         public async Task<Notebook?> GetNotebookWithNotesAsync(int notebookId, string userId)
         {
             return await _context.Notebooks
@@ -200,6 +181,11 @@ namespace termprojectJksmartnote.Services
                         .ThenInclude(nt => nt.Tag)
                 .FirstOrDefaultAsync(n => n.Id == notebookId && n.UserId == userId);
         }
+
+        // I get all notes for a specific notebook and user.
+        // notebookId: the notebook's ID
+        // userId: the user's ID
+        // Returns: a list of notes for that notebook and user
         public async Task<IEnumerable<Note>> GetNotesByNotebookIdAsync(int notebookId, string userId)
         {
             try
@@ -209,23 +195,19 @@ namespace termprojectJksmartnote.Services
                     .OrderByDescending(n => n.UpdatedAt)
                     .ToListAsync();
 
-                // Always return a list, even if empty
                 return notes ?? new List<Note>();
             }
             catch (Exception ex)
             {
-                // Log the exception
+                // If there is an error, print it and return an empty list
                 Console.Error.WriteLine($"Database error: {ex.Message}");
-                // Return empty collection instead of throwing
                 return new List<Note>();
             }
         }
 
-        /// Updates an existing notebook if it belongs to the user  
-        /// <param name="notebook"></param>
-        /// <param name="userId"></param>
-        /// return Notebook object or null if not found/unauthorized
-
+        // I update a notebook for a user.
+        // notebook: the Notebook object with updated data
+        // userId: the user's ID
         public async Task UpdateNotebookAsync(Notebook notebook, string userId)
         {
             var existingNotebook = await _context.Notebooks
@@ -237,10 +219,10 @@ namespace termprojectJksmartnote.Services
                 await _context.SaveChangesAsync();
             }
         }
-        // Deletes a notebook if it belongs to the user
-        /// <param name="notebookId"></param>
-        /// <param name="userId"></param>
-        /// returns nothing
+
+        // I delete a notebook for a user.
+        // notebookId: the notebook's ID
+        // userId: the user's ID
         public async Task DeleteNotebookAsync(int notebookId, string userId)
         {
             var notebook = await _context.Notebooks
@@ -252,25 +234,30 @@ namespace termprojectJksmartnote.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        // I get a notebook by its ID for a user.
+        // id: the notebook's ID
+        // userId: the user's ID
+        // Returns: the Notebook object
         public async Task<Notebook> GetNotebookByIdAsync(int id, string userId)
         {
             return await _context.Notebooks
-                
                 .FirstOrDefaultAsync(n => n.Id == id && n.UserId == userId);
         }
+
         // Tag Operations
-        /// Creates a new tag if it doesn't exist, or retrieves it if it does
-        /// <param name="tagName"></param>
-        /// returns tag object
+
+        // I get or create a tag for a user.
+        // tagName: the tag's name
+        // userId: the user's ID
+        // Returns: the Tag object
         public async Task<Tag> GetOrCreateTagAsync(string tagName, string userId)
         {
-            // First check if the user already has this tag
             var tag = await _context.Tags
                 .FirstOrDefaultAsync(t => t.Name == tagName && t.UserId == userId);
 
             if (tag == null)
             {
-                // Create a new tag with the user ID
                 tag = new Tag
                 {
                     Name = tagName,
@@ -282,23 +269,25 @@ namespace termprojectJksmartnote.Services
             return tag;
         }
 
+        // I get all tags for a user.
+        // userId: the user's ID
+        // Returns: a collection of Tag objects
         public async Task<ICollection<Tag>> GetAllTagsAsync(string userId)
         {
-                var tags = await _context.Tags
-            .Where(t => t.UserId == userId)
-            .Include(t => t.NoteTags)
-            .ThenInclude(nt => nt.Note)
-            .ThenInclude(n => n.Notebook)
-            .Distinct()
-            .ToListAsync();
+            var tags = await _context.Tags
+                .Where(t => t.UserId == userId)
+                .Include(t => t.NoteTags)
+                .ThenInclude(nt => nt.Note)
+                .ThenInclude(n => n.Notebook)
+                .Distinct()
+                .ToListAsync();
 
-                return tags ?? new List<Tag>();
-
+            return tags ?? new List<Tag>();
         }
 
-        // Retrieves the most popular tags
-        /// <param name="count"></param>
-        /// returns a collection of Tag objects
+        // I get the most popular tags.
+        // count: how many tags to return
+        // Returns: a collection of Tag objects
         public async Task<ICollection<Tag>> GetPopularTagsAsync(int count)
         {
             return await _context.Tags
@@ -306,15 +295,17 @@ namespace termprojectJksmartnote.Services
                 .Take(count)
                 .ToListAsync();
         }
-        // Associates a tag with a note
-        /// <param name="noteId"></param>
-        /// <param name="tagId"></param>
-        /// returns nothing the tag was associated with the note now
+
+        // I associate a tag with a note for a user.
+        // noteId: the note's ID
+        // tagId: the tag's ID
+        // userId: the user's ID
+        // Returns: true if successful, false otherwise
         public async Task<bool> AssociateTagToNoteAsync(int noteId, int tagId, string userId)
         {
             var note = await _context.Notes
                 .Include(n => n.NoteTags)
-                .Include(n => n.Notebook) // Include the Notebook to access UserId
+                .Include(n => n.Notebook)
                 .FirstOrDefaultAsync(n => n.Id == noteId && n.Notebook.UserId == userId);
 
             if (note == null) return false;
@@ -331,10 +322,9 @@ namespace termprojectJksmartnote.Services
             return true;
         }
 
-        // Removes the association between a tag and a note
-        /// <param name="noteId"></param>
-        /// <param name="tagId"
-        /// returns nothing the tag was removed from the note now
+        // I remove a tag from a note.
+        // noteId: the note's ID
+        // tagId: the tag's ID
         public async Task RemoveTagFromNoteAsync(int noteId, int tagId)
         {
             var noteTag = await _context.NoteTags
@@ -346,6 +336,10 @@ namespace termprojectJksmartnote.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        // I get all tags for a specific note.
+        // noteId: the note's ID
+        // Returns: a collection of Tag objects
         public async Task<ICollection<Tag>> GetTagsByNoteIdAsync(int noteId)
         {
             return await _context.NoteTags
@@ -354,11 +348,13 @@ namespace termprojectJksmartnote.Services
                 .Distinct()
                 .ToListAsync();
         }
+
         // Search Operations
-        /// Searches for notes by title or content 
-        /// <param name="searchTerm"></param>
-        /// <param name="userId"></param>
-        /// return collection of Note objects (empty if none found)
+
+        // I search for notes by a text term for a user.
+        // searchTerm: the text to search for
+        // userId: the user's ID
+        // Returns: a collection of Note objects
         public async Task<ICollection<Note>> SearchNotesAsync(string searchTerm, string userId)
         {
             if (string.IsNullOrWhiteSpace(searchTerm))
@@ -372,46 +368,32 @@ namespace termprojectJksmartnote.Services
                             n.Content.Contains(searchTerm)))
                 .OrderByDescending(n => n.UpdatedAt)
                 .ToListAsync();
-            //    return await _context.Notes
-            //.Include(n => n.Notebook)
-            //.Include(n => n.NoteTags)
-            //    .ThenInclude(nt => nt.Tag)
-            //.Where(n => n.Notebook.UserId == userId &&
-            //           (n.Title.Contains(searchTerm) ||
-            //            n.Content.Contains(searchTerm)))
-            //.OrderByDescending(n => n.UpdatedAt)
-            //.ToListAsync();
         }
-        
 
-        // Searches for notes associated with a specific tag
-        /// <param name="tagId"></param>
-        /// <param name="userId"></param>
-        /// return collection of Note objects (empty if none found)
+        // I search for notes by tag name for a user.
+        // tagName: the tag's name
+        // userId: the user's ID
+        // Returns: a collection of Note objects
         public async Task<ICollection<Note>> SearchNotesByTagNameAsync(string tagName, string userId)
         {
-            // Normalize tag name for consistent searching  
             tagName = tagName.Trim().ToLower();
 
-
-
             return await _context.Notes
-              .Include(n => n.NoteTags)
-            .ThenInclude(nt => nt.Tag)
-            .Include(n => n.Notebook)
-            .Where(n => n.Notebook.UserId == userId &&
-                       n.NoteTags.Any(nt => nt.Tag.Name.ToLower() == tagName))
-            .OrderByDescending(n => n.UpdatedAt)
-            .ToListAsync();     
+                .Include(n => n.NoteTags)
+                    .ThenInclude(nt => nt.Tag)
+                .Include(n => n.Notebook)
+                .Where(n => n.Notebook.UserId == userId &&
+                           n.NoteTags.Any(nt => nt.Tag.Name.ToLower() == tagName))
+                .OrderByDescending(n => n.UpdatedAt)
+                .ToListAsync();
         }
-
 
         // Batch Operations
 
-        // Deletes all notes in a specific notebook
-        /// <param name="notebookId"></param>
-        /// <param name="userId"></param>
-        /// returns nothing
+        // I delete all notes in a specific notebook for a user.
+        // notebookId: the notebook's ID
+        // userId: the user's ID
+        // Returns: the number of notes deleted
         public async Task<int> DeleteNotesByNotebookAsync(int notebookId, string userId)
         {
             var notes = await _context.Notes
@@ -421,10 +403,12 @@ namespace termprojectJksmartnote.Services
             _context.Notes.RemoveRange(notes);
             return await _context.SaveChangesAsync();
         }
-        // Updates the name of an existing tag
-        /// <param name="tagId"></param>
-        /// <param name="newName"></param>
-        /// returns nothing the tag was updated now
+
+        // I update the name of a tag for a user.
+        // tagId: the tag's ID
+        // newName: the new name for the tag
+        // userId: the user's ID
+        // Returns: true if successful, false otherwise
         public async Task<bool> UpdateTagAsync(int tagId, string newName, string userId)
         {
             try
@@ -435,7 +419,7 @@ namespace termprojectJksmartnote.Services
                     .Where(t => t.NoteTags.Any(nt => nt.Note.Notebook.UserId == userId))
                     .FirstOrDefaultAsync();
 
-                if (tag == null) return false; // Tag not found or user doesn't have permission
+                if (tag == null) return false;
 
                 // Check if the new name already exists for this user's tags
                 if (await _context.Tags
@@ -443,7 +427,7 @@ namespace termprojectJksmartnote.Services
                     .Where(t => t.NoteTags.Any(nt => nt.Note.Notebook.UserId == userId))
                     .AnyAsync())
                 {
-                    return false; // Tag name already exists
+                    return false;
                 }
 
                 tag.Name = newName;
@@ -452,13 +436,13 @@ namespace termprojectJksmartnote.Services
             }
             catch (Exception)
             {
-                return false; // Any other error during update
+                return false;
             }
         }
 
-        // Retrieves all notebooks belonging to the user with their notes
-        /// <param name="userId"></param>
-        /// returns collection of notebooks and notes (empty if none found)
+        // I get all notebooks for a user (with notes).
+        // userId: the user's ID
+        // Returns: a collection of notebooks for that user
         public async Task<ICollection<Notebook>> GetAllUserNotebooksWithNotesAsync(string userId)
         {
             return await _context.Notebooks
@@ -468,6 +452,10 @@ namespace termprojectJksmartnote.Services
                 .ToListAsync();
         }
 
+        // I delete a tag for a user.
+        // tagId: the tag's ID
+        // userId: the user's ID
+        // Returns: true if deleted, false otherwise
         public async Task<bool> DeleteTagAsync(int tagId, string userId)
         {
             try
@@ -478,7 +466,7 @@ namespace termprojectJksmartnote.Services
                     .FirstOrDefaultAsync(t => t.Id == tagId && t.UserId == userId);
 
                 if (tag == null)
-                    return false; // Tag doesn't exist or doesn't belong to this user
+                    return false;
 
                 // Remove all note-tag associations
                 foreach (var noteTag in tag.NoteTags.ToList())
@@ -494,15 +482,16 @@ namespace termprojectJksmartnote.Services
             }
             catch (Exception ex)
             {
-                // Consider logging the exception
+                // Could log the error here if needed
                 return false;
             }
         }
 
         // Statistics
-        /// Retrieves user statistics including total notes, notebooks, tags, notes per notebook, and tag usage number 
-        /// <param name="userId"></param>
-        /// return user data about the notes, notebooks and tags count
+
+        // I get statistics for a user (note, notebook, and tag counts).
+        // userId: the user's ID
+        // Returns: a UserStatistics object
         public async Task<UserStatistics> GetUserStatisticsAsync(string userId)
         {
             return new UserStatistics
@@ -531,14 +520,6 @@ namespace termprojectJksmartnote.Services
                     .ToDictionaryAsync(g => g.Name, g => g.Count)
             };
         }
-       
-
-
-
-
-
-
-
     }
-
 }
+
