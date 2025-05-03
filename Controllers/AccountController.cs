@@ -6,24 +6,24 @@ using termprojectJksmartnote.Models.Entities;
 namespace termprojectJksmartnote.Controllers
 {
     ///source https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-7.0
-    /// <summary>
+   
     /// handles user registration and login
     /// </summary>
     [Route("Account")]
     public class AccountController : Controller
     {
-        /// <summary>
+       
         /// UserManager is used to manage users
-        /// </summary>
+      
         private readonly UserManager<User> _userManager;
-        /// <summary>
+      
         /// SignInManager is used to sign in users
-        /// </summary>
+      
         private readonly SignInManager<User> _signInManager;
 
-        /// <summary>
+   
         /// UserManager is used to manage users
-        /// </summary>
+       
         /// <param name="userManager"></param>
         /// <param name="signInManager"></param>
 
@@ -34,15 +34,14 @@ namespace termprojectJksmartnote.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        /// <summary>
+       
         /// Register action method to display the registration form
-        /// </summary>
-        /// <returns></returns>
+        
         [HttpGet("Register")]
         public IActionResult Register() => View();
-        /// <summary>
+        
         /// Register action method to handle the registration form submission
-        /// </summary>
+        
         /// <param name="model"></param>
         /// Redirects to home page on success, 
         /// returns form with errors on failure
@@ -82,9 +81,9 @@ namespace termprojectJksmartnote.Controllers
 
         [HttpGet("Login")]
         public IActionResult Login() => View();
-        /// <summary>
+       
         /// Login action method to handle the login form submission
-        /// </summary>
+        
         /// <param name="model"></param>
         /// Redirects to home page on success,
         /// returns form with error on failure
@@ -108,9 +107,9 @@ namespace termprojectJksmartnote.Controllers
             ModelState.AddModelError(string.Empty, "Invalid login attempt");
             return View(model);
         }
-        /// <summary>
+
         /// Logout action method to handle the logout request
-        /// </summary>
+       
         /// goes to the home page
         [HttpPost("Logout")]
         [ValidateAntiForgeryToken]
@@ -131,44 +130,44 @@ namespace termprojectJksmartnote.Controllers
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        /// <summary>User's email address (used as username)</summary>
+        /// User's email address (used as username)
         [Required]
         [StringLength(50, MinimumLength = 3)]
         [Display(Name = "Display Name")]
         public string DisplayName { get; set; }
-        /// <summary>Public display name (3-50 characters)</summary>
+        ///public display name (3-50 characters)
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-        /// <summary>Password confirmation must match</summary>
+        /// Password confirmation must match
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
-    /// <summary>
+    
     /// Represents data required for user login
-    /// </summary>
+    
     public class LoginViewModel
     {
-        /// <summary>User's email address (used as username)</summary>
+        /// User's email address (used as username)
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        /// <summary>
+       
         /// User's password (6-100 characters)
-        /// </summary>
+        
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-        /// <summary>
+       
         /// Indicates whether to remember the user
-        /// </summary>
+        
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }
