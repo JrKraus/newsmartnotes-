@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>pf9x7lmwg5</Fingerprint>
-      <Integrity>BenRTHwKihI9ZSNA0dEzOiSiQssaHPh6y98/Gy7AqZg=</Integrity>
+      <Fingerprint>o2y2a2re7c</Fingerprint>
+      <Integrity>ACUzgiTYHozkWEVPR9Dk58ITjbWo26UugLSoztd2pNA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\chart.css'))</OriginalItemSpec>
@@ -84,8 +84,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>oobw9vuafl</Fingerprint>
-      <Integrity>KOgsruVVNPtCEgsKCixz2jmvwBrBNB8eFv7e+AwXL3U=</Integrity>
+      <Fingerprint>h7xhsxm29t</Fingerprint>
+      <Integrity>o51hzOPChxuyJm4D6kbt1HAOl44TxyZnkt/h2gTOZn0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\note-editor.js'))</OriginalItemSpec>
@@ -120,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>98lgsyxiw9</Fingerprint>
-      <Integrity>hzzXbf+VShX2nFYVXMjn6H9LUWC7qlJYOZIklea3Fow=</Integrity>
+      <Fingerprint>rdx26r72cb</Fingerprint>
+      <Integrity>gegm5dXmHknbbf960wF/e6cnCsqGAMrDA8R3ZrJ9YUQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\search.js'))</OriginalItemSpec>

@@ -13,43 +13,101 @@
 @inject SignInManager<User> SignInManager
 
 
+<a href="#main-content" class="visually-hidden-focusable">Skip to registration form</a>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center" id="main-content" tabindex="-1">
     <div class="col-md-4">
-        <form id="registerForm" asp-area="Identity" asp-page="/Account/Register"
-              asp-route-returnUrl="@Url.Action("Index", "Home")" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            
+        <form id="registerForm"
+              asp-area="Identity"
+              asp-page="/Account/Register"
+              asp-route-returnUrl="@Url.Action("Index", "Home")"
+              method="post"
+              role="form"
+              aria-labelledby="formHeading">
+
+            <h1 id="formHeading" class="h2">Create a new account</h1>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert" aria-live="polite"></div>
+
+            <!-- Email Input -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <input asp-for="Input.Email"
+                       class="form-control"
+                       autocomplete="username"
+                       aria-required="true"
+                       placeholder="name@example.com"
+                       aria-describedby="emailHelp emailError" />
+                <label asp-for="Input.Email" class="form-label">Email address</label>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <span asp-validation-for="Input.Email"
+                      id="emailError"
+                      class="text-danger"
+                      role="alert"
+                      aria-live="polite">
+                 </span>
             </div>
 
+            <!-- Display Name -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.DisplayName" class="form-control" aria-required="true" placeholder="Display Name" />
-                <label asp-for="Input.DisplayName">Display Name</label>
-                <span asp-validation-for="Input.DisplayName" class="text-danger"></span>
+                <input asp-for="Input.DisplayName"
+                       class="form-control"
+                       aria-required="true"
+                       placeholder="Display Name"
+                       aria-describedby="displayNameError" />
+                <label asp-for="Input.DisplayName" class="form-label">Display Name</label>
+                <span asp-validation-for="Input.DisplayName"
+                      id="displayNameError"
+                      class="text-danger"
+                      role="alert"
+                      aria-live="polite">
+                </span>
             </div>
 
+            <!-- Password -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <input asp-for="Input.Password"
+                       class="form-control"
+                       autocomplete="new-password"
+                       aria-required="true"
+                       placeholder="Password"
+                       aria-describedby="passwordHelp passwordError" />
+                <label asp-for="Input.Password" class="form-label">Password</label>
+                <div id="passwordHelp" class="form-text">At least 6 characters</div>
+                <span asp-validation-for="Input.Password"
+                      id="passwordError"
+                      class="text-danger"
+                      role="alert"
+                      aria-live="polite">
+                </span>
             </div>
 
+            <!-- Confirm Password -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                <input asp-for="Input.ConfirmPassword"
+                       class="form-control"
+                       autocomplete="new-password"
+                       aria-required="true"
+                       placeholder="Confirm Password"
+                       aria-describedby="confirmPasswordError" />
+                <label asp-for="Input.ConfirmPassword" class="form-label">Confirm Password</label>
+                <span asp-validation-for="Input.ConfirmPassword"
+                      id="confirmPasswordError"
+                      class="text-danger"
+                      role="alert"
+                      aria-live="polite">
+                </span>
             </div>
 
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit"
+                    type="submit"
+                    class="w-100 btn btn-lg btn-primary"
+                    aria-label="Create account">
+                Register
+            </button>
         </form>
     </div>
 </div>
+
 
 <style>
     .visually-hidden-focusable {

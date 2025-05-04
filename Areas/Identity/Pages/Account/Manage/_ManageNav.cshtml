@@ -2,14 +2,56 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-<ul class="nav nav-pills flex-column">
-    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
-    @if (hasExternalLogins)
-    {
-        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+<nav aria-label="Account management navigation">
+    <ul class="nav nav-pills flex-column" role="list">
+        <li class="nav-item" role="listitem">
+            <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)"
+               id="profile"
+               asp-page="./Index"
+               aria-current="@(ManageNavPages.IndexNavClass(ViewContext) == "active" ? "page" : "false")">
+                Profile
+            </a>
+        </li>
+        <li class="nav-item" role="listitem">
+            <a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)"
+               id="email"
+               asp-page="./Email"
+               aria-current="@(ManageNavPages.EmailNavClass(ViewContext) == "active" ? "page" : "false")">
+                Email
+            </a>
+        </li>
+        <li class="nav-item" role="listitem">
+            <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)"
+               id="change-password"
+               asp-page="./ChangePassword"
+               aria-current="@(ManageNavPages.ChangePasswordNavClass(ViewContext) == "active" ? "page" : "false")">
+                Password
+            </a>
+        </li>
+        @if (hasExternalLogins)
+        {
+            <li class="nav-item" role="listitem" id="external-logins">
+                <a class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)"
+                   id="external-login"
+                   asp-page="./ExternalLogins"
+                   aria-current="@(ManageNavPages.ExternalLoginsNavClass(ViewContext) == "active" ? "page" : "false")">
+                    External Logins
+                </a>
+            </li>
+        }
+        <li class="nav-item" role="listitem">
+            <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)"
+               id="personal-data"
+               asp-page="./PersonalData"
+               aria-current="@(ManageNavPages.PersonalDataNavClass(ViewContext) == "active" ? "page" : "false")">
+                Personal Data
+            </a>
+        </li>
+    </ul>
+</nav>
+<style>
+    .nav-link:focus {
+        outline: 2px solid ;
+        outline-offset: 2px;
     }
-    
-    <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a></li>
-</ul>
+</style>

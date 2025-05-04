@@ -7,8 +7,136 @@
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\js\\note-editor.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\_managenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\_managenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\managenavpages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\managenavpages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\js\\notebook-modal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\js\\notebook-modal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\js\\search.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\js\\search.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\home\\statistics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\home\\statistics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\view.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\view.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\home\\_searchpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\home\\_searchpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\css\\chart.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\css\\chart.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\js\\stats.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\js\\stats.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\bundleconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:bundleconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\services\\noterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,6 +145,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\services\\inoterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:services\\inoterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\services\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:services\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\models\\viewmodels\\searchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:models\\viewmodels\\searchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\controllers\\tagscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,64 +183,8 @@
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\services\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:services\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\home\\_searchpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\home\\_searchpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\home\\statistics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\home\\statistics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\view.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\view.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\models\\entities\\notebook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -115,20 +195,8 @@
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:models\\entities\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\models\\viewmodels\\searchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:models\\viewmodels\\searchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\js\\notebook-modal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\js\\notebook-modal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\models\\entities\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:models\\entities\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\js\\stats.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\js\\stats.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -139,60 +207,12 @@
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\js\\sidebar.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\managenavpages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\managenavpages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\areas\\identity\\pages\\account\\manage\\_managenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\_managenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\css\\sidebar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\css\\sidebar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\wwwroot\\css\\chart.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|solutionrelative:wwwroot\\css\\chart.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97BD9C96-7A79-4B9F-AE7C-4F961D9ADAAF}|termprojectJksmartnote.csproj|c:\\users\\jacks\\source\\repos\\termprojectjksmartnote - copy\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -206,7 +226,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 51,
+          "SelectedChildIndex": 17,
           "Children": [
             {
               "$type": "Bookmark",
@@ -246,7 +266,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 3,
+              "Title": "_ManageNav.cshtml",
+              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAADUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T17:33:51.879Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAFUAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-03T20:08:28.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-03T19:33:41.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-03T19:33:39.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": ".gitattributes",
+              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\.gitattributes",
+              "RelativeDocumentMoniker": ".gitattributes",
+              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\.gitattributes",
+              "RelativeToolTip": ".gitattributes",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-03T19:33:39.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Models\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Models\\Entities\\User.cs",
@@ -258,55 +338,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 20,
               "Title": "_SearchPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Home\\_SearchPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\_SearchPartial.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Home\\_SearchPartial.cshtml",
               "RelativeToolTip": "Views\\Home\\_SearchPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAHgAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T23:44:21.705Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACkAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T23:42:58.15Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 0,
+              "Title": "note-editor.js",
+              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\note-editor.js",
+              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
+              "RelativeToolTip": "wwwroot\\js\\note-editor.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-01T21:15:35.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "bundleconfig.json",
+              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\bundleconfig.json",
+              "RelativeDocumentMoniker": "bundleconfig.json",
+              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\bundleconfig.json",
+              "RelativeToolTip": "bundleconfig.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-03T19:33:44.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "statistics.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Home\\statistics.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\statistics.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Home\\statistics.cshtml",
               "RelativeToolTip": "Views\\Home\\statistics.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACoAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T23:42:57.316Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 31,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_ViewImports.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\_ViewImports.cshtml",
               "RelativeToolTip": "Views\\Shared\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T23:42:34.238Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 33,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
@@ -318,19 +423,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 19,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABQAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAGUAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T23:32:01.306Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 32,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -342,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 30,
               "Title": "Error.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\Error.cshtml",
@@ -354,19 +459,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 14,
               "Title": "View.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\View.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\View.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\View.cshtml",
               "RelativeToolTip": "Views\\Shared\\View.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T23:31:43.097Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 29,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
@@ -378,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 28,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
@@ -390,57 +495,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 23,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAFYAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAFYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T23:20:06.986Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 34,
               "Title": "NoteRepository.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Services\\NoteRepository.cs",
               "RelativeDocumentMoniker": "Services\\NoteRepository.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Services\\NoteRepository.cs",
               "RelativeToolTip": "Services\\NoteRepository.cs",
-              "ViewState": "AgIAAPYAAAAAAAAAAAAiwAwCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T23:19:54.793Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T23:19:54.793Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 35,
               "Title": "INoteRepository.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Services\\INoteRepository.cs",
               "RelativeDocumentMoniker": "Services\\INoteRepository.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Services\\INoteRepository.cs",
               "RelativeToolTip": "Services\\INoteRepository.cs",
-              "ViewState": "AgIAAKYAAAAAAAAAAAAwwLoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T23:19:44.241Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T23:19:44.241Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 36,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Services\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Services\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Services\\ApplicationDbContext.cs",
               "RelativeToolTip": "Services\\ApplicationDbContext.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T23:19:23.997Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 37,
               "Title": "SearchViewModel.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Models\\ViewModels\\SearchViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ViewModels\\SearchViewModel.cs",
@@ -452,92 +555,91 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 38,
               "Title": "TagsController.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\TagsController.cs",
               "RelativeDocumentMoniker": "Controllers\\TagsController.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\TagsController.cs",
               "RelativeToolTip": "Controllers\\TagsController.cs",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAAAKcAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAKcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T23:17:30.413Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T23:17:30.413Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 39,
               "Title": "StatsController.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\StatsController.cs",
               "RelativeDocumentMoniker": "Controllers\\StatsController.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\StatsController.cs",
               "RelativeToolTip": "Controllers\\StatsController.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T23:14:30.158Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 40,
               "Title": "NotetagController.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\NotetagController.cs",
               "RelativeDocumentMoniker": "Controllers\\NotetagController.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\NotetagController.cs",
               "RelativeToolTip": "Controllers\\NotetagController.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAAAHYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T23:12:42.111Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 41,
               "Title": "NotesController.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\NotesController.cs",
               "RelativeDocumentMoniker": "Controllers\\NotesController.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\NotesController.cs",
               "RelativeToolTip": "Controllers\\NotesController.cs",
-              "ViewState": "AgIAAC0BAAAAAAAAAAAuwDUBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T23:02:09.476Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 42,
               "Title": "NotebooksController.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\NotebooksController.cs",
               "RelativeDocumentMoniker": "Controllers\\NotebooksController.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\NotebooksController.cs",
               "RelativeToolTip": "Controllers\\NotebooksController.cs",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAkwAUAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T23:01:56.706Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 44,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAAKYAAAAAAAAAAAAUwKkAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T17:35:02.998Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 15,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
               "RelativeToolTip": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T17:34:27.535Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 16,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
@@ -549,7 +651,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 17,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
@@ -561,31 +663,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 7,
               "Title": "ResetPassword.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml",
               "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\ResetPassword.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T17:34:22.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 4,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAcwEAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T17:34:21.067Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 5,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
@@ -597,19 +699,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 8,
               "Title": "ManageNavPages.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
               "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAqwAsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAywAsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T17:34:05.89Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
@@ -621,19 +723,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 10,
               "Title": "ChangePassword.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
               "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T17:33:55.579Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 6,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
@@ -645,31 +747,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "_ManageNav.cshtml",
-              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
-              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-02T17:33:51.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 22,
               "Title": "stats.js",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\stats.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\stats.js",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\stats.js",
               "RelativeToolTip": "wwwroot\\js\\stats.js",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAQwHAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-05-02T17:22:24.14Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 49,
               "Title": "site.js",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
@@ -681,7 +771,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 50,
               "Title": "sidebar.js",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\sidebar.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\sidebar.js",
@@ -693,32 +783,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 12,
               "Title": "search.js",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\search.js",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
               "RelativeToolTip": "wwwroot\\js\\search.js",
-              "ViewState": "AgIAABoDAAAAAAAAAAAAAJYBAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACIAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-02T16:44:06.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T16:44:06.92Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 11,
               "Title": "notebook-modal.js",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\notebook-modal.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\notebook-modal.js",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\notebook-modal.js",
               "RelativeToolTip": "wwwroot\\js\\notebook-modal.js",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAAAFkAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-05-02T16:03:33.855Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 51,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
@@ -730,7 +819,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 52,
               "Title": "sidebar.css",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\css\\sidebar.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\sidebar.css",
@@ -742,44 +831,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 21,
               "Title": "chart.css",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\css\\chart.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\chart.css",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\css\\chart.css",
               "RelativeToolTip": "wwwroot\\css\\chart.css",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAFQAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-05-02T15:17:53.482Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "note-editor.js",
-              "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\note-editor.js",
-              "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
-              "RelativeToolTip": "wwwroot\\js\\note-editor.js",
-              "ViewState": "AgIAAEUFAAAAAAAAAAAAAFQFAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-01T21:15:35.071Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 43,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAmwBwAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T19:51:40.19Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
@@ -791,7 +867,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 47,
               "Title": "Note.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Models\\Entities\\Note.cs",
               "RelativeDocumentMoniker": "Models\\Entities\\Note.cs",
@@ -803,7 +879,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 46,
               "Title": "Notebook.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Models\\Entities\\Notebook.cs",
               "RelativeDocumentMoniker": "Models\\Entities\\Notebook.cs",
@@ -815,7 +891,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 53,
               "Title": "_Layout.cshtml.css",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Views\\Shared\\_Layout.cshtml.css",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
@@ -827,7 +903,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 48,
               "Title": "Tag.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\Models\\Entities\\Tag.cs",
               "RelativeDocumentMoniker": "Models\\Entities\\Tag.cs",

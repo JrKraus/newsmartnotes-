@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Iqgh6lee0CUFoF7uDV6joyznK4qnP2CeBeAl6LHdAVw=",
+  "Hash": "r3HJVQMzt8mSTtBmchuPGAHlMV4L68EsUqH1ulppdhU=",
   "Source": "termprojectJksmartnote",
   "BasePath": "_content/termprojectJksmartnote",
   "Mode": "Default",
@@ -1333,8 +1333,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "pf9x7lmwg5",
-      "Integrity": "BenRTHwKihI9ZSNA0dEzOiSiQssaHPh6y98/Gy7AqZg=",
+      "Fingerprint": "o2y2a2re7c",
+      "Integrity": "ACUzgiTYHozkWEVPR9Dk58ITjbWo26UugLSoztd2pNA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\chart.css"
@@ -1438,8 +1438,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "oobw9vuafl",
-      "Integrity": "KOgsruVVNPtCEgsKCixz2jmvwBrBNB8eFv7e+AwXL3U=",
+      "Fingerprint": "h7xhsxm29t",
+      "Integrity": "o51hzOPChxuyJm4D6kbt1HAOl44TxyZnkt/h2gTOZn0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\note-editor.js"
@@ -1459,8 +1459,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "98lgsyxiw9",
-      "Integrity": "hzzXbf+VShX2nFYVXMjn6H9LUWC7qlJYOZIklea3Fow=",
+      "Fingerprint": "rdx26r72cb",
+      "Integrity": "gegm5dXmHknbbf960wF/e6cnCsqGAMrDA8R3ZrJ9YUQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\search.js"
@@ -2822,7 +2822,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2429"
+          "Value": "2608"
         },
         {
           "Name": "Content-Type",
@@ -2830,11 +2830,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BenRTHwKihI9ZSNA0dEzOiSiQssaHPh6y98/Gy7AqZg=\""
+          "Value": "\"ACUzgiTYHozkWEVPR9Dk58ITjbWo26UugLSoztd2pNA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 16:05:17 GMT"
+          "Value": "Sat, 03 May 2025 20:01:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2844,12 +2844,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BenRTHwKihI9ZSNA0dEzOiSiQssaHPh6y98/Gy7AqZg="
+          "Value": "sha256-ACUzgiTYHozkWEVPR9Dk58ITjbWo26UugLSoztd2pNA="
         }
       ]
     },
     {
-      "Route": "css/chart.pf9x7lmwg5.css",
+      "Route": "css/chart.o2y2a2re7c.css",
       "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\css\\chart.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2859,7 +2859,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2429"
+          "Value": "2608"
         },
         {
           "Name": "Content-Type",
@@ -2867,11 +2867,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BenRTHwKihI9ZSNA0dEzOiSiQssaHPh6y98/Gy7AqZg=\""
+          "Value": "\"ACUzgiTYHozkWEVPR9Dk58ITjbWo26UugLSoztd2pNA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 16:05:17 GMT"
+          "Value": "Sat, 03 May 2025 20:01:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2881,7 +2881,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "pf9x7lmwg5"
+          "Value": "o2y2a2re7c"
         },
         {
           "Name": "label",
@@ -2889,7 +2889,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BenRTHwKihI9ZSNA0dEzOiSiQssaHPh6y98/Gy7AqZg="
+          "Value": "sha256-ACUzgiTYHozkWEVPR9Dk58ITjbWo26UugLSoztd2pNA="
         }
       ]
     },
@@ -5442,6 +5442,51 @@
       ]
     },
     {
+      "Route": "js/note-editor.h7xhsxm29t.js",
+      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64122"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"o51hzOPChxuyJm4D6kbt1HAOl44TxyZnkt/h2gTOZn0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 03 May 2025 21:42:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h7xhsxm29t"
+        },
+        {
+          "Name": "label",
+          "Value": "js/note-editor.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-o51hzOPChxuyJm4D6kbt1HAOl44TxyZnkt/h2gTOZn0="
+        }
+      ]
+    },
+    {
       "Route": "js/note-editor.js",
       "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
       "Selectors": [],
@@ -5452,7 +5497,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "62168"
+          "Value": "64122"
         },
         {
           "Name": "Content-Type",
@@ -5460,11 +5505,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KOgsruVVNPtCEgsKCixz2jmvwBrBNB8eFv7e+AwXL3U=\""
+          "Value": "\"o51hzOPChxuyJm4D6kbt1HAOl44TxyZnkt/h2gTOZn0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:24:41 GMT"
+          "Value": "Sat, 03 May 2025 21:42:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5474,97 +5519,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KOgsruVVNPtCEgsKCixz2jmvwBrBNB8eFv7e+AwXL3U="
-        }
-      ]
-    },
-    {
-      "Route": "js/note-editor.oobw9vuafl.js",
-      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\note-editor.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "62168"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KOgsruVVNPtCEgsKCixz2jmvwBrBNB8eFv7e+AwXL3U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:24:41 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "oobw9vuafl"
-        },
-        {
-          "Name": "label",
-          "Value": "js/note-editor.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-KOgsruVVNPtCEgsKCixz2jmvwBrBNB8eFv7e+AwXL3U="
-        }
-      ]
-    },
-    {
-      "Route": "js/search.98lgsyxiw9.js",
-      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "34749"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hzzXbf+VShX2nFYVXMjn6H9LUWC7qlJYOZIklea3Fow=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 20:19:46 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "98lgsyxiw9"
-        },
-        {
-          "Name": "label",
-          "Value": "js/search.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-hzzXbf+VShX2nFYVXMjn6H9LUWC7qlJYOZIklea3Fow="
+          "Value": "sha256-o51hzOPChxuyJm4D6kbt1HAOl44TxyZnkt/h2gTOZn0="
         }
       ]
     },
@@ -5579,7 +5534,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "34749"
+          "Value": "34993"
         },
         {
           "Name": "Content-Type",
@@ -5587,11 +5542,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hzzXbf+VShX2nFYVXMjn6H9LUWC7qlJYOZIklea3Fow=\""
+          "Value": "\"gegm5dXmHknbbf960wF/e6cnCsqGAMrDA8R3ZrJ9YUQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 20:19:46 GMT"
+          "Value": "Sat, 03 May 2025 19:37:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5601,7 +5556,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-hzzXbf+VShX2nFYVXMjn6H9LUWC7qlJYOZIklea3Fow="
+          "Value": "sha256-gegm5dXmHknbbf960wF/e6cnCsqGAMrDA8R3ZrJ9YUQ="
+        }
+      ]
+    },
+    {
+      "Route": "js/search.rdx26r72cb.js",
+      "AssetFile": "C:\\Users\\jacks\\source\\repos\\termprojectJksmartnote - Copy\\wwwroot\\js\\search.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34993"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gegm5dXmHknbbf960wF/e6cnCsqGAMrDA8R3ZrJ9YUQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 03 May 2025 19:37:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rdx26r72cb"
+        },
+        {
+          "Name": "label",
+          "Value": "js/search.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gegm5dXmHknbbf960wF/e6cnCsqGAMrDA8R3ZrJ9YUQ="
         }
       ]
     },

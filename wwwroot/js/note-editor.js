@@ -277,22 +277,6 @@ window.loadNotebookNotes = (notebookId, notebookTitle) => {
     }
 };
 
-// Creates HTML for a list of notes
-// notes: array of note objects
-// returns: HTML string
-function generateNotesHTML(notes) {
-    return notes.map(note => `
-        <div class="note-item" data-note-id="${note.id}">
-            <i class="bi bi-sticky me-2"></i>
-            <span class="note-title">${note.title || 'Untitled Note'}</span>
-            <div class="tags-container ms-2">
-                ${(note.tags || []).map(tag => `
-                    <span class="badge bg-secondary me-1">${tag}</span>
-                `).join('')}
-            </div>
-        </div>`
-    ).join('');
-}
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -702,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ? `/api/Notes/${currentNoteId}` // Update existing note
             : '/api/Notes'; // Create new note
 
-        const method = currentNoteId ? 'PUT' : 'POST';
+        const method = currentNoteId ? 'PUT' : 'POST'; //choose operation
 
         console.log(`Saving note using ${method} ${url}`);
 
