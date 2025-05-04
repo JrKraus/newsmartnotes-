@@ -3,22 +3,22 @@ Note smart application
 Preference 
 This was the most difficult project I have ever worked on. 
 It was also the project I learned the most from. 
-I started planning out note smart note on March 6th.  
+I started planning out a note smart note on March 6th.  
 Then I started coding on March 15th.  
 I started uploading to GitHub on March 31.  
-I worked each week, pulled all-nighters to get this project done. 
-I am very proud of this project flaws and all.  
-If you have any questions concerns email me at krausj@etsu.edu 
+I worked each week, pulling all-nighters to get this project done. 
+I am very proud of this project, flaws and all.  
+If you have any questions or concerns, email me at krausj@etsu.edu 
 
-How to set up the note smart
-1.	Got to the package manger command prompt and use command Update-Database
-2.	You must create an account and login into the application
+How to set up the Note Smart
+1.	Go to the package manager command prompt and use the command Update-Database
+2.	You must create an account and log in to the application
 3.	Create a notebook 
 4.	Create a note and some tags
    
 Accessibility and WCAG 2.1 AA
 •	Keyboard Navigation 
-Most functionalities can be accessed using the keyboard the only feature I couldn’t figure out is the notes list. Theres skip links and focus indicators along with a logical tab order
+Most functionalities can be accessed using the keyboard, the only feature I couldn’t figure out is the notes list. There sare kip links and focus indicators along with a logical tab order
 •	Color contrast  
 Tests and background are styled in such a way to meet the WCAG 2.1 AA standards to ensure readability. 
 •	Accessible Forms 
@@ -37,7 +37,10 @@ When you delete a note, it will say successful deleted. However, it will try to 
 
 Resources 
 
+
+
 ASP.NET CORE IDENTITY 
+
 https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-9.0
 
 https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-7.0
